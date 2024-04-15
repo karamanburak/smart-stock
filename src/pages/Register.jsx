@@ -17,24 +17,27 @@ const SignupSchema = Yup.object().shape({
   username: Yup.string()
     .min(3)
     .max(15)
-    .required('Requiered!'),
+    .required('Username is requiered!'),
   firstName: Yup.string()
     .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
+    .max(20, 'Too Long!')
+    .required('First name is required!'),
   lastName: Yup.string()
     .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
+    .max(20, 'Too Long!')
+    .required('Last name is required!'),
   email: Yup.string().email('Invalid email').required('Required'),
   password: Yup.string()
-    .min(8, "Das Passwort muss mindestens 8 Zeichen lang sein")
-    .max(20, "Das Passwort darf maximal 20 Zeichen lang sein")
-    .matches(/\d/, "Das Passwort muss mindestens eine Zahl enthalten!")
-    .matches(/[a-z]/, "Das Passwort muss mindestens einen Kleinbuchstaben enthalten")
-    .matches(/[A-Z]/, "Das Passwort muss mindestens einen Großbuchstaben enthalten")
-    .matches(/[@$?!%&*.]+/, "Das Passwort muss mindestens ein Sonderzeichen (@$!%*?&.) enthalten")
-    .required()
+    .min(8, "The password must be at least 8 characters long")
+    .max(20, "The password may be a maximum of 20 characters long")
+    .matches(/\d/, "The password must contain at least one number!")
+    .matches(/[a-z]/, "The password must contain at least one lowercase letter")
+    .matches(/[A-Z]/, "The password must contain at least one capital letter")
+    .matches(/[@$?!%&*.]+/, "The password must contain at least one special character (@$!%*?&.)")
+    .required("The password is required!"),
+    confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password'),null], 'Please make sure your passwords match')
+    .required("Confirm password is required!")
 });
 
 const Register = () => {
@@ -67,16 +70,17 @@ const Register = () => {
           <Typography
             variant="h4"
             align="center"
-            mb={2}
+            my={2}
             color="secondary.light"
           >
-            Register
+            REGISTER
           </Typography>
 
           <Formik
             initialValues={{
               username: "",
               password: "",
+              confirmPassword:"",
               email: "",
               firstName: "",
               lastName: "",
@@ -102,7 +106,7 @@ const Register = () => {
                     <TextField
                       id="username"
                       name="username"
-                      label="Username"
+                      label="Username *"
                       value={values.username}
                       onChange={handleChange}
                       onBlur={handleBlur}
@@ -112,7 +116,7 @@ const Register = () => {
                     <TextField
                       id="firstName"
                       name="firstName"
-                      label="FirstName"
+                      label="First Name *"
                       value={values.firstName}
                       onChange={handleChange}
                       onBlur={handleBlur}
@@ -122,7 +126,7 @@ const Register = () => {
                     <TextField
                       id="lastName"
                       name="lastName"
-                      label="LastName"
+                      label="Last Name *"
                       value={values.lastName}
                       onChange={handleChange}
                       onBlur={handleBlur}
@@ -133,7 +137,7 @@ const Register = () => {
                     <TextField
                       id="email"
                       name="email"
-                      label="Email"
+                      label="Email *"
                       type="email"
                       value={values.email}
                       onChange={handleChange}
@@ -145,12 +149,23 @@ const Register = () => {
                       id="password"
                       name="password"
                       type="password"
-                      label="Password"
+                      label="Password *"
                       value={values.password}
                       onChange={handleChange}
                       onBlur={handleBlur}
                       error={touched.password && Boolean(errors.password)}
                       helperText={touched.password && errors.password}
+                    />
+                    <TextField
+                      id="confirmPassword"
+                      name="confirmPassword"
+                      type="password"
+                      label="Confirm Password *"
+                      value={values.confirmPassword}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      error={touched.confirmPassword && Boolean(errors.confirmPassword)}
+                      helperText={touched.confirmPassword && errors.confirmPassword}
                     />
                     <Button variant="contained" type="submit">Sign Up</Button>
                   </Box>
