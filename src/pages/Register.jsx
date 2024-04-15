@@ -28,7 +28,7 @@ const SignupSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
   password: Yup.string()
     .min(8, "Das Passwort muss mindestens 8 Zeichen lang sein")
-    .max(20, "Das Passwort muss maximal 20 Zeichen lang sein")
+    .max(20, "Das Passwort darf maximal 20 Zeichen lang sein")
     .matches(/\d/, "Das Passwort muss mindestens eine Zahl enthalten!")
     .matches(/[A-Z]/, "Das Passwort muss mindestens einen Großbuchstaben enthalten")
     .matches(/[@$?!%&*]+/, "Das Passwort muss mindestens ein Sonderzeichen (@$!%*?&) enthalten")
