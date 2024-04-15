@@ -10,6 +10,7 @@ import { Box, TextField, Button } from "@mui/material";
 import AuthHeader from "../components/AuthHeader";
 import AuthImage from "../components/AuthImage";
 import * as Yup from 'yup'
+import useAuthCall from "../hooks/useAuthCall";
 
 
 const SignupSchema = Yup.object().shape({
@@ -32,11 +33,12 @@ const SignupSchema = Yup.object().shape({
     .matches(/\d/, "Das Passwort muss mindestens eine Zahl enthalten!")
     .matches(/[a-z]/, "Das Passwort muss mindestens einen Kleinbuchstaben enthalten")
     .matches(/[A-Z]/, "Das Passwort muss mindestens einen Großbuchstaben enthalten")
-    .matches(/[@$?!%&*]+/, "Das Passwort muss mindestens ein Sonderzeichen (@$!%*?&) enthalten")
+    .matches(/[@$?!%&*.]+/, "Das Passwort muss mindestens ein Sonderzeichen (@$!%*?&.) enthalten")
     .required()
 });
 
 const Register = () => {
+  const {register} = useAuthCall()
   return (
     <Container maxWidth="lg">
       <Grid
@@ -82,6 +84,7 @@ const Register = () => {
             validationSchema={SignupSchema}
             onSubmit={values => {
               console.log(values)
+              register(values)
             }}
           >
             {
