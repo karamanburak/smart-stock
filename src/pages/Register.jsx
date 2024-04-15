@@ -4,9 +4,9 @@ import Avatar from "@mui/material/Avatar";
 import LockIcon from "@mui/icons-material/Lock";
 import image from "../assets/regi.avif";
 import Grid from "@mui/material/Grid";
-import { Formik,Form } from 'formik';
+import { Formik, Form } from 'formik';
 import { Link } from "react-router-dom";
-import { Box, TextField,Button } from "@mui/material";
+import { Box, TextField, Button } from "@mui/material";
 import AuthHeader from "../components/AuthHeader";
 import AuthImage from "../components/AuthImage";
 import * as Yup from 'yup'
@@ -14,9 +14,9 @@ import * as Yup from 'yup'
 
 const SignupSchema = Yup.object().shape({
   username: Yup.string()
-  .min(3)
-  .max(15)
-  .required('Requiered!'),
+    .min(3)
+    .max(15)
+    .required('Requiered!'),
   firstName: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
@@ -26,6 +26,13 @@ const SignupSchema = Yup.object().shape({
     .max(50, 'Too Long!')
     .required('Required'),
   email: Yup.string().email('Invalid email').required('Required'),
+  password: Yup.string()
+    .min(8, "Das Passwort muss mindestens 8 Zeichen lang sein")
+    .max(20, "Das Passwort muss maximal 20 Zeichen lang sein")
+    .matches(/\d/, "Das Passwort muss mindestens eine Zahl enthalten!")
+    .matches(/[A-Z]/, "Das Passwort muss mindestens einen Großbuchstaben enthalten")
+    .matches(/[@$?!%&*]+/, "Das Passwort muss mindestens ein Sonderzeichen (@$!%*?&) enthalten")
+    .required()
 });
 
 const Register = () => {
@@ -148,12 +155,12 @@ const Register = () => {
             }
           </Formik>
 
-          <Box sx={{ textAlign: "center", mt: 2, color:"secondary.main" }}>
+          <Box sx={{ textAlign: "center", mt: 2, color: "secondary.main" }}>
             <Link to="/">Already have an account? Sign in</Link>
           </Box>
         </Grid>
 
-    <AuthImage image={image} />
+        <AuthImage image={image} />
       </Grid>
     </Container>
   );
