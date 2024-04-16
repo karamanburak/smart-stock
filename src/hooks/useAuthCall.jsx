@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { fetchFail, fetchStart, loginSuccess, registerSuccess } from "../features/authSlice";
+import { fetchFail, fetchStart, loginSuccess, logoutSuccess, registerSuccess } from "../features/authSlice";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
@@ -39,9 +39,21 @@ const useAuthCall = () => {
             console.log(error);
             
         }
-    }
+}
+        const logout = async () => {
+            dispatch(fetchStart())
+            try {
+                const { data } = await axios.get("https://18109.fullstack.clarusway.com/auth/logout")
+                dispatch(logoutSuccess(data))
+                toastSuccessNotify("Logout performed");
+                navigate("/login")
+            } catch (error) {
+                dispatch(fetchFail())
+                toastErrorNotify("Logout cannot be performed!")
+                console.log(error);
+            }
+        }
 
-
-    return {register,login}
+    return {register,login,logout}
 };
 export default useAuthCall;
