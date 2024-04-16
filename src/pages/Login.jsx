@@ -64,9 +64,10 @@ const Login = () => {
               email: "",
             }}
             validationSchema={SigninSchema}
-            onSubmit={values => {
-              console.log(values)
-              register(values)
+            onSubmit={(values, actions) => {
+              register(values);
+              actions.resetForm();
+              actions.setSubmitting(false);
             }}
           >
             {
@@ -84,8 +85,11 @@ const Login = () => {
                     <TextField
                       id="email"
                       name="email"
-                      label="Email"
+                      label="Email *"
                       type="email"
+                      inputProps={{
+                        autoComplete: "off"  // Burada "autoComplete" kullanılmalıdır.
+                      }}
                       value={values.email}
                       onChange={handleChange}
                       onBlur={handleBlur}
@@ -96,7 +100,7 @@ const Login = () => {
                       id="password"
                       name="password"
                       type="password"
-                      label="Password"
+                      label="Password *"
                       value={values.password}
                       onChange={handleChange}
                       onBlur={handleBlur}

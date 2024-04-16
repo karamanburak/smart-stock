@@ -35,13 +35,13 @@ const SignupSchema = Yup.object().shape({
     .matches(/[A-Z]/, "The password must contain at least one capital letter")
     .matches(/[@$?!%&*.]+/, "The password must contain at least one special character (@$!%*?&.)")
     .required("The password is required!"),
-    confirmPassword: Yup.string()
-    .oneOf([Yup.ref('password'),null], 'Please make sure your passwords match')
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password'), null], 'Please make sure your passwords match')
     .required("Confirm password is required!")
 });
 
 const Register = () => {
-  const {register} = useAuthCall()
+  const { register } = useAuthCall()
   return (
     <Container maxWidth="lg">
       <Grid
@@ -80,15 +80,16 @@ const Register = () => {
             initialValues={{
               username: "",
               password: "",
-              confirmPassword:"",
+              confirmPassword: "",
               email: "",
               firstName: "",
               lastName: "",
             }}
             validationSchema={SignupSchema}
-            onSubmit={values => {
-              console.log(values)
-              register(values)
+            onSubmit={(values, actions) => {
+              register(values);
+              actions.resetForm();
+              actions.setSubmitting(false);
             }}
           >
             {
@@ -107,6 +108,9 @@ const Register = () => {
                       id="username"
                       name="username"
                       label="Username *"
+                      inputProps={{
+                        autoComplete: "off"  // Burada "autoComplete" kullanılmalıdır.
+                      }}
                       value={values.username}
                       onChange={handleChange}
                       onBlur={handleBlur}
@@ -139,6 +143,9 @@ const Register = () => {
                       name="email"
                       label="Email *"
                       type="email"
+                      inputProps={{
+                        autoComplete: "off"  // Burada "autoComplete" kullanılmalıdır.
+                      }}
                       value={values.email}
                       onChange={handleChange}
                       onBlur={handleBlur}
