@@ -11,12 +11,13 @@ import AuthHeader from "../components/AuthHeader";
 import AuthImage from "../components/AuthImage";
 import * as Yup from 'yup'
 import { Form, Formik } from "formik";
+import useAuthCall from "../hooks/useAuthCall";
 
 
 const SigninSchema = Yup.object().shape({
   email: Yup.string()
-  .email('Invalid email')
-  .required(),
+    .email('Invalid email')
+    .required(),
   password: Yup.string()
     .min(8, "The password must be at least 8 characters long")
     .max(20, "The password may be a maximum of 20 characters long")
@@ -29,6 +30,7 @@ const SigninSchema = Yup.object().shape({
 
 const Login = () => {
   const theme = useTheme();
+  const {login} = useAuthCall()
 
   return (
     <Container maxWidth="lg">
@@ -65,7 +67,7 @@ const Login = () => {
             }}
             validationSchema={SigninSchema}
             onSubmit={(values, actions) => {
-              register(values);
+              login(values);
               actions.resetForm();
               actions.setSubmitting(false);
             }}
@@ -107,7 +109,12 @@ const Login = () => {
                       error={touched.password && Boolean(errors.password)}
                       helperText={touched.password && errors.password}
                     />
-                    <Button variant="contained" type="submit">Sign In</Button>
+                    <Button
+                      variant="contained"
+                      type="submit"
+                      size="large"
+                      disabled={isSubmitting}
+                    >Sign In</Button>
                   </Box>
                 </Form>
               )

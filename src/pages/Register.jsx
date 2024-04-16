@@ -174,7 +174,12 @@ const Register = () => {
                       error={touched.confirmPassword && Boolean(errors.confirmPassword)}
                       helperText={touched.confirmPassword && errors.confirmPassword}
                     />
-                    <Button variant="contained" type="submit">Sign Up</Button>
+                    <Button
+                      variant="contained"
+                      type="submit"
+                      size="large"
+                      disabled={isSubmitting}
+                    >Sign Up</Button>
                   </Box>
                 </Form>
               )
