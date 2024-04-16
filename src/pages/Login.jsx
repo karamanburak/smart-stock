@@ -1,6 +1,5 @@
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
-import { Button, TextField, useTheme } from "@mui/material";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
@@ -9,29 +8,12 @@ import image from "../assets/hero.png";
 import { Link } from "react-router-dom";
 import AuthHeader from "../components/AuthHeader";
 import AuthImage from "../components/AuthImage";
-import * as Yup from 'yup'
-import { Form, Formik } from "formik";
+import { Formik } from "formik";
 import useAuthCall from "../hooks/useAuthCall";
-
-
-const SigninSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Invalid email')
-    .required(),
-  password: Yup.string()
-    .min(8, "The password must be at least 8 characters long")
-    .max(20, "The password may be a maximum of 20 characters long")
-    .matches(/\d/, "The password must contain at least one number!")
-    .matches(/[a-z]/, "The password must contain at least one lowercase letter")
-    .matches(/[A-Z]/, "The password must contain at least one capital letter")
-    .matches(/[@$?!%&*.]+/, "The password must contain at least one special character (@$!%*?&.)")
-    .required()
-});
+import LoginForm, { loginScheme } from "../components/LoginForm";
 
 const Login = () => {
-  const theme = useTheme();
-  const {login} = useAuthCall()
-
+  const { login } = useAuthCall();
   return (
     <Container maxWidth="lg">
       <Grid
@@ -56,69 +38,20 @@ const Login = () => {
           >
             <LockIcon size="30" />
           </Avatar>
-          <Typography variant="h4" align="center" my={2} color="secondary.main">
+          <Typography variant="h4" align="center" mb={4} color="secondary.main">
             SIGN IN
           </Typography>
 
           <Formik
-            initialValues={{
-              password: "",
-              email: "",
-            }}
-            validationSchema={SigninSchema}
+            initialValues={{ email: "", password: "" }}
+            validationSchema={loginScheme}
             onSubmit={(values, actions) => {
               login(values);
               actions.resetForm();
               actions.setSubmitting(false);
             }}
-          >
-            {
-              ({
-                values,
-                errors,
-                touched,
-                handleChange,
-                handleBlur,
-                handleSubmit,
-                isSubmitting
-              }) => (
-                <Form>
-                  <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                    <TextField
-                      id="email"
-                      name="email"
-                      label="Email *"
-                      type="email"
-                      inputProps={{
-                        autoComplete: "off"  // Burada "autoComplete" kullanılmalıdır.
-                      }}
-                      value={values.email}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      error={touched.email && Boolean(errors.email)}
-                      helperText={touched.email && errors.email}
-                    />
-                    <TextField
-                      id="password"
-                      name="password"
-                      type="password"
-                      label="Password *"
-                      value={values.password}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      error={touched.password && Boolean(errors.password)}
-                      helperText={touched.password && errors.password}
-                    />
-                    <Button
-                      variant="contained"
-                      type="submit"
-                      size="large"
-                      disabled={isSubmitting}
-                    >Sign In</Button>
-                  </Box>
-                </Form>
-              )
-            }
+            component={props => <LoginForm {...props} />}>
+
           </Formik>
           <Box sx={{ textAlign: "center", mt: 2, color: "secondary.main" }}>
             <Link to="/register">
