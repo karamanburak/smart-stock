@@ -71,8 +71,8 @@ const MenuListItems = () => {
         <div>
             <Toolbar />
             <List>
-                {links.map((item, index) => (
-                    <ListItem key={item.title} disablePadding>
+                {links.map((item) => (
+                    <ListItem key={item.title} disablePadding sx={{ marginTop: ".2rem" }}>
                         <ListItemButton 
                         onClick={()=>navigate(item.url)} 
                         sx={pathname == item.url ? selectedStyle : iconStyle}>
