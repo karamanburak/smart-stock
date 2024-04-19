@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { fetchFail, fetchStart, firmsSuccess } from "../features/stockSlice";
+import { fetchFail, fetchStart, getSuccess } from "../features/stockSlice";
 import axios from "axios";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
@@ -7,24 +7,26 @@ const useStockCall = () => {
     const dispatch = useDispatch()
     const { token } = useSelector(state => state.auth)
 
-    const getFirms = async () => {
+    const getStockData = async (url) => {
         dispatch(fetchStart())
         try {
-            const { data } = await axios(`${BASE_URL}firms`, {
+            const { data } = await axios(`${BASE_URL}${url}`, {
                 headers: {
                     Authorization: `Token ${token}`
-                    // Authorization: `Bearer ${accessToken}` //* JWT (Jason Web Token) icin
+                    // Authorization: `Bearer ${accessToken}` //* JWT (Jason Web Token) icin *\\
                 }
             })
             console.log(data);
-            dispatch(firmsSuccess(data.data))
+            // dispatch(brandsSuccess(data.data))
+            dispatch(getSuccess({ data: data.data, url })) //* action creatorlar her zaman tek bir parametre kabul ederler *\\
+
         } catch (error) {
             console.log(error);
             dispatch(fetchFail())
         }
     }
 
-    return { getFirms }
+    return {getStockData }
 };
 
 export default useStockCall;
