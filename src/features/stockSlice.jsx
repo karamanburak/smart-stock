@@ -34,5 +34,5 @@ export const {
     fetchStart,
     firmsSuccess,
     fetchFail,
-} = authSlice.actions;
+} = stockSlice.actions;
 export default stockSlice.reducer;
