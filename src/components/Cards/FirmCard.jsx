@@ -19,7 +19,9 @@ export default function FirmCard ({_id,name,address,image,phone}) {
             flexDirection:"column",
             justifyContent:"space-between",
             padding:".5rem",
-            backgroundColor: mode ? "white" : "primary.main", color: mode ? "primar.main" : "white"     
+            backgroundColor: mode ? "white" : "primary.main", color: mode ? "primar.main" : "white", 
+            boxShadow: mode ? "0 0 10px 0 rgba(0,0,0,0.2)" : "0 0 5px 0 rgba(255,255,255,0.2)",
+   
          }}>
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">

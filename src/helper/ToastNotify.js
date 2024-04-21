@@ -6,7 +6,7 @@ export const toastWarnNotify = msg => {
     autoClose: 1000,
     hideProgressBar: false,
     closeOnClick: true,
-    pauseOnHover: true,
+    pauseOnHover: false,
     draggable: true,
     progress: undefined,
   });
@@ -17,7 +17,7 @@ export const toastSuccessNotify = msg => {
     autoClose: 1500,
     hideProgressBar: false,
     closeOnClick: true,
-    pauseOnHover: true,
+    pauseOnHover: false,
     draggable: true,
     progress: undefined,
   });
@@ -28,7 +28,7 @@ export const toastErrorNotify = msg => {
     autoClose: 2000,
     hideProgressBar: false,
     closeOnClick: true,
-    pauseOnHover: true,
+    pauseOnHover: false,
     draggable: true,
     progress: undefined,
   });
