@@ -9,6 +9,7 @@ const Firms = () => {
   const { getStockData } = useStockCall()
   const { firms } = useSelector(state => state.stock)
   console.log("Firms", firms);
+  const {mode} = useSelector(state => state.darkMode)
 
   useEffect(() => {
     getStockData("firms")
@@ -23,10 +24,13 @@ const Firms = () => {
         Firms
       </Typography>
         <Button
-          variant="contained"> New Firm </Button>
-      <Grid container spacing={2} mt={3}>
+        sx={{ backgroundColor: mode ? "white" : "primary.main", color: mode ? "primary.main" : "white" }}
+          variant={mode ? "outlined" : "contained"}> New Firm </Button>
+      <Grid  container spacing={2} mt={3} >
         {firms.map((firm) => (
-          <Grid item xs={12} md={6} lg={4} xl={3} key={firm._id}>
+          <Grid
+           item xs={12} md={6} lg={4} xl={3} key={firm._id}>
+
             <FirmCard {...firm} />
           </Grid>
         ))}

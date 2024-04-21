@@ -19,13 +19,15 @@ export default function FirmCard ({_id,name,address,image,phone}) {
             flexDirection:"column",
             justifyContent:"space-between",
             padding:".5rem",
-           
+            backgroundColor: mode ? "white" : "primary.main", color: mode ? "primar.main" : "white"     
          }}>
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                     {name}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2"
+                sx={{color: mode ? "primary.main" : "white"}}
+                >
                     {address}
                 </Typography>
             </CardContent>
@@ -36,7 +38,10 @@ export default function FirmCard ({_id,name,address,image,phone}) {
                 title={name}
             />
             <CardContent>
-            <Typography variant="body2" color="text.secondary">
+            <Typography 
+            variant="body2" color="text.secondary"
+                    sx={{ color: mode ? "primary.main" : "white" }}
+            >
                Phone: {phone}
             </Typography>
             </CardContent>
