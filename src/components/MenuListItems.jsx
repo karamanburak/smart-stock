@@ -47,19 +47,18 @@ const links = [
 
 
 const iconStyle = {
-    color: "secondary.main",
     borderRadius: "1rem",
     "&:hover": {
-        backgroundColor: "secondary.main",
+        backgroundColor: "#38636D",
         color: "white",
     },
 };
 const selectedStyle = {
-    backgroundColor: "secondary.second",
+    backgroundColor: "#38638D",
     borderRadius: "1rem",
     "&:hover": {
-        backgroundColor: "secondary.main",
-        color: "secondary.second",
+        backgroundColor: "#38636D",
+        color: "white",
     },
     color: "white",
 };
@@ -79,7 +78,9 @@ const MenuListItems = () => {
                 {links.map((item) => (
                     <ListItem key={item.title} disablePadding sx={{ marginTop: ".2rem" }}>
                         <ListItemButton 
-                        onClick={()=>navigate(item.url)} >
+                        onClick={()=>navigate(item.url)} 
+                            sx={pathname == item.url ? selectedStyle : iconStyle}
+                        >
                                 <Box sx={{
                                     width:24,
                                     height:24,
