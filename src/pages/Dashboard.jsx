@@ -14,7 +14,7 @@ import { Outlet } from "react-router-dom";
 import useAuthCall from "../hooks/useAuthCall";
 import MenuListItems from "../components/MenuListItems";
 import { useSelector } from "react-redux";
-import logo from  '../../public/assets/navbar/stock-logo.png'
+import logo from  '../assets/stock-logo.png'
 
 const drawerWidth = 240;
 

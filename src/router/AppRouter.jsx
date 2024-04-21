@@ -10,12 +10,14 @@ import Firms from "../pages/Firms";
 import Products from "../pages/Products";
 import Sales from "../pages/Sales";
 import Purchases from "../pages/Purchases";
+import HomePage from "../pages/HomePage";
 
 const AppRouter = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="stock" element={<PrivateRouter />}>
           <Route path="" element={<Dashboard />}>
