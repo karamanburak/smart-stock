@@ -7,16 +7,19 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditNoteIcon from '@mui/icons-material/EditNote';
+import { useSelector } from 'react-redux';
 
 
 export default function FirmCard ({_id,name,address,image,phone}) {
+    const {mode} = useSelector(state => state.darkMode)
     return (
         <Card sx={{
             height:390,
             display:"flex",
             flexDirection:"column",
             justifyContent:"space-between",
-            padding:".5rem"
+            padding:".5rem",
+           
          }}>
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">

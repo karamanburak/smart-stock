@@ -19,12 +19,11 @@ const Firms = () => {
       <Typography
         align="center"
         variant="h4"
-        component="h1"
-        color="white"
-      >
+        component="h1">
         Firms
       </Typography>
-      <Button variant="contained"> New Firm </Button>
+        <Button
+          variant="contained"> New Firm </Button>
       <Grid container spacing={2} mt={3}>
         {firms.map((firm) => (
           <Grid item xs={12} md={6} lg={4} xl={3} key={firm._id}>
