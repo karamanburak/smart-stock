@@ -51,8 +51,8 @@ const HomePage = () => {
                 </AppBar>
 
                 <Box sx={{ display: "flex", flexDirection: "column", margin: "auto", gap: ".5rem", textAlign: "justify" }}>
-                    <Typography sx={{ marginTop: "3.8rem" }} variant="h4">Wellcome to Smart Stock</Typography>
-                    <Typography variant="p" style={{ width: "300px", margin: "auto", fontSize: "1.2rem" }}>
+                    <Typography variant="h4" sx={{ marginTop: "3.8rem" }}>Wellcome to Smart Stock</Typography>
+                    <Typography variant="span" style={{ width: "300px", margin: "auto", fontSize: "1.2rem" }}>
                         Store your warehouse stocks and get an all-automated stockholder registry with complete security. The Smart Stock gives you a platform where you can interact and manage your stocks.
                     </Typography>
                     <Button
@@ -66,7 +66,7 @@ const HomePage = () => {
                 {/* <AuthImage image={image}/> */}
                 <img src={image} alt="image" style={{ width: "512px", height: "512px", margin: "auto" }} />
             </Grid>
-                <Typography sx={{ position: "fixed", bottom: "0", left: "0", width: "100%" }}>
+                <Typography variant="div" sx={{ position: "fixed", bottom: "0", left: "0", width: "100%" }}>
                     <Footer />
                 </Typography>
         </Container>

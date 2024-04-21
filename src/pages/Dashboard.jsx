@@ -15,6 +15,7 @@ import useAuthCall from "../hooks/useAuthCall";
 import MenuListItems from "../components/MenuListItems";
 import { useSelector } from "react-redux";
 import logo from  '../assets/stock-logo.png'
+import avatar from '../assets/avatar.png'
 
 const drawerWidth = 240;
 
@@ -24,6 +25,8 @@ function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
+  const {currentUser} = useSelector(state => state.auth)
+  console.log(currentUser);
 
   const handleDrawerClose = () => {
     setIsClosing(true);
@@ -73,6 +76,16 @@ function Dashboard(props) {
           <img src={logo} alt="" style={{width:"45px", height:"45px",marginRight:".7rem"}}/>
             Smart Stock
           </Typography>
+
+            {currentUser ? (<img
+           style={{width:"40px", height:"40px", borderRadius:"50%"}}
+              src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${currentUser}`}
+              alt=""
+            />
+            ) : (
+              <img style={{width:"40px", height:"40px", borderRadius:"50%"}} src={avatar} />
+            ) }
+    
           <Button
             color="inherit"
             sx={{

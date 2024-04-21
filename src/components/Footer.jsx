@@ -1,11 +1,11 @@
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import { Typography } from '@mui/material';
+import { Toolbar, Typography } from '@mui/material';
 import React from "react";
 
 const Footer = () => {
     return <>
-        <div
+        <Toolbar
             style={{ backgroundColor: "#454F5B", height: "64px", padding: "0px 24px", display:"flex", justifyContent:"center",alignItems:"center", gap:"1.2rem"}}>
                         <Typography sx={{ color: "white"}}>
                             Made By Burak Karaman &copy; 2024
@@ -20,7 +20,7 @@ const Footer = () => {
                             rel="noreferrer"><LinkedInIcon sx={{fontSize: "2rem", color: "white" }} />
                         </a>
                     </Typography>
-        </div>
+        </Toolbar>
 
     </>;
 };
