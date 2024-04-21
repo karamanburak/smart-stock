@@ -14,11 +14,13 @@ import * as React from "react";
 import { Outlet } from "react-router-dom";
 import useAuthCall from "../hooks/useAuthCall";
 import MenuListItems from "../components/MenuListItems";
+import { useSelector } from "react-redux";
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
   const { logout } = useAuthCall();
+  const { mode } = useSelector((state) => state.darkMode)
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
@@ -43,15 +45,17 @@ function Dashboard(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{
+      display: "flex", backgroundColor: mode ? "white" : "primary.main", color: mode ? "primary.main" : "white", minHeight: "100vh"
+    }}>
       <CssBaseline />
       <AppBar
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          backgroundColor: "white",
-          color: "secondary.second",
+           backgroundColor: mode ? "white" : "primary.main",
+          color: mode ? "primary.main" : "white" ,
           borderRadius: "0.5rem",
         }}
       >

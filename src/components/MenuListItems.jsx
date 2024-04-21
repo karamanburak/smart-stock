@@ -6,6 +6,8 @@ import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import Switch from "./Switch";
+import { useSelector } from "react-redux";
 
 const icon = (name) => `/assets/navbar/${name}.svg`
 
@@ -66,16 +68,18 @@ const selectedStyle = {
 const MenuListItems = () => {
     const navigate = useNavigate()
     const {pathname} = useLocation()
+    const { mode } = useSelector((state) => state.darkMode)
+
     // console.log(pathname);
     return (
-        <div>
+        <div style={{ marginTop: "-4rem" }}>
             <Toolbar />
-            <List>
+            <List sx={{ height: "100vh", backgroundColor: mode ? "white" : "primary.main", color: mode ? "primary.main" : "white" }} >
+            <Switch/>
                 {links.map((item) => (
                     <ListItem key={item.title} disablePadding sx={{ marginTop: ".2rem" }}>
                         <ListItemButton 
-                        onClick={()=>navigate(item.url)} 
-                        sx={pathname == item.url ? selectedStyle : iconStyle}>
+                        onClick={()=>navigate(item.url)} >
                                 <Box sx={{
                                     width:24,
                                     height:24,

@@ -20,7 +20,7 @@ const Firms = () => {
         align="center"
         variant="h4"
         component="h1"
-        color="secondary.second"
+        color="white"
       >
         Firms
       </Typography>
