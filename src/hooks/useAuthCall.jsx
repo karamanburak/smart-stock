@@ -10,6 +10,7 @@ const useAuthCall = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { token } = useSelector((store) => store.auth);
+    const {currentUser} = useSelector((state)=> state.auth)
 
     const register = async (userInfo) => {
         dispatch(fetchStart())
@@ -33,7 +34,8 @@ const useAuthCall = () => {
             const { data } = await axios.post(`${BASE_URL}auth/login/`,userInfo)
             console.log(data);
             dispatch(loginSuccess(data))
-            toastSuccessNotify("Login performed");
+            toastSuccessNotify(`Wellcome to your home ${data.user.email}`);
+
             navigate("/stock")
         } catch (error) {
             dispatch(fetchFail())
@@ -51,7 +53,7 @@ const useAuthCall = () => {
                     },
                 });
                 dispatch(logoutSuccess())
-                toastSuccessNotify("Logout performed");
+                toastSuccessNotify(`Sorry to see you go! ${currentUser}`);
                 navigate("/login")
             } catch (error) {
                 dispatch(fetchFail())
