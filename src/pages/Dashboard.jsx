@@ -71,7 +71,7 @@ function Dashboard(props) {
           </IconButton>
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1, display:"flex",alignItems:"center" }}>
           <img src={logo} alt="" style={{width:"45px", height:"45px",marginRight:".7rem"}}/>
-            SmartStock
+            Smart Stock
           </Typography>
           <Button
             color="inherit"
