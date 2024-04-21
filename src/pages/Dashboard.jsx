@@ -1,6 +1,5 @@
 
 import LogoutIcon from "@mui/icons-material/Logout";
-import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Button } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
@@ -15,6 +14,7 @@ import { Outlet } from "react-router-dom";
 import useAuthCall from "../hooks/useAuthCall";
 import MenuListItems from "../components/MenuListItems";
 import { useSelector } from "react-redux";
+import logo from  '../../public/assets/navbar/stock-logo.png'
 
 const drawerWidth = 240;
 
@@ -69,8 +69,9 @@ function Dashboard(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-            Stock App
+          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1, display:"flex",alignItems:"center" }}>
+          <img src={logo} alt="" style={{width:"45px", height:"45px",marginRight:".7rem"}}/>
+            SmartStock
           </Typography>
           <Button
             color="inherit"
