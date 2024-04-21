@@ -6,11 +6,11 @@ import React from "react";
 const Footer = () => {
     return <>
         <div
-            style={{ backgroundColor: "#454F5B", height: "64px", padding: "0px 24px", display:"flex", justifyContent:"center",alignItems:"center",gap:"1rem"}}>
-                        <Typography sx={{ color: "white", display:"flex",flexGrow:1}}>
+            style={{ backgroundColor: "#454F5B", height: "64px", padding: "0px 24px", display:"flex", justifyContent:"center",alignItems:"center", gap:"1.2rem"}}>
+                        <Typography sx={{ color: "white"}}>
                             Made By Burak Karaman &copy; 2024
                 </Typography>
-                    <Typography sx={{display:"flex",gap:"1rem"}}>
+                    <Typography sx={{display:"flex",gap:".5rem"}}>
                         <a href="https://github.com/karamanburak"
                             target="_blank"
                             rel="noreferrer"><GitHubIcon sx={{fontSize: "2rem", color: "white" }} />
