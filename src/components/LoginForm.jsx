@@ -46,7 +46,7 @@ const LoginForm = ({ values, handleChange, errors, touched, handleBlur }) => {
           error={touched.password && Boolean(errors.password)}
         />
         {!loading ? (
-          <Button variant="contained" type="submit">
+          <Button variant="contained" type="submit" sx={{backgroundColor:"secondary.main"}}>
            Sign In
           </Button>
         ) : (

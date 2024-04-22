@@ -138,6 +138,7 @@ const SignUpForm = ({
             variant="contained"
             size="large"
             disabled={isSubmitting}
+            color="secondary"
           >
             {isSubmitting ? "Loading..." : "Sign Up"}
           </Button>

@@ -34,7 +34,7 @@ const HomePage = () => {
                     p: 2,
                 }}
             >
-                <AppBar sx={{backgroundColor:"white"}}>
+                <AppBar sx={{ backgroundColor: "white" }}>
                     <Toolbar>
                         <Typography variant="h6"
                             sx={{ flexGrow: 1, display: "flex", alignItems: "center", color: "primary.main" }}>
@@ -42,23 +42,23 @@ const HomePage = () => {
                             Smart Stock
                         </Typography>
                         <Button
-                            sx={{ borderRadius: "20px", backgroundColor: "#01BDAE",color:"white", marginRight: "1rem",
+                            sx={{
+                                borderRadius: "20px", backgroundColor: "#01BDAE", color: "white", marginRight: "1rem",
                                 "&.MuiButtonBase-root:hover": {
                                     bgcolor: "#01BDAE"
                                 },
-    
-                            
-                             }}
+                            }}
                             onClick={() => navigate("/login")}
                         >
                             Login <LoginIcon sx={{ ml: "0.5rem" }} />
                         </Button>
                         <Button
-                            sx={{ borderRadius: "20px", backgroundColor: "gray",color:"white",
+                            sx={{
+                                borderRadius: "20px", backgroundColor: "gray", color: "white",
                                 "&.MuiButtonBase-root:hover": {
                                     bgcolor: "gray"
                                 },
-                             }}
+                            }}
 
                             onClick={() => navigate("/register")}
                         >
@@ -73,7 +73,12 @@ const HomePage = () => {
                         Store your warehouse stocks and get an all-automated stockholder registry with complete security. The Smart Stock gives you a platform where you can interact and manage your stocks.
                     </Typography>
                     <Button
-                        sx={{ borderRadius: "20px", backgroundColor: "blue" }}
+                        sx={{
+                            borderRadius: "20px", backgroundColor: "blue",
+                            "&.MuiButtonBase-root:hover": {
+                                bgcolor: "blue"
+                            },
+                        }}
                         variant="contained"
                         onClick={() => navigate("/login")}
                     >
@@ -83,9 +88,9 @@ const HomePage = () => {
                 {/* <AuthImage image={image}/> */}
                 <img src={image} alt="image" style={{ width: "512px", height: "512px", margin: "auto" }} />
             </Grid>
-                <Typography variant="div" sx={{ position: "fixed", bottom: "0", left: "0", width: "100%"}}>
-                    <Footer />
-                </Typography>
+            <Typography variant="div" sx={{ position: "fixed", bottom: "0", left: "0", width: "100%" }}>
+                <Footer />
+            </Typography>
         </Container>
     )
 }
