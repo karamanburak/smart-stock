@@ -77,7 +77,7 @@ const [info,setInfo] = useState(initialState)
                     })}
                       
                         <Button 
-                            sx={{ backgroundColor: mode ? "white" : "primary.main", color: mode ? "primary.main" : "white" }}
+                            sx={{ backgroundColor: mode ? "white" : "secondary.main", color: mode ? "primary.main" : "white" }}
                             variant={mode ? "outlined" : "contained"}
                             type="submit">
                             {info._id ? "Update Firm" : "Submit Firm"}

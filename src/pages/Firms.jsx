@@ -46,7 +46,7 @@ const Firms = () => {
       </Typography>
         <Button
         onClick={handleOpen}
-        sx={{ backgroundColor: mode ? "white" : "primary.main", color: mode ? "primary.main" : "white" }}
+        sx={{ backgroundColor: mode ? "white" : "secondary.main", color: mode ? "primary.main" : "white" }}
           variant={mode ? "outlined" : "contained"}> New Firm </Button>
       <Grid container spacing={2} mt={3} >
         {firms.map((firm) => (
