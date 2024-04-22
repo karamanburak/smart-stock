@@ -11,7 +11,7 @@ import useStockCall from '../../hooks/useStockCall';
 import { Button } from '@mui/material';
 
 
-export default function FirmCard({ _id, name, address, image, phone, handleOpen }) {
+export default function FirmCard({ _id, name, address, image, phone, handleOpen, setInitialState }) {
     const { mode } = useSelector(state => state.darkMode)
     const { deleteStockData } = useStockCall()
 
@@ -55,15 +55,16 @@ export default function FirmCard({ _id, name, address, image, phone, handleOpen 
                     justifyContent: "center",
                     alignItems: "center",
                     gap: 2
-                }}
-            >
+                }}>
                 <Button
-                    onClick={handleOpen}
+                    onClick={()=>{
+                        handleOpen();
+                        setInitialState({_id,name,phone,image,address})
+                        }}
                     sx={{ backgroundColor: mode ? "white" : "primary.main", color: mode ? "primary.main" : "white" }}
                     variant={mode ? "outlined" : "contained"}>
                     EDIT
                     <EditNoteIcon
-
                         sx={{ cursor: "pointer", marginLeft: ".5rem", backgroundColor: mode ? "white" : "primary.main", color: mode ? "primary.main" : "white" }} />
                 </Button>
                 <Button

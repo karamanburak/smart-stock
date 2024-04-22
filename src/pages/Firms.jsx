@@ -9,13 +9,28 @@ import { useState } from "react";
 const Firms = () => {
 
   const { getStockData } = useStockCall()
+  const {mode} = useSelector(state => state.darkMode)
   const { firms } = useSelector(state => state.stock)
   console.log("Firms", firms);
-  const {mode} = useSelector(state => state.darkMode)
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    setInitialState({
+      name: "",
+      phone: "",
+      address: "",
+      image: "",
+    });
+    }
+  const [initialState,setInitialState] = useState({
+    "name": "",
+    "phone": "",
+    "address": "",
+    "image": ""
+  })
+  // console.log("initialState", initialState);
 
   useEffect(() => {
     getStockData("firms")
@@ -33,17 +48,26 @@ const Firms = () => {
         onClick={handleOpen}
         sx={{ backgroundColor: mode ? "white" : "primary.main", color: mode ? "primary.main" : "white" }}
           variant={mode ? "outlined" : "contained"}> New Firm </Button>
-      <Grid  container spacing={2} mt={3} >
+      <Grid container spacing={2} mt={3} >
         {firms.map((firm) => (
           <Grid
            item xs={12} md={6} lg={4} xl={3} key={firm._id}>
 
-            <FirmCard {...firm} handleOpen={handleOpen} />
+            <FirmCard 
+            {...firm} 
+            handleOpen={handleOpen} 
+            setInitialState={setInitialState}/>
           </Grid>
         ))}
       </Grid>
-      <FirmModal open={open} handleClose={handleClose}/>
-    </Container>
+{open && (
+  <FirmModal 
+  open={open} 
+  handleClose={handleClose} 
+  initialState={initialState}
+  />
+  )}    
+</Container>
   )
 }
 

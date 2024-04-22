@@ -54,7 +54,7 @@ const iconStyle = {
     },
 };
 const selectedStyle = {
-    backgroundColor: "#38638D",
+    backgroundColor: "secondary.main",
     borderRadius: "1rem",
     "&:hover": {
         backgroundColor: "#38636D",

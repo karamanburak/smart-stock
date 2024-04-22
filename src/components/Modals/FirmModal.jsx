@@ -5,6 +5,7 @@ import Modal from '@mui/material/Modal';
 import { TextField } from '@mui/material';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import useStockCall from '../../hooks/useStockCall';
 
 const style = {
     position: 'absolute',
@@ -18,15 +19,11 @@ const style = {
     p: 4,
 };
 
-export default function FirmModal({ open, handleClose }) {
+export default function FirmModal({ open, handleClose, initialState }) {
     const { mode } = useSelector(state => state.darkMode)
+    const {postStockData,putStockData} = useStockCall()
 
-const [info,setInfo] = useState({
-    "name": "",
-    "phone": "",
-    "address": "",
-    "image":""
-})
+const [info,setInfo] = useState(initialState)
 
     const handleChange = (e) => {
         // setInfo({...info,[e.target.id]: e.target.value})}
@@ -37,6 +34,12 @@ const [info,setInfo] = useState({
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log("submit", info);
+        if (info._id) { //* id varsa edit işlemi
+            putStockData("firms",info)
+        } else {//* id yoksa create işlemi
+            postStockData("firms",info)
+        }
+        handleClose()
     }
 
     return (
@@ -91,7 +94,9 @@ const [info,setInfo] = useState({
                         <Button 
                             sx={{ backgroundColor: mode ? "white" : "primary.main", color: mode ? "primary.main" : "white" }}
                             variant={mode ? "outlined" : "contained"}
-                        type="submit">Submit Firm</Button>
+                            type="submit">
+                            {info._id ? "Update Firm" : "Submit Firm"}
+                            </Button>
                     </Box>
                 </Box>
             </Modal>

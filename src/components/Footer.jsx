@@ -6,7 +6,7 @@ import React from "react";
 const Footer = () => {
     return <>
         <Toolbar
-            style={{ backgroundColor: "#454F5B", height: "64px", padding: "0px 24px", display:"flex", justifyContent:"center",alignItems:"center", gap:"1.2rem"}}>
+            sx={{ backgroundColor: "primary.main", height: "64px", padding: "0px 24px", display:"flex", justifyContent:"center",alignItems:"center", gap:"1.2rem"}}>
                         <Typography sx={{ color: "white"}}>
                             Made By Burak Karaman &copy; 2024
                 </Typography>

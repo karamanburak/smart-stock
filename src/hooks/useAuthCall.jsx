@@ -53,7 +53,7 @@ const useAuthCall = () => {
                     },
                 });
                 dispatch(logoutSuccess())
-                toastSuccessNotify(`Sorry to see you go! ${currentUser}`);
+                toastSuccessNotify(`Sorry to see you go ${currentUser}`);
                 navigate("/login")
             } catch (error) {
                 dispatch(fetchFail())
