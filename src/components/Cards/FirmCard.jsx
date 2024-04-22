@@ -7,10 +7,13 @@ import Typography from '@mui/material/Typography';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import { useSelector } from 'react-redux';
+import useStockCall from '../../hooks/useStockCall';
 
 
 export default function FirmCard ({_id,name,address,image,phone}) {
     const {mode} = useSelector(state => state.darkMode)
+    const {deleteStockData} = useStockCall()
+
     return (
         <Card sx={{
             height:390,
@@ -53,8 +56,8 @@ export default function FirmCard ({_id,name,address,image,phone}) {
                 gap:2
                 }}
                 >
-                <EditNoteIcon/>
-                <DeleteForeverIcon/>
+                <EditNoteIcon sx={{ cursor: "pointer" }} />
+                <DeleteForeverIcon sx={{cursor:"pointer"}} onClick={()=>deleteStockData("firms", _id)}/>
             </CardActions>
         </Card>
     );
