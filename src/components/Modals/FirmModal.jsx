@@ -72,47 +72,10 @@ const [info,setInfo] = useState(initialState)
                             value={info[field.name]}
                             onChange={handleChange}
                             >
-
                             </TextField>
                         )
                     })}
-                        {/* <TextField
-                            label="Firm Name"
-                            name="name"
-                            id="name"
-                            type="text"
-                            variant="outlined"
-                            value={info.name}
-                            // onChange={(e)=> setInfo({...info, name:e.target.value})}
-                            onChange={handleChange}
-                        />
-                        <TextField
-                            label="Firm Address"
-                            name="address"
-                            id="address"
-                            type="text"
-                            variant="outlined"
-                            value={info.address}
-                            onChange={handleChange}
-                        />
-                        <TextField
-                            label="Firm Phone"
-                            name="phone"
-                            id="phone"
-                            type="text"
-                            variant="outlined"
-                            value={info.phone}
-                            onChange={handleChange}
-                        />
-                        <TextField
-                            label="Firm Logo"
-                            name="image"
-                            id="image"
-                            type="text"
-                            variant="outlined"
-                            value={info.image}
-                            onChange={handleChange}
-                        /> */}
+                      
                         <Button 
                             sx={{ backgroundColor: mode ? "white" : "primary.main", color: mode ? "primary.main" : "white" }}
                             variant={mode ? "outlined" : "contained"}
