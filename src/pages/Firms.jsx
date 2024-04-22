@@ -3,6 +3,8 @@ import useStockCall from "../hooks/useStockCall";
 import { useSelector } from "react-redux";
 import { Button, Container, Grid, Typography } from "@mui/material";
 import FirmCard from "../components/Cards/FirmCard";
+import FirmModal from "../components/Modals/FirmModal";
+import { useState } from "react";
 
 const Firms = () => {
 
@@ -10,6 +12,10 @@ const Firms = () => {
   const { firms } = useSelector(state => state.stock)
   console.log("Firms", firms);
   const {mode} = useSelector(state => state.darkMode)
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     getStockData("firms")
@@ -24,6 +30,7 @@ const Firms = () => {
         Firms
       </Typography>
         <Button
+        onClick={handleOpen}
         sx={{ backgroundColor: mode ? "white" : "primary.main", color: mode ? "primary.main" : "white" }}
           variant={mode ? "outlined" : "contained"}> New Firm </Button>
       <Grid  container spacing={2} mt={3} >
@@ -31,10 +38,11 @@ const Firms = () => {
           <Grid
            item xs={12} md={6} lg={4} xl={3} key={firm._id}>
 
-            <FirmCard {...firm} />
+            <FirmCard {...firm} handleOpen={handleOpen} />
           </Grid>
         ))}
       </Grid>
+      <FirmModal open={open} handleClose={handleClose}/>
     </Container>
   )
 }
