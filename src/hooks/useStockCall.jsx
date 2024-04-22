@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchFail, fetchStart, getSuccess } from "../features/stockSlice";
 import axios from "axios";
 import useAxios from "./useAxios";
+import { toastErrorNotify } from "../helper/ToastNotify";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const useStockCall = () => {
@@ -54,6 +55,7 @@ const useStockCall = () => {
         } catch (error) {
             console.log(error);
             dispatch(fetchFail());
+            toastErrorNotify(`There is another company with name ${info.name}! Please try another name!` )
         }finally{
             getStockData(url)
         }
@@ -65,6 +67,7 @@ const useStockCall = () => {
         } catch (error) {
             console.log(error);
             dispatch(fetchFail());
+
         }finally{
             getStockData(url)
         }

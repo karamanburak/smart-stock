@@ -10,6 +10,17 @@ import Footer from "../components/Footer";
 
 
 const HomePage = () => {
+
+    const hoverStyle = {
+        backgroundColor: "secondary.main",
+        borderRadius: "1rem",
+        "&:hover": {
+            backgroundColor: "#38636D",
+            color: "white",
+        },
+        color: "white",
+    };
+
     const navigate = useNavigate()
     return (
         <Container maxWidth="lg" >
@@ -23,25 +34,31 @@ const HomePage = () => {
                     p: 2,
                 }}
             >
-                <AppBar>
+                <AppBar sx={{backgroundColor:"white"}}>
                     <Toolbar>
                         <Typography variant="h6"
-                            sx={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
+                            sx={{ flexGrow: 1, display: "flex", alignItems: "center", color: "primary.main" }}>
                             <img src={logo} alt="image" style={{ width: "45px", height: "45px", marginRight: ".7rem" }} />
                             Smart Stock
                         </Typography>
                         <Button
-                            color="inherit"
-                            sx={{ borderRadius: "20px", backgroundColor: "#01BDAE", marginRight: "1rem" }}
-                            variant="outlined"
+                            sx={{ borderRadius: "20px", backgroundColor: "#01BDAE",color:"white", marginRight: "1rem",
+                                "&.MuiButtonBase-root:hover": {
+                                    bgcolor: "#01BDAE"
+                                },
+    
+                            
+                             }}
                             onClick={() => navigate("/login")}
                         >
                             Login <LoginIcon sx={{ ml: "0.5rem" }} />
                         </Button>
                         <Button
-                            color="inherit"
-                            sx={{ borderRadius: "20px", backgroundColor: "gray" }}
-                            variant="outlined"
+                            sx={{ borderRadius: "20px", backgroundColor: "gray",color:"white",
+                                "&.MuiButtonBase-root:hover": {
+                                    bgcolor: "gray"
+                                },
+                             }}
 
                             onClick={() => navigate("/register")}
                         >
@@ -66,7 +83,7 @@ const HomePage = () => {
                 {/* <AuthImage image={image}/> */}
                 <img src={image} alt="image" style={{ width: "512px", height: "512px", margin: "auto" }} />
             </Grid>
-                <Typography variant="div" sx={{ position: "fixed", bottom: "0", left: "0", width: "100%" }}>
+                <Typography variant="div" sx={{ position: "fixed", bottom: "0", left: "0", width: "100%"}}>
                     <Footer />
                 </Typography>
         </Container>

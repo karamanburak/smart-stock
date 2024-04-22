@@ -61,15 +61,15 @@ export default function FirmCard({ _id, name, address, image, phone, handleOpen,
                         handleOpen();
                         setInitialState({_id,name,phone,image,address})
                         }}
-                    sx={{ backgroundColor: mode ? "white" : "primary.main", color: mode ? "primary.main" : "white" }}
+                    sx={{ backgroundColor: mode ? "white" : "secondary.main", color: mode ? "primary.main" : "white" }}
                     variant={mode ? "outlined" : "contained"}>
                     EDIT
                     <EditNoteIcon
-                        sx={{ cursor: "pointer", marginLeft: ".5rem", backgroundColor: mode ? "white" : "primary.main", color: mode ? "primary.main" : "white" }} />
+                        sx={{ cursor: "pointer", marginLeft: ".5rem"}} />
                 </Button>
                 <Button
                     onClick={() => deleteStockData("firms", _id)}
-                    sx={{ backgroundColor: mode ? "white" : "primary.main", color: mode ? "primary.main" : "white" }}
+                    sx={{ backgroundColor: mode ? "white" : "secondary.main", color: mode ? "primary.main" : "white" }}
                     variant={mode ? "outlined" : "contained"}>
                     DELETE
                     <DeleteForeverIcon
