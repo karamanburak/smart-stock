@@ -7,17 +7,17 @@ const Footer = () => {
     return <>
         <Toolbar
             sx={{ backgroundColor:"white", height:"64px", padding: "0px 24px", display:"flex", justifyContent:"center",alignItems:"center", gap:"1.2rem"}}>
-            <Typography sx={{ textAlign: "center", fontWeight:"bold", flexGrow:1,display:"block" }}>
+            <Typography sx={{color:"secondary.main", textAlign: "center", fontWeight:"bold", flexGrow:1,display:"block" }}>
                             Made By Burak Karaman &copy; 2024
                 </Typography>
                     <Typography>
                         <a href="https://github.com/karamanburak"
                             target="_blank"
-                            rel="noreferrer"><GitHubIcon sx={{fontSize: "2rem",color:"primary.main"}} />
+                            rel="noreferrer"><GitHubIcon sx={{fontSize: "2rem",color:"secondary.main"}} />
                         </a>
                     <a href="https://www.linkedin.com/in/karamanburak/"
                             target="_blank"
-                    rel="noreferrer"><LinkedInIcon sx={{ fontSize: "2rem", color: "primary.main" }} />
+                    rel="noreferrer"><LinkedInIcon sx={{ fontSize: "2rem", color: "secondary.main" }} />
                         </a>
                     </Typography>
         </Toolbar>

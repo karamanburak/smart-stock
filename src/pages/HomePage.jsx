@@ -31,7 +31,7 @@ const HomePage = () => {
                 rowSpacing={{ sm: 2 }}
                 sx={{
                     height: "100vh",
-                    p: 2,
+                    p: 1,
                 }}
             >
                 <AppBar sx={{ backgroundColor: "white" }}>
@@ -86,7 +86,7 @@ const HomePage = () => {
                     </Button>
                 </Box>
                 {/* <AuthImage image={image}/> */}
-                <img src={image} alt="image" style={{ width: "512px", height: "512px", margin: "auto" }} />
+                <img src={image} alt="image" style={{ width:"700px", height: "512px", margin: "auto" }} />
             </Grid>
             <Typography variant="div" sx={{ position: "fixed", bottom: "0", left: "0", width: "100%" }}>
                 <Footer />
