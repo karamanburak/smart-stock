@@ -1,11 +1,13 @@
 import { useSelector, useDispatch } from "react-redux";
 import { fetchFail, fetchStart, getSuccess } from "../features/stockSlice";
 import axios from "axios";
+import useAxios from "./useAxios";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const useStockCall = () => {
     const dispatch = useDispatch()
     const { token } = useSelector(state => state.auth)
+    const axiosWithToken = useAxios()
 
 
     //* DRY
@@ -13,12 +15,13 @@ const useStockCall = () => {
     const getStockData = async (url) => {
         dispatch(fetchStart());
         try {
-            const { data } = await axios(`${BASE_URL}${url}`, {
-                headers: {
-                    Authorization: `Token ${token}`,
-                    // Authorization: `Bearer ${accesstoken}` //* jwt için
-                },
-            });
+            // const { data } = await axios(`${BASE_URL}${url}`, {
+            //     headers: {
+            //         Authorization: `Token ${token}`,
+            //         // Authorization: `Bearer ${accesstoken}` //* jwt için
+            //     },
+            // });
+            const { data } = await axiosWithToken.get(`${url}`)
             console.log(data);
             // dispatch(brandsSuccess(data.data));
             // dispatch(getSuccess({data:data.data,url:url}));//* action creatorlar her zaman tek bir parametre kabul ederler
@@ -31,11 +34,12 @@ const useStockCall = () => {
     const deleteStockData = async (url,id) => {
         dispatch(fetchStart());
         try {
-            await axios.delete(`${BASE_URL}${url}/${id}`, {
-                headers: {
-                    Authorization: `Token ${token}`,
-                },
-            });
+            // await axios.delete(`${BASE_URL}${url}/${id}`, {
+            //     headers: {
+            //         Authorization: `Token ${token}`,
+            //     },
+            // });
+            await axiosWithToken.delete(`${url}/${id}`)
         } catch (error) {
             console.log(error);
             dispatch(fetchFail());
