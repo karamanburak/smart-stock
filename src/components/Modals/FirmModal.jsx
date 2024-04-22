@@ -42,6 +42,12 @@ const [info,setInfo] = useState(initialState)
         handleClose()
     }
 
+    const textFields = [
+        { label: 'Firm Name', name: 'name', id: 'name', type: 'text' },
+        { label: 'Firm Address', name: 'address', id: 'address', type: 'text' },
+        { label: 'Firm Phone', name: 'phone', id: 'phone', type: 'text' },
+        { label: 'Firm Logo', name: 'image', id: 'image', type: 'text' }
+    ];
     return (
         <div>
             <Modal
@@ -54,43 +60,21 @@ const [info,setInfo] = useState(initialState)
                     component="form" 
                     onSubmit={handleSubmit}
                     sx={{display:"flex", flexDirection:"column", gap:2}}>
-                        <TextField
-                            label="Firm Name"
-                            name="name"
-                            id="name"
-                            type="text"
+                    {textFields.map(field=>{
+                        return(
+                            <TextField
+                            key={field.name}
+                            label={field.label}
+                            name="field.name"
+                            id="field.id"
+                            type="field.type"
                             variant="outlined"
-                            value={info.name}
-                            // onChange={(e)=> setInfo({...info, name:e.target.value})}
+                            value={info[field.name]}
                             onChange={handleChange}
-                        />
-                        <TextField
-                            label="Firm Address"
-                            name="address"
-                            id="address"
-                            type="text"
-                            variant="outlined"
-                            value={info.address}
-                            onChange={handleChange}
-                        />
-                        <TextField
-                            label="Firm Phone"
-                            name="phone"
-                            id="phone"
-                            type="text"
-                            variant="outlined"
-                            value={info.phone}
-                            onChange={handleChange}
-                        />
-                        <TextField
-                            label="Firm Logo"
-                            name="image"
-                            id="image"
-                            type="text"
-                            variant="outlined"
-                            value={info.image}
-                            onChange={handleChange}
-                        />
+                            >
+                            </TextField>
+                        )
+                    })}
                         <Button 
                             sx={{ backgroundColor: mode ? "white" : "primary.main", color: mode ? "primary.main" : "white" }}
                             variant={mode ? "outlined" : "contained"}
