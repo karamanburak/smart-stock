@@ -53,7 +53,7 @@ export default function BrandCard({ _id, name, image, handleOpen, setInitialStat
                     variant={mode ? "outlined" : "contained"}>
                     EDIT
                     <EditNoteIcon
-                        sx={{ cursor: "pointer", marginLeft: ".5rem" }} />
+                        sx={{ cursor: "pointer", marginLeft: ".2rem" }} />
                 </Button>
                 <Button
                     onClick={() => deleteStockData("brands", _id)}
@@ -61,7 +61,7 @@ export default function BrandCard({ _id, name, image, handleOpen, setInitialStat
                     variant={mode ? "outlined" : "contained"}>
                     DELETE
                     <DeleteForeverIcon
-                        sx={{ cursor: "pointer", marginLeft: ".5rem" }}
+                        sx={{ cursor: "pointer", marginLeft: ".2rem" }}
                     />
                 </Button>
             </CardActions>

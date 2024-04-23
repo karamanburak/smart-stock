@@ -65,7 +65,7 @@ export default function FirmCard({ _id, name, address, image, phone, handleOpen,
                     variant={mode ? "outlined" : "contained"}>
                     EDIT
                     <EditNoteIcon
-                        sx={{ cursor: "pointer", marginLeft: ".5rem"}} />
+                        sx={{ cursor: "pointer", marginLeft: ".2rem"}} />
                 </Button>
                 <Button
                     onClick={() => deleteStockData("firms", _id)}
@@ -73,7 +73,7 @@ export default function FirmCard({ _id, name, address, image, phone, handleOpen,
                     variant={mode ? "outlined" : "contained"}>
                     DELETE
                     <DeleteForeverIcon
-                        sx={{ cursor: "pointer", marginLeft: ".5rem" }}
+                        sx={{ cursor: "pointer", marginLeft: ".2rem" }}
                     />
                 </Button>
             </CardActions>

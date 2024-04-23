@@ -1,11 +1,9 @@
-import { AppBar, Box, Button, Container, Grid, Toolbar, Typography } from "@mui/material";
-import LoginIcon from '@mui/icons-material/Login';
-import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+import {  Box, Button, Container, Grid,  Typography } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import logo from '../assets/stock-logo.png'
 import image from '../assets/stock-home.jpg'
 import Footer from "../components/Footer";
+import HomeNavbar from "../components/HomeNavbar";
 // import AuthImage from "../components/AuthImage";
 
 
@@ -34,7 +32,7 @@ const HomePage = () => {
                     p: 1,
                 }}
             >
-                <AppBar sx={{ backgroundColor: "white" }}>
+                {/* <AppBar sx={{ backgroundColor: "white" }}>
                     <Toolbar>
                         <Typography variant="h6"
                             sx={{ flexGrow: 1, display: "flex", alignItems: "center", color: "primary.main" }}>
@@ -65,12 +63,14 @@ const HomePage = () => {
                             Register <AppRegistrationIcon sx={{ ml: "0.5rem" }} />
                         </Button>
                     </Toolbar>
-                </AppBar>
-
-                <Box sx={{ display: "flex", flexDirection: "column", margin: "auto", gap: ".5rem", textAlign: "justify" }}>
+                </AppBar> */}
+                
+                <HomeNavbar/>
+                                <Box sx={{ display: "flex", flexDirection: "column", margin: "auto", gap: ".5rem",textAlign:"justify"}}>
                     <Typography variant="h4" sx={{ marginTop: "3.8rem" }}>Wellcome to Smart Stock</Typography>
-                    <Typography variant="span" style={{ width: "300px", margin: "auto", fontSize: "1.2rem" }}>
-                        Store your warehouse stocks and get an all-automated stockholder registry with complete security. The Smart Stock gives you a platform where you can interact and manage your stocks.
+                    <Typography variant="span" style={{ width: "380px", margin: "auto", fontSize: "1.2rem" }}>
+                        Store your warehouse stock and get a fully automated stockholder register with full security. Smart Stock gives you a platform where you can interact with and manage your stock.
+                        You can also check the current status and update it yourself if necessary. This can be done through a completely simple on-screen interface. You can enjoy using it.
                     </Typography>
                     <Button
                         sx={{
@@ -86,7 +86,7 @@ const HomePage = () => {
                     </Button>
                 </Box>
                 {/* <AuthImage image={image}/> */}
-                <img src={image} alt="image" style={{ width:"700px", height: "512px", margin: "auto" }} />
+                <img src={image} alt="image" style={{ width:"600px", height: "400px", margin: "auto" }} />
             </Grid>
             <Typography variant="div" sx={{ position: "fixed", bottom: "0", left: "0", width: "100%" }}>
                 <Footer />
