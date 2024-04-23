@@ -11,7 +11,7 @@ import Products from "../pages/Products";
 import Sales from "../pages/Sales";
 import Purchases from "../pages/Purchases";
 import HomePage from "../pages/HomePage";
-import About from "../components/About";
+import About from "../pages/About";
 
 const AppRouter = () => {
   return (
