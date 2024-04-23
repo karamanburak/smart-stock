@@ -11,6 +11,7 @@ import AuthImage from "../components/AuthImage";
 import { Formik } from "formik";
 import useAuthCall from "../hooks/useAuthCall";
 import LoginForm, { loginScheme } from "../components/LoginForm";
+import Footer from "../components/Footer";
 
 const Login = () => {
   const { login } = useAuthCall();
@@ -62,6 +63,9 @@ const Login = () => {
 
         <AuthImage image={image} />
       </Grid>
+      <Typography variant="div" sx={{ position: "fixed", bottom: "0", left: "0", width: "100%" }}>
+        <Footer />
+      </Typography>
     </Container>
   );
 };

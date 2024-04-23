@@ -12,7 +12,7 @@ const Footer = () => {
 
             <Button
             onClick={()=>navigate("/about")}
-            style={{ textDecoration:"none", fontWeight:"bold", fontSize:"1rem", color:"secondary.main"}}>
+            style={{ textDecoration:"none", fontWeight:"bold",  color:"secondary.main", opacity:".7"}}>
                About
             </Button>
             <Typography sx={{color:"secondary.main", textAlign: "center", fontWeight:"bold", flexGrow:1,display:"block" }}>
