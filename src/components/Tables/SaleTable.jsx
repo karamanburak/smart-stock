@@ -4,6 +4,8 @@ import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import { useSelector } from 'react-redux';
 import useStockCall from '../../hooks/useStockCall';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import EditNoteIcon from '@mui/icons-material/EditNote';
+
 function getRowId(row) {
     // console.log(row);
     return row._id
@@ -11,15 +13,17 @@ function getRowId(row) {
 
 export default function SaleTable() {
     const { mode } = useSelector(state => state.darkMode)
-    const { products } = useSelector(state => state.stock)
-    const { deleteStockData } = useStockCall()
+    const { sales } = useSelector(state => state.stock)
+    const { deleteStockData,putStockData } = useStockCall()
 
     const columns = [
-        { field: "_id", headerName: "ID", minWidth: 40, maxWidth: 70, headerAlign: "center", align: "center", flex: 0.8 },
         {
-            field: 'categoryId',
-            headerName: 'Category',
-            minWidth: 150,
+            field: "updatedAt", headerName: "Date", width: 120, headerAlign: "center", align: "center"
+        },
+        {
+            field: 'brandId',
+            headerName: 'Brand',
+            minWidth: 100,
             editable: false,
             headerAlign: "center",
             align: "center",
@@ -31,8 +35,8 @@ export default function SaleTable() {
             }
         },
         {
-            field: 'brandId',
-            headerName: 'Brand',
+            field: 'productId',
+            headerName: 'Product',
             minWidth: 150,
             headerAlign: "center",
             align: "center",
@@ -40,17 +44,28 @@ export default function SaleTable() {
             valueGetter: (value) => value?.name || 'N/A'
         },
         {
-            field: 'name',
-            headerName: 'Name',
-            type: 'text',
-            minWidth: 150,
-            headerAlign: "center",
-            align: "center",
-            flex: 2,
-        },
-        {
             field: 'quantity',
             headerName: 'Stock',
+            type: 'number',
+            width: 150,
+            headerAlign: "center",
+            align: "center",
+            flex: 0.8,
+
+        },
+        {
+            field: 'price',
+            headerName: 'Price',
+            type: 'number',
+            width: 150,
+            headerAlign: "center",
+            align: "center",
+            flex: 0.8,
+
+        },
+        {
+            field: 'amount',
+            headerName: 'Amount',
             type: 'number',
             width: 150,
             headerAlign: "center",
@@ -68,10 +83,16 @@ export default function SaleTable() {
             flex: 1,
             renderCell: (params) => (
                 // console.log(params)
-                <DeleteForeverIcon
-                    sx={{ cursor: "pointer", marginTop: ".8rem" }}
-                    onClick={() => deleteStockData("products", params.id)}
-                />
+                <>
+                    <EditNoteIcon
+                        sx={{ cursor: "pointer", marginTop: ".8rem" }}
+                        onClick={() => putStockData("sales", params.id)}
+                    />
+                    <DeleteForeverIcon
+                        sx={{ cursor: "pointer", marginTop: ".8rem" }}
+                        onClick={() => deleteStockData("sales", params.id)}
+                    />
+                </>
             ),
         },
     ];
@@ -82,7 +103,7 @@ export default function SaleTable() {
             sx={{ width: '100%', mt: 2 }}>
             <DataGrid
                 autoHeight
-                rows={products}
+                rows={sales}
                 columns={columns}
                 initialState={{
                     pagination: {

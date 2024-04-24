@@ -4,8 +4,8 @@ import Typography from "@mui/material/Typography";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import useStockCall from "../hooks/useStockCall";
-import ProductTable from "../components/Tables/ProductTable";
-import SalesModal from "../components/Modals/SalesModal";
+import SaleModal from "../components/Modals/SaleModal";
+import SaleTable from "../components/Tables/SaleTable";
 
 const Sales = () => {
   const { mode } = useSelector(state => state.darkMode)
@@ -41,12 +41,12 @@ const Sales = () => {
         New Sale
       </Button>
       {open && (
-        <SalesModal
+        <SaleModal
           open={open}
           handleClose={handleClose}
         />
       )}
-      <ProductTable />
+      <SaleTable />
     </Container>
   )
 };

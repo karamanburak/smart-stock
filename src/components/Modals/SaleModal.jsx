@@ -10,16 +10,18 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useSelector } from "react-redux";
+import BrandCard from './../Cards/BrandCard';
 
 export default function SaleModal({ open, handleClose }) {
     const { mode } = useSelector(state => state.darkMode)
     const [info, setInfo] = React.useState({
-        categoryId: "",
         brandId: "",
-        name: "",
+        productId: "",
+        quantity: "",
+        price: "",
     });
     const { postStockData } = useStockCall();
-    const { categories, brands } = useSelector(state => state.stock)
+    const { products, brands } = useSelector(state => state.stock)
 
     const handleChange = (e) => {
         setInfo({ ...info, [e.target.name]: e.target.value });
@@ -27,7 +29,7 @@ export default function SaleModal({ open, handleClose }) {
     console.log(info);
     const handleSubmit = (e) => {
         e.preventDefault();
-        postStockData("products", info);
+        postStockData("sales", info);
         handleClose();
     };
 
@@ -41,22 +43,6 @@ export default function SaleModal({ open, handleClose }) {
             >
                 <Box sx={modalStyle}>
                     <Box component="form" onSubmit={handleSubmit} sx={flexColumn}>
-                        <FormControl fullWidth>
-                            <InputLabel id="demo-simple-category-label">Category</InputLabel>
-                            <Select
-                                labelId="demo-simple-category-label"
-                                id="categoryId"
-                                label="Category"
-                                name="categoryId"
-                                value={info.categoryId}
-                                onChange={handleChange}
-                            >
-
-                                {
-                                    categories.map(category => <MenuItem key={category._id} value={category._id}>{category.name}</MenuItem>)
-                                }
-                            </Select>
-                        </FormControl>
                         <FormControl fullWidth>
                             <InputLabel id="demo-simple-brand-label">Brand</InputLabel>
                             <Select
@@ -73,11 +59,36 @@ export default function SaleModal({ open, handleClose }) {
                                 }
                             </Select>
                         </FormControl>
+                        <FormControl fullWidth>
+                            <InputLabel id="demo-simple-product-label">Product</InputLabel>
+                            <Select
+                                labelId="demo-simple-product-label"
+                                id="productId"
+                                label="Product"
+                                name="productId"
+                                value={info.brandId}
+                                onChange={handleChange}
+                            >
+
+                                {
+                                    products.map(product => <MenuItem key={product._id} value={product._id}>{product.name}</MenuItem>)
+                                }
+                            </Select>
+                        </FormControl>
                         <TextField
-                            label="Product Name"
-                            name="name"
-                            id="name"
-                            type="text"
+                            label="Quantity *"
+                            name="quantity"
+                            id="quantity"
+                            type="number"
+                            variant="outlined"
+                            value={info.name}
+                            onChange={handleChange}
+                        />
+                        <TextField
+                            label="Price *"
+                            name="price"
+                            id="price"
+                            type="number"
                             variant="outlined"
                             value={info.name}
                             onChange={handleChange}
@@ -86,7 +97,7 @@ export default function SaleModal({ open, handleClose }) {
                             sx={{ backgroundColor: mode ? "white" : "secondary.main", color: mode ? "primary.main" : "white" }}
                             variant={mode ? "outlined" : "contained"}
                             type="submit">
-                            Submit Product
+                            ADD NEW SALE
                         </Button>
                     </Box>
                 </Box>

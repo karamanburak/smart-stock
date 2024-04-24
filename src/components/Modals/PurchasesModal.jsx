@@ -23,9 +23,9 @@ export default function PurchasesModal({ open, handleClose }) {
     const { postStockData } = useStockCall();
     const { firms,brands,products } = useSelector(state => state.stock)
 
-    console.log("PurchasesModal", firms);
-    console.log("PurchasesModal", brands);
-    console.log("PurchasesModal", products);
+    // console.log("PurchasesModal", firms);
+    // console.log("PurchasesModal", brands);
+    // console.log("PurchasesModal", products);
 
     const handleChange = (e) => {
         setInfo({ ...info, [e.target.name]: e.target.value });

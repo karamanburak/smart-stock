@@ -79,15 +79,22 @@ const useStockCall = () => {
     const getProCatBrand = async () => {
         dispatch(fetchStart());
         try {
-            const [products,categories,brands,firms,purchases] = await Promise.all([
+            const [products,categories,brands,firms,purchases,sales] = await Promise.all([
                 axiosWithToken("products"),
                 axiosWithToken("categories"),
                 axiosWithToken("brands"),
                 axiosWithToken("firms"),
                 axiosWithToken("purchases"),
+                axiosWithToken("sales"),
                 
             ])
-            dispatch(getProCatBrandSuccess([products?.data?.data, categories?.data?.data, brands?.data?.data, firms?.data?.data,purchases?.data?.data]))
+            dispatch(getProCatBrandSuccess([
+                products?.data?.data, 
+                categories?.data?.data, 
+                brands?.data?.data, 
+                firms?.data?.data,
+                purchases?.data?.data,
+                sales?.data?.data]))
         } catch (error) {
             dispatch(fetchFail());
 

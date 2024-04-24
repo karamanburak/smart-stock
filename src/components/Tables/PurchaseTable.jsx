@@ -12,18 +12,18 @@ function getRowId(row) {
 
 export default function PurchaseTable() {
     const { mode } = useSelector(state => state.darkMode)
-    const {purchases } = useSelector(state => state.stock)
+    const { purchases } = useSelector(state => state.stock)
     console.log("table", purchases);
-    const { deleteStockData,putStockData } = useStockCall()
+    const { deleteStockData, putStockData } = useStockCall()
 
     const columns = [
         {
-            field: "updatedAt", headerName: "Date", width: 220, headerAlign: "center", align: "center"
+            field: "updatedAt", headerName: "Date", width: 150, headerAlign: "center", align: "center"
         },
         {
             field: 'firmId',
             headerName: 'Firm',
-            minWidth: 100,
+            minWidth: 80,
             editable: false,
             headerAlign: "center",
             align: "center",
@@ -98,16 +98,16 @@ export default function PurchaseTable() {
             renderCell: (params) => (
                 // console.log(params)
                 <>
-                   <EditNoteIcon
-                    sx={{ cursor: "pointer", marginTop: ".8rem" }}
-                    onClick={() => putStockData("purchases", params.id)}
-                />
-                <DeleteForeverIcon
-                    sx={{ cursor: "pointer", marginTop: ".8rem" }}
-                    onClick={() => deleteStockData("purchases", params.id)}
-                />
+                    <EditNoteIcon
+                        sx={{ cursor: "pointer", marginTop: ".8rem" }}
+                        onClick={() => putStockData("purchases", params.id)}
+                    />
+                    <DeleteForeverIcon
+                        sx={{ cursor: "pointer", marginTop: ".8rem" }}
+                        onClick={() => deleteStockData("purchases", params.id)}
+                    />
                 </>
-        ),
+            ),
         },
     ];
 
