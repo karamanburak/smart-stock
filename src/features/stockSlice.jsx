@@ -31,6 +31,8 @@ const stockSlice = createSlice({
             state.products = payload[0];
             state.categories = payload[1];
             state.brands = payload[2];
+            state.firms = payload[3];
+            state.purchases = payload[4];
 
         },
 
