@@ -15,9 +15,24 @@ const Sales = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
+    setInitialState({
+      brandId: "",
+      productId: "",
+      quantity: "",
+      price: ""
+    })
   };
 
-  console.log("sales:", sales);
+  // console.log("sales:", sales);
+
+  const [initialState, setInitialState] = useState({
+    brandId: "",
+    productId: "",
+    quantity: "",
+    price: ""
+  });
+
+
   useEffect(() => {
     // getStockData("products");
     // getStockData("categories");
@@ -44,9 +59,13 @@ const Sales = () => {
         <SaleModal
           open={open}
           handleClose={handleClose}
+          initialState={initialState}
         />
       )}
-      <SaleTable />
+      <SaleTable 
+        setInitialState={setInitialState}
+        handleOpen={handleOpen}
+      />
     </Container>
   )
 };

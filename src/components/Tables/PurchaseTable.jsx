@@ -10,9 +10,10 @@ function getRowId(row) {
     return row._id
 }
 
-export default function PurchaseTable() {
+export default function PurchaseTable({setInitialState,handleOpen}) {
     const { mode } = useSelector(state => state.darkMode)
     const { purchases } = useSelector(state => state.stock)
+    console.log(purchases);
     console.log("table", purchases);
     const { deleteStockData, putStockData } = useStockCall()
 
@@ -99,8 +100,11 @@ export default function PurchaseTable() {
                 // console.log(params)
                 <>
                     <EditNoteIcon
+                    onClick={()=>{
+                        handleOpen()
+                            setInitialState({})
+                    }}
                         sx={{ cursor: "pointer", marginTop: ".8rem" }}
-                        onClick={() => putStockData("purchases", params.id)}
                     />
                     <DeleteForeverIcon
                         sx={{ cursor: "pointer", marginTop: ".8rem" }}

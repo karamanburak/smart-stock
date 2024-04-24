@@ -10,22 +10,20 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
-export default function PurchasesModal({ open, handleClose }) {
+export default function PurchasesModal({ open, handleClose,initialState }) {
     const { mode } = useSelector(state => state.darkMode)
-    const [info, setInfo] = React.useState({
-        brandId: "",
-        firmId: "",
-        productId: "",
-        quantity: "",
-        price:""
-    });
-    const { postStockData } = useStockCall();
+   
+    const { postStockData,putStockData } = useStockCall();
     const { firms,brands,products } = useSelector(state => state.stock)
+    const [info,setInfo] = useState(initialState)
 
     // console.log("PurchasesModal", firms);
     // console.log("PurchasesModal", brands);
     // console.log("PurchasesModal", products);
+
+
 
     const handleChange = (e) => {
         setInfo({ ...info, [e.target.name]: e.target.value });
@@ -33,9 +31,15 @@ export default function PurchasesModal({ open, handleClose }) {
     console.log(info);
     const handleSubmit = (e) => {
         e.preventDefault();
-        postStockData("purchases", info);
-        handleClose();
+        console.log("submit", info);
+        if (info._id) { //* id varsa edit işlemi
+            putStockData("purchases", info)
+        } else {//* id yoksa create işlemi
+            postStockData("purchases", info)
+        }
+        handleClose()
     };
+
 
     return (
         <div>
@@ -119,7 +123,7 @@ export default function PurchasesModal({ open, handleClose }) {
                             sx={{ backgroundColor: mode ? "white" : "secondary.main", color: mode ? "primary.main" : "white" }}
                             variant={mode ? "outlined" : "contained"}
                             type="submit">
-                            ADD NEW PURCHASE
+                            {info._id ? "UPDATE PURCHASE" : "ADD NEW PURCHASE"}
                         </Button>
                     </Box>
                 </Box>

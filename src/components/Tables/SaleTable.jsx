@@ -11,7 +11,7 @@ function getRowId(row) {
     return row._id
 }
 
-export default function SaleTable() {
+export default function SaleTable({ setInitialState, handleOpen }) {
     const { mode } = useSelector(state => state.darkMode)
     const { sales } = useSelector(state => state.stock)
     const { deleteStockData,putStockData } = useStockCall()
@@ -85,8 +85,11 @@ export default function SaleTable() {
                 // console.log(params)
                 <>
                     <EditNoteIcon
+                        onClick={() => {
+                            handleOpen()
+                            setInitialState({})
+                        }}
                         sx={{ cursor: "pointer", marginTop: ".8rem" }}
-                        onClick={() => putStockData("sales", params.id)}
                     />
                     <DeleteForeverIcon
                         sx={{ cursor: "pointer", marginTop: ".8rem" }}

@@ -32,7 +32,7 @@ const Firms = () => {
     "address": "",
     "image": ""
   })
-  // console.log("initialState", initialState);
+  console.log("initialState", initialState);
 
   useEffect(() => {
     getStockData("firms")

@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import useStockCall from "../hooks/useStockCall";
-import PurchasesModal from "../components/Modals/PurchasesModal";
+import PurchaseModal from "../components/Modals/PurchaseModal";
 import PurchaseTable from "../components/Tables/PurchaseTable";
 
 const Purchases = () => {
@@ -14,8 +14,22 @@ const Purchases = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
+    setInitialState({
+      brandId: "",
+      firmId: "",
+      productId: "",
+      quantity: "",
+      price: ""
+    })
   };
-
+  
+  const [initialState, setInitialState] = useState({
+    brandId: "",
+    firmId: "",
+    productId: "",
+    quantity: "",
+    price: ""
+  });
   useEffect(() => {
     // getStockData("products");
     // getStockData("categories");
@@ -31,7 +45,7 @@ const Purchases = () => {
         variant="h4"
         component="h1"
       >
-        Products
+        Purchases
       </Typography>
       <Button onClick={handleOpen}
         sx={{ backgroundColor: mode ? "white" : "secondary.main", color: mode ? "primary.main" : "white", marginBottom: 2 }}
@@ -39,12 +53,16 @@ const Purchases = () => {
         New Purchase
       </Button>
       {open && (
-        <PurchasesModal
+        <PurchaseModal
           open={open}
           handleClose={handleClose}
+          initialState={initialState}
         />
       )}
-      <PurchaseTable />
+      <PurchaseTable 
+        setInitialState={setInitialState}
+        handleOpen={handleOpen}
+      />
     </Container>
   );
 };

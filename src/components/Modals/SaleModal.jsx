@@ -10,16 +10,11 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useSelector } from "react-redux";
-import BrandCard from './../Cards/BrandCard';
+import { useState } from "react";
 
-export default function SaleModal({ open, handleClose }) {
+export default function SaleModal({ open, handleClose, initialState }) {
     const { mode } = useSelector(state => state.darkMode)
-    const [info, setInfo] = React.useState({
-        brandId: "",
-        productId: "",
-        quantity: "",
-        price: "",
-    });
+    const [info, setInfo] = useState(initialState)
     const { postStockData } = useStockCall();
     const { products, brands } = useSelector(state => state.stock)
 
@@ -29,8 +24,13 @@ export default function SaleModal({ open, handleClose }) {
     console.log(info);
     const handleSubmit = (e) => {
         e.preventDefault();
-        postStockData("sales", info);
-        handleClose();
+        console.log("submit", info);
+        if (info._id) { //* id varsa edit işlemi
+            putStockData("sales", info)
+        } else {//* id yoksa create işlemi
+            postStockData("sales", info)
+        }
+        handleClose()
     };
 
     return (
@@ -97,7 +97,7 @@ export default function SaleModal({ open, handleClose }) {
                             sx={{ backgroundColor: mode ? "white" : "secondary.main", color: mode ? "primary.main" : "white" }}
                             variant={mode ? "outlined" : "contained"}
                             type="submit">
-                            ADD NEW SALE
+                            {info._id ? "UPDATE SALE" : "ADD NEW SALE"}
                         </Button>
                     </Box>
                 </Box>
