@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchFail, fetchStart, getSuccess } from "../features/stockSlice";
 import axios from "axios";
 import useAxios from "./useAxios";
-import { toastErrorNotify } from "../helper/ToastNotify";
+import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const useStockCall = () => {
@@ -40,18 +40,20 @@ const useStockCall = () => {
             //         Authorization: `Token ${token}`,
             //     },
             // });
-            await axiosWithToken.delete(`${url}/${id}`)
+         await axiosWithToken.delete(`${url}/${id}`)
         } catch (error) {
             console.log(error);
             dispatch(fetchFail());
         }finally{
             getStockData(url)
+            toastSuccessNotify(`Item successfully deleted!`)
         }
     };
     const postStockData = async (url,info) => {
         dispatch(fetchStart());
         try {
             await axiosWithToken.post(`${url}`,info)
+            toastSuccessNotify("Item successfully added!")
         } catch (error) {
             console.log(error);
             dispatch(fetchFail());
@@ -64,6 +66,7 @@ const useStockCall = () => {
         dispatch(fetchStart());
         try {
             await axiosWithToken.put(`${url}/${info._id}`,info)
+            toastSuccessNotify("Item successfully changed")
         } catch (error) {
             console.log(error);
             dispatch(fetchFail());
