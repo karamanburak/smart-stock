@@ -12,6 +12,7 @@ import Select from '@mui/material/Select';
 import { useSelector } from "react-redux";
 
 export default function ProductModal({ open, handleClose }) {
+    const { mode } = useSelector(state => state.darkMode)
     const [info, setInfo] = React.useState({
         categoryId: "",
         brandId: "",
@@ -81,7 +82,10 @@ export default function ProductModal({ open, handleClose }) {
                             value={info.name}
                             onChange={handleChange}
                         />
-                        <Button type="submit" variant="contained">
+                        <Button
+                            sx={{ backgroundColor: mode ? "white" : "secondary.main", color: mode ? "primary.main" : "white" }}
+                            variant={mode ? "outlined" : "contained"}
+                         type="submit">
                           Submit Product
                         </Button>
                     </Box>
