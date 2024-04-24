@@ -9,7 +9,7 @@ import ProductTable from "../components/Tables/ProductTable";
 
 const Products = () => {
   const { mode } = useSelector(state => state.darkMode)
-  const { getStockData } = useStockCall();
+  const { getStockData,getProCatBrand } = useStockCall();
   const { products } = useSelector((state) => state.stock);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -19,9 +19,10 @@ const Products = () => {
 
   console.log("products:", products);
   useEffect(() => {
-    getStockData("products");
-    getStockData("categories");
-    getStockData("brands");
+    // getStockData("products");
+    // getStockData("categories");
+    // getStockData("brands");
+    getProCatBrand()
 
   }, []);
 
