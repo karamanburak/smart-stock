@@ -1,6 +1,5 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import { DataGrid, GridActionsCellItem, GridToolbar } from '@mui/x-data-grid';
+import {  GridActionsCellItem } from '@mui/x-data-grid';
 import { useSelector } from 'react-redux';
 import useStockCall from '../../hooks/useStockCall';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
@@ -13,7 +12,7 @@ export default function PurchaseTable({setInitialState,handleOpen}) {
     const { purchases } = useSelector(state => state.stock)
     console.log(purchases);
     console.log("table", purchases);
-    const { deleteStockData, putStockData } = useStockCall()
+    const { deleteStockData } = useStockCall()
 
     const columns = [
         {
@@ -128,7 +127,5 @@ export default function PurchaseTable({setInitialState,handleOpen}) {
         },
     ];
                         
-
-
     return <DataTable rows={purchases} columns={columns} />;
 };

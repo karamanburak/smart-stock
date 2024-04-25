@@ -1,9 +1,8 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import { useSelector } from 'react-redux';
 import useStockCall from '../../hooks/useStockCall';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import DataTable from '../commons/DataTable';
 function getRowId(row){
     // console.log(row);
     return row._id
@@ -77,28 +76,7 @@ export default function ProductTable() {
     ];
 
 
-    return (
-        <Box 
-            sx={{  width: '100%', mt:2}}>
-            <DataGrid
-                autoHeight
-                rows={products}
-                columns={columns}
-                initialState={{
-                    pagination: {
-                        paginationModel: {
-                            pageSize: 5,
-                        },
-                    },
-                }}
-                getRowId={getRowId}
-                pageSizeOptions={[5,10,25]}
-                // checkboxSelection
-                disableRowSelectionOnClick
-                slots={{
-                    toolbar: GridToolbar,
-                }}
-            />
-        </Box>
-    );
+    return <DataTable rows={products} columns={columns} />;
+    
+
 }

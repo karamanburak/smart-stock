@@ -1,21 +1,17 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import { DataGrid, GridActionsCellItem, GridToolbar } from '@mui/x-data-grid';
+import { GridActionsCellItem } from '@mui/x-data-grid';
 import { useSelector } from 'react-redux';
 import useStockCall from '../../hooks/useStockCall';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import DataTable from '../commons/DataTable';
 
-function getRowId(row) {
-    // console.log(row);
-    return row._id
-}
+
 
 export default function SaleTable({ setInitialState, handleOpen }) {
     const { mode } = useSelector(state => state.darkMode)
     const { sales } = useSelector(state => state.stock)
-    const { deleteStockData,putStockData } = useStockCall()
+    const { deleteStockData } = useStockCall()
 
     const columns = [
         {
