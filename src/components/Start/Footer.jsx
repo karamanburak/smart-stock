@@ -15,6 +15,11 @@ const Footer = () => {
             style={{ textDecoration:"none", fontWeight:"bold",  color:"secondary.main", opacity:".7"}}>
                About
             </Button>
+            <Button
+            onClick={()=>navigate("/imprint")}
+            style={{ textDecoration:"none", fontWeight:"bold",  color:"secondary.main", opacity:".7"}}>
+               Imprint
+            </Button>
             <Typography sx={{color:"secondary.main", textAlign: "center", fontWeight:"bold", flexGrow:1,display:"block" }}>
                             Made By Burak Karaman &copy; 2024
                 </Typography>

@@ -1,10 +1,10 @@
 import LoginIcon from '@mui/icons-material/Login';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
-import logo from '../assets/stock-logo.png'
+import logo from '../../assets/stock-logo.png'
 import { AppBar, Button, Toolbar, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-const HomeNavbar = () => {
+const StartNavbar = () => {
   const navigate = useNavigate();
   return (
     <AppBar sx={{ backgroundColor: "white" }}>
@@ -43,4 +43,4 @@ const HomeNavbar = () => {
   )
 };
 
-export default HomeNavbar;
+export default StartNavbar;

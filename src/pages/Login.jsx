@@ -10,8 +10,8 @@ import AuthHeader from "../components/commons/AuthHeader";
 import AuthImage from "../components/commons/AuthImage";
 import { Formik } from "formik";
 import useAuthCall from "../hooks/useAuthCall";
-import LoginForm, { loginScheme } from "../components/LoginForm";
-import Footer from "../components/Footer";
+import LoginForm, { loginScheme } from "../components/Forms/LoginForm";
+import Footer from "../components/Start/Footer";
 
 const Login = () => {
   const { login } = useAuthCall();

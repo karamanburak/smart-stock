@@ -1,57 +1,81 @@
-import { Container, Typography } from "@mui/material";
 import React from "react";
-import HomeNavbar from "../components/HomeNavbar";
-import Footer from "../components/Footer";
+import StartNavbar from "../components/Start/StartNavbar";
+import { Box, Container, Grid, Typography } from "@mui/material";
+import Footer from "../components/Start/Footer";
+import { flex } from "../styles/globalStyle";
+
+const avatars = [
+    {
+        name: "Benedikt Tribucke",
+        position: "Founder & Co-CEO"
+    },
+    {
+        name: "John Delivery",
+        position: "Founder"
+    },
+    {
+        name: "Yashijiro Ozu",
+        position: " Co-CEO"
+    },
+    {
+        name: "Nuri Bilge Ceylan",
+        position: "Head Of Company"
+    },
+    {
+        name: "Bela Tarr",
+        position: "Head Of Finance"
+    },
+    {
+        name: "Gaspar Noe",
+        position: "Team Lead"
+    },
+]
+
 
 const About = () => {
     return (
         <Container>
-            <HomeNavbar />
-            <Typography sx={{marginBottom:"4rem"}}>
-
-                <Typography variant="h3" sx={{ textAlign: "center", marginTop: "5rem" }}>
-                    About Us
-                </Typography>
-                <span style={{ fontWeight: "bold" }}> Smart Stock Software GmbH</span>
-                 <br />
-                Turmstraße 11 <br />
-                01234 Berlin <br />
-                {/* <hr/> */}
-                <br />
-                Fax +49 000 111 22  33 <br />
-                Phone: +49 000 000 11 22 <br />
-                E-mail: contact@contact.com   <br />
-                <br />
-
-                <span style={{ fontWeight: "bold" }}>Managing Director</span> <br />
-                Benedikt Löwe, Dipl.-Inf.(FH), M.Sc. <br />
-                Torrent Siakam <br />
-                <br />
-               <span style={{fontWeight:"bold"}}>Register court</span>  <br />
-                BerlinLocal Court <br />
-                <br />
-                <span style={{ fontWeight: "bold" }}>  Register number</span> <br />
-                HRB 00000 <br/>
-                <br />
-                <span style={{ fontWeight: "bold" }}>Sales tax identification number according to § 27 a sales tax law </span> <br />
-                DE 000000000 <br/>
-                <br />
-                <span style={{ fontWeight: "bold" }}>Reference to online dispute resolution</span> <br />
-                The European Commission provides a platform for online dispute resolution. <br/> 
-                <br />
-               
-
-                <span style={{ fontWeight: "bold",opacity:".7" }}>Exclusion of liability (Disclaimer)</span> <br/>
-                Liability for content <br/>
-                As a service provider, we are responsible for our own content on these pages in accordance with § 7 para. 1 TMG (German Telemedia Act) and general laws. According to §§ 8 to 10 TMG, however, we as a service provider are not obliged to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity. Obligations to remove or block the use of information in accordance with general legislation remain unaffected by this. However, liability in this respect is only possible from the time of knowledge of a specific infringement. As soon as we become aware of such infringements, we will remove this content immediately. <br/>
-                <br />
-
-                <span style={{ fontWeight: "bold", opacity: ".7" }}>Liability for links</span> <br/>
-                Our website contains links to external third-party websites over whose content we have no influence. Therefore, we cannot accept any liability for this third-party content. The respective provider or operator of the pages is always responsible for the content of the linked pages. The linked pages were checked for possible legal violations at the time of linking. Illegal content was not recognizable at the time of linking. However, permanent monitoring of the content of the linked pages is not reasonable without concrete evidence of an infringement. If we become aware of any legal infringements, we will remove such links immediately. <br />
-                <br />
-                <span style={{ fontWeight: "bold", opacity: ".7" }}> Copyright </span> <br />
-                The content and works created by the site operators on these pages are subject to German copyright law. Duplication, processing, distribution and any form of commercialization of such material beyond the scope of the copyright law shall require the prior written consent of its respective author or creator. Downloads and copies of this site are only permitted for private, non-commercial use. Insofar as the content on this site was not created by the operator, the copyrights of third parties are respected. In particular, third-party content is identified as such. Should you nevertheless become aware of a copyright infringement, please inform us accordingly. If we become aware of any infringements, we will remove such content immediately.
+            <StartNavbar />
+            <Typography variant="h3" sx={{ marginTop: "5rem", marginBottom: "2rem", textAlign: "center" }}>
+                ABOUT US
             </Typography>
+            <Typography variant="h4" sx={{ fontStyle: "italic", marginBottom: "2rem", textAlign: "center" }}>
+                Empowering Businesses <br />
+                <span style={{ color: "cornflowerblue" }}>Lean, Smart, Effective</span>
+            </Typography>
+            {/* <span style={{color:"cornflowerblue" }}>    
+            Our story 
+            </span> */}
+            <Box sx={{ backgroundColor: "#F9FAFB", borderRadius: "10px", padding: "2rem" }}>
+                <Typography variant="h5" sx={{ color: "cornflowerblue", textAlign: "center" }}>
+                    Our Story
+                </Typography>
+                <br />
+                This project is a comprehensive product audit project for front end and backend.
+                The software was initially designed for personal use only. When the first hardware customers asked for it, I started to expand the version to meet their requirements, and soon the demand for the software outstripped the demand for smart stock management.
+                <br />
+                <br />
+                Smart Stock helps small and medium-sized companies automate and simplify their daily operations. The user-friendly business software centralizes all orders, inventories, payments and shipping processes in one place: this creates more time, higher sales and greater customer satisfaction. Smart Stock offers flexible functions and interfaces to all common technology tools. With this setup, companies can develop sustainably day by day.
+            </Box>
+            <Box sx={{ backgroundColor: "#EFF0FD", borderRadius: "10px", padding: "2rem", marginTop: "2rem", marginBottom: "5rem" }}>
+                <Grid container spacing={3} mt={3} sx={flex} >
+                    {avatars.map((avatar, index) => (
+                        <Grid item xs={6} md={4} lg={3} key={index}>
+                            <img
+                                style={{ width: "224px", height: "224px", borderRadius: "50%", backgroundColor: "#fff" }}
+                                src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${avatar.name}`}
+                                alt=""
+                            />
+                            <Typography variant="h6" align="center" sx={{ marginRight: "1rem", marginTop: "1rem", color: "red" }}>
+                                {avatar.name}
+                            </Typography>
+                            <Typography align="center" sx={{ marginRight: "1rem" }}>
+                                {avatar.position}
+                            </Typography>
+                        </Grid>
+                    ))}
+                </Grid>
+            </Box>
             <Typography variant="div" sx={{ position: "fixed", bottom: "0", left: "0", width: "100%" }}>
                 <Footer />
             </Typography>

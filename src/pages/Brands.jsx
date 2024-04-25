@@ -6,6 +6,7 @@ import { useState } from "react";
 import BrandCard from "../components/Cards/BrandCard";
 import BrandModal from "../components/Modals/BrandModal";
 import loadingGif from "../assets/loading.gif";
+import PageHeader from "../components/Commons/PageHeader";
 
 
 const Brands = () => {
@@ -34,12 +35,8 @@ const Brands = () => {
 
   return (
     <Container>
-      <Typography
-        align="center"
-        variant="h4"
-        component="h1">
-        Brands
-      </Typography>
+      <PageHeader text="Brands" />
+
       <Button
         onClick={handleOpen}
         sx={{ backgroundColor: mode ? "white" : "secondary.main", color: mode ? "primary.main" : "white" }}

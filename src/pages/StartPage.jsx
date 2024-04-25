@@ -2,22 +2,13 @@ import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import image from '../assets/stock-home.jpg'
-import Footer from "../components/Footer";
-import HomeNavbar from "../components/HomeNavbar";
+import Footer from "../components/Start/Footer";
+import StartNavbar from "../components/Start/StartNavbar";
 // import AuthImage from "../components/AuthImage";
 
 
-const HomePage = () => {
+const StartPage = () => {
 
-    const hoverStyle = {
-        backgroundColor: "secondary.main",
-        borderRadius: "1rem",
-        "&:hover": {
-            backgroundColor: "#38636D",
-            color: "white",
-        },
-        color: "white",
-    };
 
     const navigate = useNavigate()
     return (
@@ -32,10 +23,10 @@ const HomePage = () => {
                     p: 1,
                 }}
             >
-                <HomeNavbar />
+                <StartNavbar />
                 <Box sx={{ display: "flex", flexDirection: "column", margin: "auto", gap: ".5rem", textAlign: "justify" }}>
-                    <Typography variant="h4" sx={{ marginTop: "3.8rem" }}>Wellcome to Smart Stock</Typography>
-                    <Typography variant="span" style={{ width: "380px", margin: "auto", fontSize: "1.2rem" }}>
+                    <Typography variant="h4" sx={{ marginTop: "3.8rem",textAlign:"center" }}>Wellcome to Smart Stock</Typography>
+                    <Typography variant="span" style={{ width: "500px", margin: "auto", fontSize: "1.2rem" }}>
                         Store your warehouse stock and get a fully automated stockholder register with full security. Smart Stock gives you a platform where you can interact with and manage your stock.
                         You can also check the current status and update it yourself if necessary. This can be done through a completely simple on-screen interface. You can enjoy using it.
                     </Typography>
@@ -47,8 +38,7 @@ const HomePage = () => {
                             },
                         }}
                         variant="contained"
-                        onClick={() => navigate("/login")}
-                    >
+                        onClick={() => navigate("/login")}>
                         Get Started
                     </Button>
                 </Box>
@@ -62,4 +52,4 @@ const HomePage = () => {
     )
 }
 
-export default HomePage;
+export default StartPage;

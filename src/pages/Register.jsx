@@ -10,8 +10,8 @@ import AuthHeader from "../components/commons/AuthHeader";
 import AuthImage from "../components/commons/AuthImage";
 import { Formik } from "formik";
 import useAuthCall from "../hooks/useAuthCall";
-import RegisterForm, { SignupSchema } from "../components/RegisterForm";
-import Footer from "../components/Footer";
+import RegisterForm, { SignupSchema } from "../components/Forms/RegisterForm";
+import Footer from "../components/Start/Footer";
 
 const Register = () => {
   const { register } = useAuthCall()

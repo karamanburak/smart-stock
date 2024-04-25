@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import colors from 'tailwindcss/colors';
+import { darkModeSLice } from './src/features/darkModeSlice';
 
 export default {
   content: [

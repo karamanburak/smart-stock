@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import useStockCall from "../hooks/useStockCall";
 import SaleModal from "../components/Modals/SaleModal";
 import SaleTable from "../components/Tables/SaleTable";
+import PageHeader from "../components/Commons/PageHeader";
 
 const Sales = () => {
   const { mode } = useSelector(state => state.darkMode)
@@ -38,13 +39,7 @@ const Sales = () => {
   }, []);
   return (
     <Container maxWidth={"xl"}>
-      <Typography
-        align="center"
-        variant="h4"
-        component="h1"
-      >
-        Sales
-      </Typography>
+    <PageHeader text="Sales"/>
       <Button
        onClick={handleOpen}
         sx={{ backgroundColor: mode ? "white" : "secondary.main", color: mode ? "primary.main" : "white", marginBottom: 2 }}

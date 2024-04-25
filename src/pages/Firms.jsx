@@ -6,6 +6,7 @@ import FirmModal from "../components/Modals/FirmModal";
 import { useState } from "react";
 import loadingGif from "../assets/loading.gif";
 import FirmCard from './../components/Cards/FirmCard';
+import PageHeader from "../components/Commons/PageHeader";
 
 
 const Firms = () => {
@@ -40,12 +41,7 @@ const Firms = () => {
 
   return (
     <Container>
-      <Typography
-        align="center"
-        variant="h4"
-        component="h1">
-        Firms
-      </Typography>
+      <PageHeader text="Firms" />
         <Button
         onClick={handleOpen}
         sx={{ backgroundColor: mode ? "white" : "secondary.main", color: mode ? "primary.main" : "white" }}

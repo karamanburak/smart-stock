@@ -6,7 +6,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import Switch from "./Switch";
+import Switch from "../Commons/Switch";
 import { useSelector } from "react-redux";
 
 const icon = (name) => `/assets/navbar/${name}.svg`
