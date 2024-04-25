@@ -9,7 +9,7 @@ import PurchaseTable from "../components/Tables/PurchaseTable";
 
 const Purchases = () => {
   const { mode } = useSelector(state => state.darkMode)
-  const { getStockData, getProCatBrand } = useStockCall();
+  const { getProPurcFirBrands } = useStockCall();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -31,7 +31,7 @@ const Purchases = () => {
     price: ""
   });
   useEffect(() => {
-    getProCatBrand()
+    getProPurcFirBrands()
 
   }, []);
   return (

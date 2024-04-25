@@ -26,17 +26,25 @@ const stockSlice = createSlice({
             state[url] = data; // state["brands"] - state["firms"]
 
         },
-        getProCatBrandSuccess : (state, {payload}) => {
+        getProCatBrandSuccess: (state, { payload }) => {
             state.loading = false;
             state.products = payload[0];
             state.categories = payload[1];
             state.brands = payload[2];
-            state.firms = payload[3];
-            state.purchases = payload[4];
-            state.sales = payload[5];
-
         },
-
+        getProPurcFirBrandsSuccess: (state, { payload }) => {
+            state.loading = false;
+            state.products = payload[0].data;
+            state.purchases = payload[1].data;
+            state.firms = payload[2].data;
+            state.brands = payload[3].data;
+        },
+        getProSalBrandsSuccess: (state, { payload }) => {
+            state.loading = false;
+            state.products = payload[0].data;
+            state.brands = payload[1].data;
+            state.sales = payload[2].data;
+        },
         //! 2.yol !\\
         // getSuccess : (state,{payload}) => {
         //     console.log(payload);
@@ -57,5 +65,7 @@ export const {
     getSuccess,
     fetchFail,
     getProCatBrandSuccess,
+    getProPurcFirBrandsSuccess,
+    getProSalBrandsSuccess, 
 } = stockSlice.actions;
 export default stockSlice.reducer;

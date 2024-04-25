@@ -9,7 +9,7 @@ import SaleTable from "../components/Tables/SaleTable";
 
 const Sales = () => {
   const { mode } = useSelector(state => state.darkMode)
-  const { getProCatBrand } = useStockCall();
+  const { getProSalBrands } = useStockCall();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -33,7 +33,7 @@ const Sales = () => {
 
 
   useEffect(() => {
-    getProCatBrand()
+    getProSalBrands()
 
   }, []);
   return (
