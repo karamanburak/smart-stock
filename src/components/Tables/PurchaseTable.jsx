@@ -1,14 +1,12 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+import { DataGrid, GridActionsCellItem, GridToolbar } from '@mui/x-data-grid';
 import { useSelector } from 'react-redux';
 import useStockCall from '../../hooks/useStockCall';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditNoteIcon from '@mui/icons-material/EditNote';
-function getRowId(row) {
-    // console.log(row);
-    return row._id
-}
+import DataTable from '../commons/DataTable';
+
 
 export default function PurchaseTable({setInitialState,handleOpen}) {
     const { mode } = useSelector(state => state.darkMode)
@@ -19,21 +17,26 @@ export default function PurchaseTable({setInitialState,handleOpen}) {
 
     const columns = [
         {
-            field: "updatedAt", headerName: "Date", width: 150, headerAlign: "center", align: "center"
+            field: "updatedAt", 
+            headerName: "Date", 
+            minWidth: 150, 
+            headerAlign: "center", 
+            align: "center",
+             renderCell: ({ row }) => {
+                return new Date(row.createdAt).toLocaleString("de-DE");
+            },
         },
         {
             field: 'firmId',
             headerName: 'Firm',
-            minWidth: 80,
+            minWidth: 100,
             editable: false,
             headerAlign: "center",
             align: "center",
-            flex: 2,
-            valueGetter: (value) => {
-                // console.log(value);
-                // console.log(row);
-                return value?.name || 'N/A'
-            }
+            flex: 1,
+            renderCell: ({ row }) => {
+                return row?.firmId?.name ?? "N/A";
+            },
         },
         {
             field: 'brandId',
@@ -42,50 +45,47 @@ export default function PurchaseTable({setInitialState,handleOpen}) {
             editable: false,
             headerAlign: "center",
             align: "center",
-            flex: 2,
-            valueGetter: (value) => {
-                // console.log(value);
-                // console.log(row);
-                return value?.name || 'N/A'
-            }
+            flex: 1,
+            renderCell: ({ row }) => {
+                return row?.brandId?.name ?? "N/A";
+            },
         },
         {
             field: 'productId',
             headerName: 'Product',
-            minWidth: 150,
+            minWidth: 100,
             headerAlign: "center",
             align: "center",
-            flex: 2,
-            valueGetter: (value) => value?.name || 'N/A'
+            flex: 1,
+            renderCell: ({ row }) => {
+                return row?.productId?.name ?? "N/A";
+            },        
         },
         {
             field: 'quantity',
             headerName: 'Stock',
             type: 'number',
-            width: 150,
+            miWidth: 50,
             headerAlign: "center",
             align: "center",
-            flex: 0.8,
 
         },
         {
             field: 'price',
             headerName: 'Price',
             type: 'number',
-            width: 150,
+            minWidth: 50,
             headerAlign: "center",
             align: "center",
-            flex: 0.8,
 
         },
         {
             field: 'amount',
             headerName: 'Amount',
             type: 'number',
-            width: 150,
+            minWidth: 50,
             headerAlign: "center",
             align: "center",
-            flex: 0.8,
         },
         {
             field: 'actions',
@@ -95,49 +95,40 @@ export default function PurchaseTable({setInitialState,handleOpen}) {
             minWidth: 40,
             headerAlign: "center",
             align: "center",
-            flex: 1,
-            renderCell: (params) => (
-                // console.log(params)
-                <>
-                    <EditNoteIcon
-                    onClick={()=>{
-                        handleOpen()
-                            setInitialState({})
-                    }}
+            renderCell: ({
+                row: {brandId, productId,quantity,price,firmId,_id},
+            }) => {
+                return [
+                    <GridActionsCellItem
+                        key={"edit"}
+                        icon={<EditNoteIcon />}
+                        label="Edit"
+                        onClick={() => {
+                            handleOpen()
+                            setInitialState({
+                                _id,
+                                brandId,
+                                productId,
+                                quantity,
+                                price,
+                                firmId,
+                            });
+                        }}
                         sx={{ cursor: "pointer", marginTop: ".8rem" }}
-                    />
-                    <DeleteForeverIcon
+                    />,
+                    <GridActionsCellItem
+                        key={"delete"}
+                        icon={<DeleteForeverIcon />}
+                        label="Delete"
+                        onClick={() => deleteStockData("purchases", _id)}
                         sx={{ cursor: "pointer", marginTop: ".8rem" }}
-                        onClick={() => deleteStockData("purchases", params.id)}
-                    />
-                </>
-            ),
+                    />,
+                ];
+            },
         },
     ];
+                        
 
 
-    return (
-        <Box
-            sx={{ width: '100%', mt: 2 }}>
-            <DataGrid
-                autoHeight
-                rows={purchases}
-                columns={columns}
-                initialState={{
-                    pagination: {
-                        paginationModel: {
-                            pageSize: 5,
-                        },
-                    },
-                }}
-                getRowId={getRowId}
-                pageSizeOptions={[5, 10, 25]}
-                // checkboxSelection
-                disableRowSelectionOnClick
-                slots={{
-                    toolbar: GridToolbar,
-                }}
-            />
-        </Box>
-    );
-}
+    return <DataTable rows={purchases} columns={columns} />;
+};

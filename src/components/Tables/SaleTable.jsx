@@ -1,10 +1,11 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+import { DataGrid, GridActionsCellItem, GridToolbar } from '@mui/x-data-grid';
 import { useSelector } from 'react-redux';
 import useStockCall from '../../hooks/useStockCall';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditNoteIcon from '@mui/icons-material/EditNote';
+import DataTable from '../commons/DataTable';
 
 function getRowId(row) {
     // console.log(row);
@@ -18,7 +19,14 @@ export default function SaleTable({ setInitialState, handleOpen }) {
 
     const columns = [
         {
-            field: "updatedAt", headerName: "Date", width: 120, headerAlign: "center", align: "center"
+            field: "updatedAt",
+             headerName: "Date",
+              minWidth: 150, 
+              headerAlign: "center", 
+              align: "center",
+            valueGetter: (value) => {
+                return new Date(value).toLocaleString("de-DE");
+            },
         },
         {
             field: 'brandId',
@@ -27,50 +35,47 @@ export default function SaleTable({ setInitialState, handleOpen }) {
             editable: false,
             headerAlign: "center",
             align: "center",
-            flex: 2,
+            flex: 1,
             valueGetter: (value) => {
-                // console.log(value);
-                // console.log(row);
-                return value?.name || 'N/A'
+                return value?.name ?? 'N/A'
             }
         },
         {
             field: 'productId',
             headerName: 'Product',
-            minWidth: 150,
+            minWidth: 100,
             headerAlign: "center",
             align: "center",
-            flex: 2,
-            valueGetter: (value) => value?.name || 'N/A'
+            flex: 1,
+            valueGetter: (value) => {
+                return value?.name ?? 'N/A'
+            }
         },
         {
             field: 'quantity',
             headerName: 'Stock',
             type: 'number',
-            width: 150,
+            minWidth: 50,
             headerAlign: "center",
             align: "center",
-            flex: 0.8,
 
         },
         {
             field: 'price',
             headerName: 'Price',
             type: 'number',
-            width: 150,
+            minWidth: 50,
             headerAlign: "center",
             align: "center",
-            flex: 0.8,
 
         },
         {
             field: 'amount',
             headerName: 'Amount',
             type: 'number',
-            width: 150,
+            minWidth: 50,
             headerAlign: "center",
             align: "center",
-            flex: 0.8,
         },
         {
             field: 'actions',
@@ -81,48 +86,30 @@ export default function SaleTable({ setInitialState, handleOpen }) {
             headerAlign: "center",
             align: "center",
             flex: 1,
-            renderCell: (params) => (
-                // console.log(params)
-                <>
-                    <EditNoteIcon
+            renderCell: ({ row: { brandId, price, quantity, productId, _id } }) => {
+                return [
+                    <GridActionsCellItem
+                        key={"edit"}
+                        icon={<EditNoteIcon />}
+                        label="Edit"
                         onClick={() => {
-                            handleOpen()
-                            setInitialState({})
+                            handleOpen();
+                            setInitialState({ brandId, price, quantity, productId, _id });
                         }}
                         sx={{ cursor: "pointer", marginTop: ".8rem" }}
-                    />
-                    <DeleteForeverIcon
+
+                    />,
+                    <GridActionsCellItem
+                        key={"delete"}
+                        icon={<DeleteForeverIcon />}
+                        label="Delete"
+                        onClick={() => deleteStockData("sales", _id)}
                         sx={{ cursor: "pointer", marginTop: ".8rem" }}
-                        onClick={() => deleteStockData("sales", params.id)}
-                    />
-                </>
-            ),
+
+                    />,
+                ];
+            },
         },
     ];
-
-
-    return (
-        <Box
-            sx={{ width: '100%', mt: 2 }}>
-            <DataGrid
-                autoHeight
-                rows={sales}
-                columns={columns}
-                initialState={{
-                    pagination: {
-                        paginationModel: {
-                            pageSize: 5,
-                        },
-                    },
-                }}
-                getRowId={getRowId}
-                pageSizeOptions={[5, 10, 25]}
-                // checkboxSelection
-                disableRowSelectionOnClick
-                slots={{
-                    toolbar: GridToolbar,
-                }}
-            />
-        </Box>
-    );
-}
+    return <DataTable rows={sales} columns={columns} />;
+};

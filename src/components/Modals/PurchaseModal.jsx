@@ -12,26 +12,23 @@ import Select from '@mui/material/Select';
 import { useSelector } from "react-redux";
 import { useState } from "react";
 
-export default function PurchasesModal({ open, handleClose,initialState }) {
+export default function PurchasesModal({ open, handleClose, initialState }) {
     const { mode } = useSelector(state => state.darkMode)
-   
-    const { postStockData,putStockData } = useStockCall();
-    const { firms,brands,products } = useSelector(state => state.stock)
-    const [info,setInfo] = useState(initialState)
 
-    // console.log("PurchasesModal", firms);
-    // console.log("PurchasesModal", brands);
-    // console.log("PurchasesModal", products);
-
+    const { postStockData, putStockData } = useStockCall();
+    const { firms, brands, products } = useSelector(state => state.stock)
+    const [info, setInfo] = useState(initialState)
 
 
     const handleChange = (e) => {
-        setInfo({ ...info, [e.target.name]: e.target.value });
+        const { name, value } = e.target
+        setInfo({ ...info, [name]: value });
     };
     console.log(info);
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("submit", info);
+
         if (info._id) { //* id varsa edit işlemi
             putStockData("purchases", info)
         } else {//* id yoksa create işlemi
@@ -57,16 +54,17 @@ export default function PurchasesModal({ open, handleClose,initialState }) {
                                 labelId="demo-simple-firm-label"
                                 id="firmId"
                                 label="Firm"
+                                items={firms}
                                 name="firmId"
-                                value={info.firmId}
+                                value={info?.firmId?._id || info?.firmId || ""}
                                 onChange={handleChange}
                             >
 
                                 {
                                     firms.map(firm => <MenuItem key={firm._id} value={firm._id}>{firm.name}</MenuItem>)
-                                    
+
                                 }
-                                
+
                             </Select>
                         </FormControl>
                         <FormControl fullWidth>
@@ -75,8 +73,9 @@ export default function PurchasesModal({ open, handleClose,initialState }) {
                                 labelId="demo-simple-brand-label"
                                 id="brandId"
                                 label="Brand"
+                                items={brands}
                                 name="brandId"
-                                value={info.brandId}
+                                value={info?.brandId?._id || info?.brandId || ""}
                                 onChange={handleChange}
                             >
 
@@ -91,8 +90,9 @@ export default function PurchasesModal({ open, handleClose,initialState }) {
                                 labelId="demo-simple-product-label"
                                 id="productId"
                                 label="Product"
+                                items={products}
                                 name="productId"
-                                value={info.productId}
+                                value={info?.productId?._id || info?.productId || ""}
                                 onChange={handleChange}
                             >
 

@@ -15,19 +15,21 @@ import { useState } from "react";
 export default function SaleModal({ open, handleClose, initialState }) {
     const { mode } = useSelector(state => state.darkMode)
     const [info, setInfo] = useState(initialState)
-    const { postStockData } = useStockCall();
+    const { postStockData, putStockData } = useStockCall();
     const { products, brands } = useSelector(state => state.stock)
 
     const handleChange = (e) => {
-        setInfo({ ...info, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+        setInfo({ ...info, [name]: value });
     };
     console.log(info);
     const handleSubmit = (e) => {
+
         e.preventDefault();
-        console.log("submit", info);
-        if (info._id) { //* id varsa edit işlemi
+
+        if (info._id) {
             putStockData("sales", info)
-        } else {//* id yoksa create işlemi
+        } else {
             postStockData("sales", info)
         }
         handleClose()
@@ -48,9 +50,10 @@ export default function SaleModal({ open, handleClose, initialState }) {
                             <Select
                                 labelId="demo-simple-brand-label"
                                 id="brandId"
+                                items={brands}
                                 label="Brand"
                                 name="brandId"
-                                value={info.brandId}
+                                value={info?.brandId?._id || info?.brandId || ""}
                                 onChange={handleChange}
                             >
 
@@ -63,10 +66,11 @@ export default function SaleModal({ open, handleClose, initialState }) {
                             <InputLabel id="demo-simple-product-label">Product</InputLabel>
                             <Select
                                 labelId="demo-simple-product-label"
-                                id="productId"
+                                id="productId" 
+                                items={products}
                                 label="Product"
                                 name="productId"
-                                value={info.brandId}
+                                value={info?.productId?._id || info?.productId || ""}
                                 onChange={handleChange}
                             >
 

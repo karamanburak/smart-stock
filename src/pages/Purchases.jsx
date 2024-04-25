@@ -31,10 +31,6 @@ const Purchases = () => {
     price: ""
   });
   useEffect(() => {
-    // getStockData("products");
-    // getStockData("categories");
-    // getStockData("brands");
-    // getStockData("firms");
     getProCatBrand()
 
   }, []);
