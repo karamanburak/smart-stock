@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import useStockCall from "../hooks/useStockCall";
 import { useSelector } from "react-redux";
-import { Button, Container, Grid, Typography } from "@mui/material";
+import { Button, Container, Grid } from "@mui/material";
 import { useState } from "react";
 import BrandCard from "../components/Cards/BrandCard";
 import BrandModal from "../components/Modals/BrandModal";
