@@ -26,11 +26,11 @@ const Footer = () => {
                     <Typography>
                         <a href="https://github.com/karamanburak"
                             target="_blank"
-                            rel="noreferrer"><GitHubIcon sx={{fontSize: "2rem",color:"secondary.main"}} />
+                    rel="noreferrer"><GitHubIcon sx={{ fontSize: "2rem", color: "secondary.main", opacity: ".8" }} />
                         </a>
                     <a href="https://www.linkedin.com/in/karamanburak/"
                             target="_blank"
-                    rel="noreferrer"><LinkedInIcon sx={{ fontSize: "2rem", color: "secondary.main" }} />
+                    rel="noreferrer"><LinkedInIcon sx={{ fontSize: "2rem", color: "secondary.main", opacity: ".8" }} />
                         </a>
                     </Typography>
         </Toolbar>
