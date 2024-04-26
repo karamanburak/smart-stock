@@ -5,6 +5,7 @@ import useStockCall from '../../hooks/useStockCall';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import DataTable from '../Commons/DataTable';
+import { editDeleteIconDark, editDeleteIconLight } from '../../styles/globalStyle';
 
 
 
@@ -16,10 +17,10 @@ export default function SaleTable({ setInitialState, handleOpen }) {
     const columns = [
         {
             field: "updatedAt",
-             headerName: "Date",
-              minWidth: 150, 
-              headerAlign: "center", 
-              align: "center",
+            headerName: "Date",
+            minWidth: 150,
+            headerAlign: "center",
+            align: "center",
             valueGetter: (value) => {
                 return new Date(value).toLocaleString("de-DE");
             },
@@ -92,7 +93,7 @@ export default function SaleTable({ setInitialState, handleOpen }) {
                             handleOpen();
                             setInitialState({ brandId, price, quantity, productId, _id });
                         }}
-                        sx={{ cursor: "pointer", marginTop: ".8rem" }}
+                        sx={mode ? editDeleteIconLight : editDeleteIconDark}
 
                     />,
                     <GridActionsCellItem
@@ -100,7 +101,7 @@ export default function SaleTable({ setInitialState, handleOpen }) {
                         icon={<DeleteForeverIcon />}
                         label="Delete"
                         onClick={() => deleteStockData("sales", _id)}
-                        sx={{ cursor: "pointer", marginTop: ".8rem" }}
+                        sx={mode ? editDeleteIconLight : editDeleteIconDark}
 
                     />,
                 ];

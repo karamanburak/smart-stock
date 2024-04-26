@@ -84,6 +84,7 @@ export default function Charts() {
                     colors={['indigo', 'rose']}
                     valueFormatter={dataFormatter}
                     yAxisWidth={60}
+                    onValueChange={(v) => console.log(v)}
 
                 />
             </Grid>
@@ -96,6 +97,8 @@ export default function Charts() {
                     colors={['fuchsia']}
                     valueFormatter={dataFormatter}
                     yAxisWidth={60}
+                    onValueChange={(v) => console.log(v)}
+
                 />
             </Grid>
         </Grid>

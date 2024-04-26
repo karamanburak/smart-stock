@@ -38,6 +38,15 @@ export const SignupSchema = Yup.object().shape({
     .required("Confirm password is required!")
 });
 
+const registerFormField = [
+  {id: "username",name: "username", label: "Username *", type: "text" },
+  {id: "firstName",name: "firstName", label: "First Name *", type: "text" },
+  {id: "lastName",name: "lastName", label: "Last Name *", type: "text" },
+  {id: "email",name: "email", label: "Email Address *", type: "text" },
+  {id: "password",name: "password", label: "Password *", type: "password" },
+  {id: "confirmPassword",name: "confirmPassword", label: "Confirm Password *", type: "password" },
+]
+
 const SignUpForm = ({
   values,
   handleChange,
@@ -47,92 +56,28 @@ const SignUpForm = ({
   isSubmitting,
 }) => {
   return (
-    <div>
-      <Form>
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+    <Form>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 2, }}>
+          {registerFormField.map((field)=>(
           <TextField
-            id="username"
-            name="username" //formik name attributedından eşleştirme yapıyor.
-            label="Username *"
+            key={field.id}
+            label={field.label}
+            name={field.name}
+            id={field.id}
+            variant="outlined"
             inputProps={{
               autoComplete: "off"  // Burada "autoComplete" kullanılmalıdır.
             }}
-            value={values.username}
+            type={field.type}
+            value={values[field.name]}
             onChange={handleChange}
-            onBlur={handleBlur} // kullanıcının input alanından ayrıldığını yaklayan event
-            helperText={touched.username && errors.username} //validationda verdiğimiz kalıba uymazsa ilgili mesajları göstermesi için errors dan gelen mesajı yakalıyoruz.
-            error={touched.username && Boolean(errors.username)} //validationda verdiğimiz kalıba uymazsa rengi errora çevirmesi için error attribute ı benden false/true degeri bekliyor ondan dolayı daha sağlıklı olması için boolean deger döndürüyoruz.
-          // touched da kullanıcının inputa tıklayıp tıklamadığını yakalıyor
+              onBlur={handleBlur} // kullanıcının input alanından ayrıldığını yaklayan event
+              helperText={touched[field.name] && errors[field.name]} //validationda verdiğimiz kalıba uymazsa ilgili mesajları göstermesi için errors dan gelen mesajı yakalıyoruz.
+              error={touched[field.name] && Boolean(errors[field.name])} //validationda verdiğimiz kalıba uymazsa rengi errora çevirmesi için error attribute ı benden false/true degeri bekliyor ondan dolayı daha sağlıklı olması için boolean deger döndürüyoruz.
+              // touched da kullanıcının inputa tıklayıp tıklamadığını yakalıyor
           />
-          <TextField
-            label="First Name *"
-            name="firstName"
-            id="firstName"
-            inputProps={{
-              autoComplete: "off"  // Burada "autoComplete" kullanılmalıdır.
-            }}
-            type="text"
-            variant="outlined"
-            value={values.firstName}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            helperText={touched.firstName && errors.firstName}
-            error={touched.firstName && Boolean(errors.firstName)}
-          />
-          <TextField
-            label="Last Name *"
-            name="lastName"
-            id="lastName"
-            inputProps={{
-              autoComplete: "off"  // Burada "autoComplete" kullanılmalıdır.
-            }}
-            type="text"
-            variant="outlined"
-            value={values.lastName}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            helperText={touched.lastName && errors.lastName}
-            error={touched.lastName && Boolean(errors.lastName)}
-          />
-          <TextField
-            label="Email *"
-            name="email"
-            id="email"
-            inputProps={{
-              autoComplete: "off"  // Burada "autoComplete" kullanılmalıdır.
-            }}
-            type="email"
-            variant="outlined"
-            value={values.email}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            helperText={touched.email && errors.email}
-            error={touched.email && Boolean(errors.email)}
-          />
-          <TextField
-            label="Password *"
-            name="password"
-            id="password"
-            type="password"
-            variant="outlined"
-            value={values.password}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            helperText={touched.password && errors.password}
-            error={touched.password && Boolean(errors.password)}
-          />
-          <TextField
-            id="confirmPassword"
-            name="confirmPassword"
-            type="password"
-            label="Confirm Password *"
-            value={values.confirmPassword}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={touched.confirmPassword && Boolean(errors.confirmPassword)}
-            helperText={touched.confirmPassword && errors.confirmPassword}
-          />
-
+          ))}
+          
           <Button
             type="submit"
             variant="contained"
@@ -144,7 +89,6 @@ const SignUpForm = ({
           </Button>
         </Box>
       </Form>
-    </div>
   );
 };
 

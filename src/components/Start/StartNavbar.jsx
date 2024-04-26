@@ -1,7 +1,7 @@
 import LoginIcon from '@mui/icons-material/Login';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import logo from '../../assets/stock-logo.png'
-import { AppBar, Button, Toolbar, Typography } from '@mui/material';
+import { AppBar, Button, Container, Toolbar, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 const StartNavbar = () => {

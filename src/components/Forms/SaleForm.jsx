@@ -7,8 +7,10 @@ import MyButton from "../Commons/MyButton";
 import MyTextField from "../Commons/MyTextField";
 import SelectControl from "../Commons/SelectControl";
 import { purSalefields } from "../../helper/formFields";
+import { darkModeBtn, lightMode } from "../../styles/globalStyle";
 
 export default function SaleForm({ handleClose, initialState }) {
+  const { mode } = useSelector(state => state.darkMode)
   const navigate = useNavigate();
   const [info, setInfo] = useState(initialState);
   const { postStockData, putStockData } = useStockCall();
@@ -62,6 +64,7 @@ export default function SaleForm({ handleClose, initialState }) {
         variant="contained"
         size="large"
         title={info?._id ? "Update Sale" : "Add New Sale"}
+        sx={mode ? lightMode : darkModeBtn}
       />
     </Box>
   );

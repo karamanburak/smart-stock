@@ -1,7 +1,7 @@
 
 import LogoutIcon from "@mui/icons-material/Logout";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Button } from "@mui/material";
+import { Button, Container } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -16,6 +16,7 @@ import MenuListItems from "../components/Navigation/MenuListItems";
 import { useSelector } from "react-redux";
 import logo from  '../assets/stock-logo.png'
 import avatar from '../assets/avatar.png'
+import { avatarStyle, darkMode, firmNameDarkStyle, firmNamelightStyle, lightMode,logoutStyle } from "../styles/globalStyle";
 
 const drawerWidth = 240;
 
@@ -47,17 +48,16 @@ function Dashboard(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{
-      display: "flex", backgroundColor: mode ? "white" : "primary.main", color: mode ? "primary.main" : "white", minHeight: "100vh"
-    }}>
+    <Container maxWidth="100vw" sx={mode ? lightMode : darkMode}>
+
+    <Box sx={{display: "flex", minHeight:"100vh"}}>
       <CssBaseline />
       <AppBar
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-           backgroundColor: mode ? "white" : "primary.main",
-          color: mode ? "primary.main" : "white" ,
+           backgroundColor: mode ? lightMode : darkMode,
           borderRadius: "0.5rem",
         }}
       >
@@ -71,31 +71,25 @@ function Dashboard(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1, display:"flex",alignItems:"center" }}>
+          <Typography variant="h6" noWrap component="div" sx={mode ? firmNamelightStyle : firmNameDarkStyle}>
           <img src={logo} alt="" style={{width:"45px", height:"45px",marginRight:".7rem"}}/>
             Smart Stock
           </Typography>
 
             {currentUser ? (<img
-           style={{width:"40px", height:"40px", borderRadius:"50%"}}
+           style={avatarStyle}
               src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${currentUser}`}
               alt=""
             />
             ) : (
-              <img style={{width:"40px", height:"40px", borderRadius:"50%"}} src={avatar} />
+              <img style={avatarStyle} src={avatar} />
             ) }
     
           <Button
-            color="inherit"
-            sx={{
-              "&:hover": {
-                backgroundColor: "secondary.main",
-                color: "white",
-              },
-            }}
-            onClick={logout}
-          >
-            Logout <LogoutIcon sx={{ ml: "0.5rem" }} />
+          // variant="contained"
+            sx={ mode ? lightMode : logoutStyle}
+            onClick={logout}>
+            Logout <LogoutIcon />
           </Button>
         </Toolbar>
       </AppBar>
@@ -150,6 +144,8 @@ function Dashboard(props) {
         <Outlet />
       </Box>
     </Box>
+    </Container>
+
   );
 }
 

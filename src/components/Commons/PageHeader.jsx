@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
+import { darkMode, lightMode } from "../../styles/globalStyle";
 
 const PageHeader = ({ text }) => {
   const { mode } = useSelector(state => state.darkMode)
@@ -11,7 +12,8 @@ const PageHeader = ({ text }) => {
       variant="h4"
       component={"h1"}
       color={"secondary.second"}
-      sx={{ marginBottom: 2, backgroundColor: mode ? "white" : "primary.main", color: mode ? "primary.main" : "white" }}
+      sx={mode ? lightMode : darkMode}
+      mb={2}
     >
       {text}
     </Typography>

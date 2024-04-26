@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import * as React from "react";
 import useStockCall from "../../hooks/useStockCall";
-import { flexColumn, modalStyle } from "../../styles/globalStyle";
+import { darkModeBtn, flexColumn, lightMode, modalStyle } from "../../styles/globalStyle";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -19,7 +19,7 @@ export default function ProductModal({ open, handleClose }) {
         name: "",
     });
     const { postStockData } = useStockCall();
-    const {categories,brands} = useSelector(state=>state.stock)
+    const { categories, brands } = useSelector(state => state.stock)
 
     const handleChange = (e) => {
         setInfo({ ...info, [e.target.name]: e.target.value });
@@ -51,9 +51,9 @@ export default function ProductModal({ open, handleClose }) {
                                 value={info.categoryId}
                                 onChange={handleChange}
                             >
-                               
+
                                 {
-                                    categories.map(category=> <MenuItem key={category._id} value={category._id}>{category.name}</MenuItem>)
+                                    categories.map(category => <MenuItem key={category._id} value={category._id}>{category.name}</MenuItem>)
                                 }
                             </Select>
                         </FormControl>
@@ -83,10 +83,10 @@ export default function ProductModal({ open, handleClose }) {
                             onChange={handleChange}
                         />
                         <Button
-                            sx={{ backgroundColor: mode ? "white" : "secondary.main", color: mode ? "primary.main" : "white" }}
+                            sx={mode ? lightMode : darkModeBtn}
                             variant={mode ? "outlined" : "contained"}
-                         type="submit">
-                          Submit Product
+                            type="submit">
+                            Submit Product
                         </Button>
                     </Box>
                 </Box>

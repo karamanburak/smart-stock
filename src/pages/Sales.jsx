@@ -7,6 +7,7 @@ import SaleTable from "../components/Tables/SaleTable";
 import PageHeader from "../components/Commons/PageHeader";
 import StockModal from "../components/Commons/StockModal";
 import SaleForm from "../components/Forms/SaleForm";
+import {  darkModeBtn, lightMode } from "../styles/globalStyle";
 
 const Sales = () => {
   const { mode } = useSelector(state => state.darkMode)
@@ -42,7 +43,7 @@ const Sales = () => {
     <PageHeader text="Sales"/>
       <Button
        onClick={handleOpen}
-        sx={{ backgroundColor: mode ? "white" : "secondary.main", color: mode ? "primary.main" : "white", marginBottom: 2 }}
+        sx={mode ? lightMode : darkModeBtn}
         variant={mode ? "outlined" : "contained"}>
         New Sale
       </Button>

@@ -2,16 +2,17 @@ import { Container, Typography } from "@mui/material";
 import React from "react";
 import Footer from "../components/Start/Footer";
 import StartNavbar from "../components/Start/StartNavbar";
+import { footer} from "../styles/globalStyle";
 
 const Imprint = () => {
     return (
         <Container>
             <StartNavbar />
-            <Typography sx={{marginBottom:"4rem"}}>
-
-                <Typography variant="h3" sx={{ marginTop: "5rem", marginBottom:"2rem",textAlign:"center" }}>
+                <Typography variant="h4" sx={{ marginTop: "5rem", marginBottom:"2rem",textAlign:"center" }}>
                     IMPRINT
                 </Typography>
+            <Typography sx={{marginBottom:"4rem"}}>
+
                 <span style={{ fontWeight: "bold" }}> Smart Stock Software GmbH</span>
                  <br />
                 Turmstraße 11 <br />
@@ -52,7 +53,7 @@ const Imprint = () => {
                 <span style={{ fontWeight: "bold", opacity: ".7" }}> Copyright </span> <br />
                 The content and works created by the site operators on these pages are subject to German copyright law. Duplication, processing, distribution and any form of commercialization of such material beyond the scope of the copyright law shall require the prior written consent of its respective author or creator. Downloads and copies of this site are only permitted for private, non-commercial use. Insofar as the content on this site was not created by the operator, the copyrights of third parties are respected. In particular, third-party content is identified as such. Should you nevertheless become aware of a copyright infringement, please inform us accordingly. If we become aware of any infringements, we will remove such content immediately.
             </Typography>
-            <Typography variant="div" sx={{ position: "fixed", bottom: "0", left: "0", width: "100%" }}>
+            <Typography variant="div" sx={footer}>
                 <Footer />
             </Typography>
         </Container>

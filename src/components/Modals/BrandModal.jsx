@@ -6,6 +6,7 @@ import { TextField } from '@mui/material';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import useStockCall from '../../hooks/useStockCall';
+import {  darkModeBtn, lightMode } from '../../styles/globalStyle';
 
 const style = {
     position: 'absolute',
@@ -75,7 +76,7 @@ export default function BrandModal({ open, handleClose, initialState }) {
                         })}
 
                         <Button
-                            sx={{ backgroundColor: mode ? "white" : "secondary.main", color: mode ? "primary.main" : "white" }}
+                            sx={mode ? lightMode : darkModeBtn}
                             variant={mode ? "outlined" : "contained"}
                             type="submit">
                             {info._id ? "Update Brand" : "Submit Brand"}

@@ -2,7 +2,7 @@ import React from "react";
 import StartNavbar from "../components/Start/StartNavbar";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import Footer from "../components/Start/Footer";
-import { flex } from "../styles/globalStyle";
+import { flex, footer } from "../styles/globalStyle";
 
 const avatars = [
     {
@@ -79,7 +79,7 @@ const About = () => {
                     ))}
                 </Grid>
             </Box>
-            <Typography variant="div" sx={{ position: "fixed", bottom: "0", left: "0", width: "100%" }}>
+            <Typography variant="div" sx={footer}>
                 <Footer />
             </Typography>
         </Container>

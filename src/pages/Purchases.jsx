@@ -7,6 +7,7 @@ import PurchaseTable from "../components/Tables/PurchaseTable";
 import PageHeader from "../components/Commons/PageHeader";
 import StockModal from "../components/Commons/StockModal";
 import PurchaseForm from "../components/Forms/PurchaseForm";
+import { darkModeBtn, lightMode } from "../styles/globalStyle";
 
 const Purchases = () => {
   const { mode } = useSelector(state => state.darkMode)
@@ -39,7 +40,7 @@ const Purchases = () => {
     <Container maxWidth={"xl"}>
       <PageHeader text="Purchases"/>
       <Button onClick={handleOpen}
-        sx={{ backgroundColor: mode ? "white" : "secondary.main", color: mode ? "primary.main" : "white", marginBottom: 2 }}
+        sx={mode ? lightMode : darkModeBtn}
         variant={mode ? "outlined" : "contained"}>
         New Purchase
       </Button>

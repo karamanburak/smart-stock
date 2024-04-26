@@ -6,7 +6,6 @@ import image from "../assets/regi.avif";
 import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
 import { Box } from "@mui/material";
-import AuthHeader from "../components/Commons/AuthHeader";
 import AuthImage from "../components/Commons/AuthImage";
 import { Formik } from "formik";
 import useAuthCall from "../hooks/useAuthCall";
@@ -17,19 +16,18 @@ const Register = () => {
   const { register } = useAuthCall()
   return (
     <>
-
       <Container maxWidth="lg">
         <Grid
           container
           justifyContent="center"
           direction="row-reverse"
           rowSpacing={{ sm: 3 }}
+          alignItems="center"
           sx={{
-            minHeight: "100vh",
+            height: "90vh",
             p: 2,
           }}
         >
-          <AuthHeader />
           <Grid item xs={12} sm={10} md={6}>
             <Avatar
               sx={{
@@ -75,9 +73,7 @@ const Register = () => {
           <AuthImage image={image} />
         </Grid>
       </Container>
-      <Typography variant="div" sx={{ width: "100vw" }}>
-        <Footer />
-      </Typography>
+              <Footer/>
     </>
   );
 };

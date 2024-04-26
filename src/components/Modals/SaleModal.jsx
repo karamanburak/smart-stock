@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import * as React from "react";
 import useStockCall from "../../hooks/useStockCall";
-import { flexColumn, modalStyle } from "../../styles/globalStyle";
+import { darkModeBtn, flexColumn, lightMode, modalStyle } from "../../styles/globalStyle";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -98,8 +98,8 @@ export default function SaleModal({ open, handleClose, initialState }) {
                             onChange={handleChange}
                         />
                         <Button
-                            sx={{ backgroundColor: mode ? "white" : "secondary.main", color: mode ? "primary.main" : "white" }}
                             variant={mode ? "outlined" : "contained"}
+                            sx={mode ? lightMode : darkModeBtn}
                             type="submit">
                             {info._id ? "UPDATE SALE" : "ADD NEW SALE"}
                         </Button>

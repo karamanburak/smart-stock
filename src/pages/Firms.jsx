@@ -7,6 +7,7 @@ import { useState } from "react";
 import loadingGif from "../assets/loading.gif";
 import FirmCard from './../components/Cards/FirmCard';
 import PageHeader from "../components/Commons/PageHeader";
+import {  darkModeBtn, lightMode } from "../styles/globalStyle";
 
 
 const Firms = () => {
@@ -44,7 +45,7 @@ const Firms = () => {
       <PageHeader text="Firms" />
         <Button
         onClick={handleOpen}
-        sx={{ backgroundColor: mode ? "white" : "secondary.main", color: mode ? "primary.main" : "white" }}
+        sx={mode ? lightMode : darkModeBtn}
           variant={mode ? "outlined" : "contained"}> New Firm </Button>
       <Grid container spacing={2} mt={3} >
         {loading ? (

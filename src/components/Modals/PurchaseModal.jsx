@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import * as React from "react";
 import useStockCall from "../../hooks/useStockCall";
-import { flexColumn, modalStyle } from "../../styles/globalStyle";
+import { darkModeBtn, flexColumn, lightMode, modalStyle } from "../../styles/globalStyle";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -120,7 +120,7 @@ export default function PurchasesModal({ open, handleClose, initialState }) {
                             onChange={handleChange}
                         />
                         <Button
-                            sx={{ backgroundColor: mode ? "white" : "secondary.main", color: mode ? "primary.main" : "white" }}
+                            sx={mode ? lightMode: darkModeBtn}
                             variant={mode ? "outlined" : "contained"}
                             type="submit">
                             {info._id ? "UPDATE PURCHASE" : "ADD NEW PURCHASE"}

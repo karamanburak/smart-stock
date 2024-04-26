@@ -9,10 +9,10 @@ export default function KpiCards() {
     const {sales,purchases} = useSelector(state=> state.stock)
     // const totalSales = sales?.reduce((acc,item)=>acc + item.amount,0)
     const totalSales = getTotals(sales)
-    console.log(totalSales)
+    // console.log(totalSales)
     // const totalPurchases = purchases?.reduce((acc,item)=>acc + item.amount,0)
     const totalPurchases = getTotals(purchases)
-    console.log(totalPurchases)
+    // console.log(totalPurchases)
     
     const data = [
         {

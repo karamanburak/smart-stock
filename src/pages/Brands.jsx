@@ -7,6 +7,7 @@ import BrandCard from "../components/Cards/BrandCard";
 import BrandModal from "../components/Modals/BrandModal";
 import loadingGif from "../assets/loading.gif";
 import PageHeader from "../components/Commons/PageHeader";
+import { darkModeBtn, lightMode } from "../styles/globalStyle";
 
 
 const Brands = () => {
@@ -39,7 +40,7 @@ const Brands = () => {
 
       <Button
         onClick={handleOpen}
-        sx={{ backgroundColor: mode ? "white" : "secondary.main", color: mode ? "primary.main" : "white" }}
+        sx={  mode ? lightMode : darkModeBtn }
         variant={mode ? "outlined" : "contained"}> New Brand </Button>
       <Grid container spacing={2} mt={3} >
         {loading ? (

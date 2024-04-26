@@ -7,8 +7,10 @@ import useStockCall from "../../hooks/useStockCall";
 import MyButton from "../Commons/MyButton";
 import MyTextField from "../Commons/MyTextField";
 import SelectControl from "../Commons/SelectControl";
+import { darkModeBtn, lightMode } from "../../styles/globalStyle";
 
 export default function PurchaseForm({ handleClose, initialState }) {
+  const { mode } = useSelector(state => state.darkMode)
   const navigate = useNavigate();
   const [info, setInfo] = useState(initialState);
   const { postStockData, putStockData } = useStockCall();
@@ -75,6 +77,8 @@ export default function PurchaseForm({ handleClose, initialState }) {
         variant="contained"
         size="large"
         title={info?._id ? "Update Purchase" : "Add New Purchase"}
+        sx={mode ? lightMode : darkModeBtn}
+
       />
     </Box>
   );

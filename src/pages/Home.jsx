@@ -10,29 +10,28 @@ import { useSelector } from "react-redux";
 
 const Home = () => {
   const { getPurcSales } = useStockCall();
-  const {loading} = useSelector(state=> state.stock)
-useEffect(()=>{
-  getPurcSales()
-  console.log(getPurcSales());
-},[])
+  const { loading } = useSelector(state => state.stock)
+  useEffect(() => {
+    getPurcSales()
+    console.log(getPurcSales());
+  }, [])
 
 
 
   return (
     <Container maxWidth={"xl"}>
       <PageHeader text="Dashboard" />
-      {
-        loading ? (
-          <img src={loadingGif} alt="loading..." height={500} />
+        {loading ? (
+          <img src={loadingGif} alt="loading..." height={500} style={{margin:"auto"}} />
         ) : (
-         <>
-      <KpiCards/> 
-      <Charts/>
-         </>
-        )
-      }
-      </Container>
-  )
+          <>
+            <KpiCards />
+            <Charts />
+          </>
+        )}
+
+    </Container>
+  );
 };
 
 export default Home;
