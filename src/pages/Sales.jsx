@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import useStockCall from "../hooks/useStockCall";
 import SaleTable from "../components/Tables/SaleTable";
-import PageHeader from "../components/Commons/PageHeader";
-import StockModal from "../components/Commons/StockModal";
+import PageHeader from "../components/Commonss/PageHeader";
+import StockModal from "../components/Commonss/StockModal";
 import SaleForm from "../components/Forms/SaleForm";
 
 const Sales = () => {

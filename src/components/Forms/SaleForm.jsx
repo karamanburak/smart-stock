@@ -3,9 +3,9 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import useStockCall from "../../hooks/useStockCall";
-import MyButton from "../Commons/MyButton";
-import MyTextField from "../Commons/MyTextField";
-import SelectControl from "../Commons/SelectControl";
+import MyButton from "../Commonss/MyButton";
+import MyTextField from "../Commonss/MyTextField";
+import SelectControl from "../Commonss/SelectControl";
 import { purSalefields } from "../../helper/formFields";
 
 export default function SaleForm({ handleClose, initialState }) {
