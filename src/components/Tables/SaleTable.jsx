@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import useStockCall from '../../hooks/useStockCall';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditNoteIcon from '@mui/icons-material/EditNote';
-import DataTable from '../Commonss/DataTable';
+import DataTable from '../Commons/DataTable';
 
 
 
