@@ -1,7 +1,7 @@
 import Container from "@mui/material/Container";
 import KpiCards from "../components/Dashboard/KpiCards";
 import Charts from "../components/Dashboard/Charts";
-import PageHeader from "../components/Commons/PageHeader";
+import PageHeader from "../components/commons/PageHeader";
 import { useEffect } from 'react';
 import useStockCall from "../hooks/useStockCall";
 import loadingGif from "../assets/loading.gif";

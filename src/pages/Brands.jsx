@@ -6,7 +6,7 @@ import { useState } from "react";
 import BrandCard from "../components/Cards/BrandCard";
 import BrandModal from "../components/Modals/BrandModal";
 import loadingGif from "../assets/loading.gif";
-import PageHeader from "../components/Commons/PageHeader";
+import PageHeader from "../components/commons/PageHeader";
 
 
 const Brands = () => {
