@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useSelector } from 'react-redux';
 import useStockCall from '../../hooks/useStockCall';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import DataTable from '../commons/DataTable';
+import DataTable from '../Commons/DataTable';
 function getRowId(row){
     // console.log(row);
     return row._id
