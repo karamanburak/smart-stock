@@ -1,12 +1,12 @@
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import useStockCall from "../hooks/useStockCall";
-import PurchaseModal from "../components/Modals/PurchaseModal";
 import PurchaseTable from "../components/Tables/PurchaseTable";
 import PageHeader from "../components/Commons/PageHeader";
+import StockModal from "../components/Commons/StockModal";
+import PurchaseForm from "../components/Forms/PurchaseForm";
 
 const Purchases = () => {
   const { mode } = useSelector(state => state.darkMode)
@@ -44,11 +44,9 @@ const Purchases = () => {
         New Purchase
       </Button>
       {open && (
-        <PurchaseModal
-          open={open}
-          handleClose={handleClose}
-          initialState={initialState}
-        />
+        <StockModal open={open} handleClose={handleClose}>
+          <PurchaseForm handleClose={handleClose} initialState={initialState} />
+        </StockModal>
       )}
       <PurchaseTable 
         setInitialState={setInitialState}

@@ -58,6 +58,9 @@ const About = () => {
                 Smart Stock helps small and medium-sized companies automate and simplify their daily operations. The user-friendly business software centralizes all orders, inventories, payments and shipping processes in one place: this creates more time, higher sales and greater customer satisfaction. Smart Stock offers flexible functions and interfaces to all common technology tools. With this setup, companies can develop sustainably day by day.
             </Box>
             <Box sx={{ backgroundColor: "#EFF0FD", borderRadius: "10px", padding: "2rem", marginTop: "2rem", marginBottom: "5rem" }}>
+                    <Typography variant="h5" sx={{ color: "cornflowerblue", textAlign: "center" }}>
+                        Our Team
+                    </Typography>
                 <Grid container spacing={3} mt={3} sx={flex} >
                     {avatars.map((avatar, index) => (
                         <Grid item xs={6} md={4} lg={3} key={index}>

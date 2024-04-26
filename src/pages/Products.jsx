@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import ProductModal from "../components/Modals/ProductModal";
 import useStockCall from "../hooks/useStockCall";
 import ProductTable from "../components/Tables/ProductTable";
-import PageHeader from "../components/commons/PageHeader";
+import PageHeader from "../components/Commons/PageHeader";
 
 const Products = () => {
   const { mode } = useSelector(state => state.darkMode)

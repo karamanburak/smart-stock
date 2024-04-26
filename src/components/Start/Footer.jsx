@@ -8,7 +8,7 @@ const Footer = () => {
     const navigate = useNavigate()
     return <>
         <Toolbar
-            sx={{ backgroundColor:"white", height:"64px", padding: "0px 24px", display:"flex", justifyContent:"center",alignItems:"center", gap:"1.2rem"}}>
+            sx={{ backgroundColor:"white", height:"64px", padding: "0px 24px", display:"flex", justifyContent:"center",alignItems:"center"}}>
 
             <Button
             onClick={()=>navigate("/about")}
