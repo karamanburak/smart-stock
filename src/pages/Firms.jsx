@@ -6,7 +6,7 @@ import FirmModal from "../components/Modals/FirmModal";
 import { useState } from "react";
 import loadingGif from "../assets/loading.gif";
 import FirmCard from './../components/Cards/FirmCard';
-import PageHeader from "../components/Commons/PageHeader";
+import PageHeader from "../components/commons/PageHeader";
 
 
 const Firms = () => {
