@@ -11,14 +11,14 @@ import { Formik } from "formik";
 import useAuthCall from "../hooks/useAuthCall";
 import RegisterForm, { SignupSchema } from "../components/Forms/RegisterForm";
 import Footer from "../components/Start/Footer";
-import {  register } from "../styles/globalStyle";
+import { flex } from "../styles/globalStyle";
 
 const Register = () => {
   const { register } = useAuthCall()
   return (
     <>
       <Container maxWidth="lg" 
-      sx={register}>
+      sx={flex}>
         <Grid
           container
           justifyContent="center"
