@@ -3,6 +3,9 @@ import StartNavbar from "../components/Start/StartNavbar";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import Footer from "../components/Start/Footer";
 import { flex, footer } from "../styles/globalStyle";
+import { useTheme } from "@emotion/react";
+import { useContext } from "react";
+import { ColorModeContext } from "../styles/theme";
 
 const avatars = [
     {
@@ -33,21 +36,21 @@ const avatars = [
 
 
 const About = () => {
+    const theme = useTheme()
+    const colorMode = useContext(ColorModeContext)
     return (
         <Container>
             <StartNavbar />
-            <Typography variant="h3" sx={{ marginTop: "5rem", marginBottom: "2rem", textAlign: "center" }}>
+            <Typography variant="h2" sx={{ marginTop: "5rem", marginBottom: "2rem", textAlign: "center" }}>
                 ABOUT US
             </Typography>
-            <Typography variant="h4" sx={{ fontStyle: "italic", marginBottom: "2rem", textAlign: "center" }}>
+            <Typography variant="h3" sx={{ fontStyle: "italic", marginBottom: "2rem", textAlign: "center" }}>
                 Empowering Businesses <br />
                 <span style={{ color: "cornflowerblue" }}>Lean, Smart, Effective</span>
             </Typography>
-            {/* <span style={{color:"cornflowerblue" }}>    
-            Our story 
-            </span> */}
-            <Box sx={{ backgroundColor: "#F9FAFB", borderRadius: "10px", padding: "2rem" }}>
-                <Typography variant="h5" sx={{ color: "cornflowerblue", textAlign: "center" }}>
+   
+            <Box sx={{ backgroundColor: theme.palette.mode === "dark" ? "neutral.dark" : "#F9fAFC", borderRadius: "10px", padding: "2rem", color: theme.palette.mode === "dark" ? "white" : "primary.main" }}>
+                <Typography variant="h3" sx={{ color: "cornflowerblue", textAlign: "center" }}>
                     Our Story
                 </Typography>
                 <br />
@@ -57,8 +60,8 @@ const About = () => {
                 <br />
                 Smart Stock helps small and medium-sized companies automate and simplify their daily operations. The user-friendly business software centralizes all orders, inventories, payments and shipping processes in one place: this creates more time, higher sales and greater customer satisfaction. Smart Stock offers flexible functions and interfaces to all common technology tools. With this setup, companies can develop sustainably day by day.
             </Box>
-            <Box sx={{ backgroundColor: "#EFF0FD", borderRadius: "10px", padding: "2rem", marginTop: "2rem", marginBottom: "5rem" }}>
-                    <Typography variant="h5" sx={{ color: "cornflowerblue", textAlign: "center" }}>
+            <Box sx={{ backgroundColor: theme.palette.mode === "dark" ? "neutral.dark" : "#EFF0FD", borderRadius: "10px", padding: "2rem", marginTop: "2rem", marginBottom: "5rem", color: theme.palette.mode === "dark" ? "white" : "primary.main" }}>
+                    <Typography variant="h3" sx={{ color: "cornflowerblue", textAlign: "center" }}>
                         Our Team
                     </Typography>
                 <Grid container spacing={3} mt={3} sx={flex} >
@@ -69,7 +72,7 @@ const About = () => {
                                 src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${avatar.name}`}
                                 alt=""
                             />
-                            <Typography variant="h6" align="center" sx={{ marginRight: "1rem", marginTop: "1rem", color: "red" }}>
+                            <Typography variant="h5" align="center" sx={{ marginRight: "1rem", marginTop: "1rem", color: "red" }}>
                                 {avatar.name}
                             </Typography>
                             <Typography align="center" sx={{ marginRight: "1rem" }}>

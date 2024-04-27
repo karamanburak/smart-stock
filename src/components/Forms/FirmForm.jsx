@@ -1,14 +1,12 @@
 import Box from "@mui/material/Box";
 import * as React from "react";
 import useStockCall from "../../hooks/useStockCall";
-import { darkModeBtn, flexColumn, lightMode } from "../../styles/globalStyle";
+import {  flexColumn } from "../../styles/globalStyle";
 import MyButton from "../Commons/MyButton";
 import MyTextField from "../Commons/MyTextField";
 import { firmFields } from "../../helper/formFields";
-import { useSelector } from "react-redux";
 
 export default function FirmForm({ open, handleClose, initialState }) {
-  const { mode } = useSelector(state => state.darkMode)
   const [info, setInfo] = React.useState(initialState);
   const { postStockData, putStockData } = useStockCall();
 
@@ -36,7 +34,6 @@ export default function FirmForm({ open, handleClose, initialState }) {
     <Box
       component="form"
       onSubmit={handleSubmit}
-      // sx={{ display: "flex", flexDirection: "column", gap: 2 }}
       sx={flexColumn}
     >
       {firmFields.map((item) => (
@@ -46,7 +43,6 @@ export default function FirmForm({ open, handleClose, initialState }) {
         type="submit"
         variant="contained"
         title={info._id ? "Update Firm" : "Submit Firm"}
-        sx={mode ? lightMode : darkModeBtn}
       />
     </Box>
   );

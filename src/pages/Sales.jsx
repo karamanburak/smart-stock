@@ -1,16 +1,13 @@
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import useStockCall from "../hooks/useStockCall";
 import SaleTable from "../components/Tables/SaleTable";
 import PageHeader from "../components/Commons/PageHeader";
 import StockModal from "../components/Commons/StockModal";
 import SaleForm from "../components/Forms/SaleForm";
-import {  darkModeBtn, lightMode } from "../styles/globalStyle";
 
 const Sales = () => {
-  const { mode } = useSelector(state => state.darkMode)
   const { getProSalBrands } = useStockCall();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -43,8 +40,9 @@ const Sales = () => {
     <PageHeader text="Sales"/>
       <Button
        onClick={handleOpen}
-        sx={mode ? lightMode : darkModeBtn}
-        variant={mode ? "outlined" : "contained"}>
+        sx={{ backgroundColor: "neutral.dark" }}
+        variant="contained"
+        >
         New Sale
       </Button>
       {open && (

@@ -8,7 +8,7 @@ const Imprint = () => {
     return (
         <Container>
             <StartNavbar />
-                <Typography variant="h4" sx={{ marginTop: "5rem", marginBottom:"2rem",textAlign:"center" }}>
+                <Typography variant="h2" sx={{ marginTop: "5rem", marginBottom:"2rem",textAlign:"center" }}>
                     IMPRINT
                 </Typography>
             <Typography sx={{marginBottom:"4rem"}}>

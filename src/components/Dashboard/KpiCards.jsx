@@ -39,15 +39,19 @@ export default function KpiCards() {
     ];
     return (
         <>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+
+            >
                 {data.map((item) => (
                     <Card key={item.name} decoration="top"
-                    decorationColor={item.color}   >
-                        <p className="mb-2 text-tremor-default text-tremor-content dark:text-dark-tremor-content-strong">
+                    decorationColor={item.color}  
+
+                     >
+                        <p className="mb-2 text-tremor-default text-tremor-content light:text-dark-tremor-content-strong">
                             {item.name}
                         </p>
                         <p className="flex items-start justify-between">
-                            <span className="text-tremor-metric font-semibold text-tremor-content-strong dark:text-dark-tremor-content-strong">
+                            <span className="text-tremor-metric font-semibold text-tremor-content-strong light:text-dark-tremor-content-strong">
                                 {item.value}
                             </span>
                             {/* <span

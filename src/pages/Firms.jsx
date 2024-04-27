@@ -7,13 +7,11 @@ import { useState } from "react";
 import loadingGif from "../assets/loading.gif";
 import FirmCard from './../components/Cards/FirmCard';
 import PageHeader from "../components/Commons/PageHeader";
-import {  darkModeBtn, lightMode } from "../styles/globalStyle";
 
 
 const Firms = () => {
 
   const { getStockData } = useStockCall()
-  const {mode} = useSelector(state => state.darkMode)
   const { firms,loading } = useSelector(state => state.stock)
   console.log("Firms", firms);
 
@@ -45,8 +43,9 @@ const Firms = () => {
       <PageHeader text="Firms" />
         <Button
         onClick={handleOpen}
-        sx={mode ? lightMode : darkModeBtn}
-          variant={mode ? "outlined" : "contained"}> New Firm </Button>
+        sx={{backgroundColor:"neutral.dark"}}
+          variant="contained"
+          > New Firm </Button>
       <Grid container spacing={2} mt={3} >
         {loading ? (
           <img src={loadingGif} alt="loading..." height={500} />

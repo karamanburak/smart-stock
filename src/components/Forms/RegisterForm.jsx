@@ -64,7 +64,8 @@ const SignUpForm = ({
             label={field.label}
             name={field.name}
             id={field.id}
-            variant="outlined"
+            variant="filled"
+            color="secondary"
             inputProps={{
               autoComplete: "off"  // Burada "autoComplete" kullanılmalıdır.
             }}

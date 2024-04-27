@@ -1,6 +1,11 @@
-import { Button, Toolbar, Typography } from '@mui/material';
+import {  Button, IconButton, Toolbar, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import {  footerBtnStyle, footerContainer } from '../../styles/globalStyle';
+import LigtModeOutlinedIcon from '@mui/icons-material/LightModeOutlined'
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
+import { useTheme } from "@mui/material";
+import { useContext } from 'react';
+import { footerBtnStyle } from '../../styles/globalStyle';
+import { ColorModeContext } from './../../styles/theme';
 
 
 const links = [
@@ -27,22 +32,44 @@ const links = [
 
 const Footer = () => {
     const navigate = useNavigate()
-    return <>
+    const theme = useTheme()
+    const colorMode = useContext(ColorModeContext)
+
+    return < >
         <Toolbar
-            sx={footerContainer}>
+            sx={{
+                backgroundColor : theme.palette.mode === "dark" ? "primary.main" : "#fcfcfc",
+                position: "fixed",
+                bottom: 0,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100vw"
+}}>
             <Button
                 onClick={() => navigate("/about")}
-                style={footerBtnStyle}>
+                sx={footerBtnStyle}>
                 About
             </Button>
             <Button
                 onClick={() => navigate("/imprint")}
-                style={ footerBtnStyle }>
+                sx={footerBtnStyle}
+                >
                 Imprint
             </Button>
             <Typography sx={{ color: "secondary.main", textAlign: "center", fontWeight: "bold", flexGrow: 1, display: "block" }}>
                 Made By Burak Karaman &copy; 2024
             </Typography>
+
+            <IconButton
+                sx={{ width: "45px", height: "45px", marginTop: ".4rem" }}
+                onClick={colorMode.toggleColorMode}>
+                {theme.palette.mode === "dark" ? (
+                    <DarkModeOutlinedIcon />
+                ) : (
+                    <LigtModeOutlinedIcon />
+                )}
+            </IconButton>
 
             {links.map((link,index)=>(
             <Typography key={index} sx={{

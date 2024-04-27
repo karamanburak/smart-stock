@@ -3,14 +3,13 @@ import { useSelector } from 'react-redux';
 import useStockCall from '../../hooks/useStockCall';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import DataTable from '../Commons/DataTable';
-import { editDeleteIconDark, editDeleteIconLight } from '../../styles/globalStyle';
+
 function getRowId(row){
     // console.log(row);
     return row._id
 }
 
 export default function ProductTable() {
-    const { mode } = useSelector(state => state.darkMode)
     const {products} = useSelector(state=> state.stock)
     const {deleteStockData} = useStockCall()
 
@@ -69,7 +68,6 @@ export default function ProductTable() {
             renderCell: (params) => (
                 // console.log(params)
                 <DeleteForeverIcon
-                sx={mode ? editDeleteIconLight : editDeleteIconDark}
                     onClick={() => deleteStockData("products", params.id)}
                 />
             ),

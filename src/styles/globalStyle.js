@@ -27,23 +27,20 @@ export const flex = {
   alignItems: "center",
   gap: 2,
 };
+export const registerFlex = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: 2,
+  marginTop: "5rem"
+};
 
 export const footerBtnStyle = {
   textDecoration: "none",
   fontWeight: "bold",
-  color: "secondary.main",
-  opacity: ".7"
+  color: "secondary.main"
 }
 
-export const footerContainer = {
-  position: "fixed",
-  bottom: 0,
-  backgroundColor: "white",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  width: "100vw"
-}
 
 export const footer = {
   position: "fixed",
@@ -52,18 +49,6 @@ export const footer = {
   width: "100%"
 }
 
-export const lightMode = {
-  backgroundColor: "white",
-  color: "primary.main",
-}
-export const darkMode = {
-  backgroundColor: "primary.main",
-  color: "white",
-}
-export const darkModeBtn = {
-  backgroundColor: "secondary.main",
-  color: "white",
-}
 
 export const logoutStyle = {
   backgroundColor: "primary.main",
@@ -76,26 +61,5 @@ export const avatarStyle = {
   borderRadius: "50%"
 }
 
-export const editDeleteIconLight = {
-  backgroundColor: "white",
-  color: "primary.main",
-  cursor: "pointer",
-}
-export const editDeleteIconDark = {
-  backgroundColor: "primary.main",
-  color: "white",
-  cursor: "pointer", 
-}
 
-export const firmNameDarkStyle = {
-  flexGrow: 1, 
-  display: "flex", 
-  alignItems: "center",
-  color: "white"
-}
-export const firmNamelightStyle = {
-  flexGrow: 1, 
-  display: "flex", 
-  alignItems: "center",
-  color: "primary.main"
-}
+

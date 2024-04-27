@@ -1,15 +1,13 @@
 import Box from "@mui/material/Box";
 import * as React from "react";
 import useStockCall from "../../hooks/useStockCall";
-import { darkModeBtn, flexColumn, lightMode } from "../../styles/globalStyle";
+import { flexColumn } from "../../styles/globalStyle";
 import MyButton from "../Commons/MyButton";
 import MyTextField from "../Commons/MyTextField";
 import { brandFields } from "../../helper/formFields";
-import { useSelector } from "react-redux";
 
 
 export default function BrandForm({ handleClose, initialState }) {
-  const { mode } = useSelector(state => state.darkMode)
   const [info, setInfo] = React.useState(initialState);
   const { postStockData, putStockData } = useStockCall();
 
@@ -43,7 +41,6 @@ export default function BrandForm({ handleClose, initialState }) {
         variant="contained"
         size="large"
         title={info._id ? "Update Brand" : "Submit Brand"}
-        sx={mode ? lightMode : darkModeBtn}
       />
     </Box>
   );

@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import * as React from "react";
 import useStockCall from "../../hooks/useStockCall";
-import { darkModeBtn, flexColumn, lightMode, modalStyle } from "../../styles/globalStyle";
+import { flexColumn, modalStyle } from "../../styles/globalStyle";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -12,7 +12,6 @@ import Select from '@mui/material/Select';
 import { useSelector } from "react-redux";
 
 export default function ProductModal({ open, handleClose }) {
-    const { mode } = useSelector(state => state.darkMode)
     const [info, setInfo] = React.useState({
         categoryId: "",
         brandId: "",
@@ -83,8 +82,8 @@ export default function ProductModal({ open, handleClose }) {
                             onChange={handleChange}
                         />
                         <Button
-                            sx={mode ? lightMode : darkModeBtn}
-                            variant={mode ? "outlined" : "contained"}
+                            sx={{backgroundColor:"secondary.main"}}
+                            variant= "contained"
                             type="submit">
                             Submit Product
                         </Button>

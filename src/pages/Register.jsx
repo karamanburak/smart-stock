@@ -11,12 +11,14 @@ import { Formik } from "formik";
 import useAuthCall from "../hooks/useAuthCall";
 import RegisterForm, { SignupSchema } from "../components/Forms/RegisterForm";
 import Footer from "../components/Start/Footer";
+import {  registerFlex } from "../styles/globalStyle";
 
 const Register = () => {
   const { register } = useAuthCall()
   return (
     <>
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" 
+      sx={registerFlex}>
         <Grid
           container
           justifyContent="center"
@@ -24,7 +26,6 @@ const Register = () => {
           rowSpacing={{ sm: 3 }}
           alignItems="center"
           sx={{
-            height: "90vh",
             p: 2,
           }}
         >
@@ -70,7 +71,7 @@ const Register = () => {
             </Box>
           </Grid>
 
-          <AuthImage image={image} />
+          <AuthImage image={image}/>
         </Grid>
       </Container>
               <Footer/>

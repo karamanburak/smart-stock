@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -6,8 +6,6 @@ import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import Switch from "../Commons/Switch";
-import { useSelector } from "react-redux";
 
 const icon = (name) => `/assets/navbar/${name}.svg`
 
@@ -45,55 +43,52 @@ const links = [
     },
 ];
 
-
 const iconStyle = {
     borderRadius: "1rem",
     "&:hover": {
-        backgroundColor: "#38636D",
+        backgroundColor: "secondary.main",
         color: "white",
     },
 };
 const selectedStyle = {
-    backgroundColor: "secondary.main",
+    backgroundColor: "#38636D",
     borderRadius: "1rem",
     "&:hover": {
-        backgroundColor: "#38636D",
+        backgroundColor: "secondary.main",
         color: "white",
     },
-    color: "white",
+    color: "white"
 };
 
 
 const MenuListItems = () => {
     const navigate = useNavigate()
-    const {pathname} = useLocation()
-    const { mode } = useSelector((state) => state.darkMode)
+    const { pathname } = useLocation()
+    const theme = useTheme()
 
     // console.log(pathname);
     return (
-        <div style={{ marginTop: "-4rem" }}>
+        <Box backgroundColor={theme.palette.mode === "dark" ? "primary.main" : "white"} sx={{ height: "100vh" }}>
             <Toolbar />
-            <List sx={{ height: "100vh", backgroundColor: mode ? "white" : "primary.main", color: mode ? "primary.main" : "white" }} >
-            <Switch/>
+            <List>
                 {links.map((item) => (
                     <ListItem key={item.title} disablePadding sx={{ marginTop: ".2rem" }}>
-                        <ListItemButton 
-                        onClick={()=>navigate(item.url)} 
-                            sx={pathname == item.url ? selectedStyle : iconStyle}
-                        >
-                                <Box sx={{
-                                    width:24,
-                                    height:24,
-                                    mask: `url(${item.icon}) no-repeat center / contain`,
-                                    mr:2,
-                                    bgcolor:"currentColor",
-                                }}/>
+                        <ListItemButton
+                            onClick={() => navigate(item.url)}
+                            sx={pathname == item.url ? selectedStyle : iconStyle} >
+                            <Box sx={{
+                                width: 24,
+                                height: 24,
+                                mask: `url(${item.icon}) no-repeat center / contain`,
+                                mr: 2,
+                                bgcolor: "currentColor",
+                            }} />
                             <ListItemText primary={item.title} />
                         </ListItemButton>
                     </ListItem>
                 ))}
             </List>
-        </div>
+        </Box>
     )
 }
 

@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import * as React from "react";
 import useStockCall from "../../hooks/useStockCall";
-import { darkModeBtn, flexColumn, lightMode, modalStyle } from "../../styles/globalStyle";
+import {  flexColumn,  modalStyle } from "../../styles/globalStyle";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -13,7 +13,6 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 
 export default function SaleModal({ open, handleClose, initialState }) {
-    const { mode } = useSelector(state => state.darkMode)
     const [info, setInfo] = useState(initialState)
     const { postStockData, putStockData } = useStockCall();
     const { products, brands } = useSelector(state => state.stock)
@@ -98,8 +97,6 @@ export default function SaleModal({ open, handleClose, initialState }) {
                             onChange={handleChange}
                         />
                         <Button
-                            variant={mode ? "outlined" : "contained"}
-                            sx={mode ? lightMode : darkModeBtn}
                             type="submit">
                             {info._id ? "UPDATE SALE" : "ADD NEW SALE"}
                         </Button>

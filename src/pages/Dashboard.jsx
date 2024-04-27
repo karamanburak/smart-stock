@@ -3,7 +3,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Button, Container } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
+import { Box, useTheme } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
@@ -14,19 +14,25 @@ import { Outlet } from "react-router-dom";
 import useAuthCall from "../hooks/useAuthCall";
 import MenuListItems from "../components/Navigation/MenuListItems";
 import { useSelector } from "react-redux";
-import logo from  '../assets/stock-logo.png'
+import logo from '../assets/stock-logo.png'
 import avatar from '../assets/avatar.png'
-import { avatarStyle, darkMode, firmNameDarkStyle, firmNamelightStyle, lightMode,logoutStyle } from "../styles/globalStyle";
+import { avatarStyle } from "../styles/globalStyle";
+import { useContext } from 'react';
+import LigtModeOutlinedIcon from '@mui/icons-material/LightModeOutlined'
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
+import { useState } from "react";
+import { ColorModeContext } from "../styles/theme";
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
   const { logout } = useAuthCall();
-  const { mode } = useSelector((state) => state.darkMode)
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [isClosing, setIsClosing] = React.useState(false);
-  const {currentUser} = useSelector(state => state.auth)
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+  const { currentUser } = useSelector(state => state.auth)
+  const theme = useTheme()
+  const colorMode = useContext(ColorModeContext)
 
   const handleDrawerClose = () => {
     setIsClosing(true);
@@ -48,17 +54,17 @@ function Dashboard(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Container maxWidth="100vw" sx={mode ? lightMode : darkMode}>
-
-    <Box sx={{display: "flex", minHeight:"100vh"}}>
+    <Box
+      sx={{ display: "flex", minHeight: "100vh" }}
+    >
       <CssBaseline />
       <AppBar
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-           backgroundColor: mode ? lightMode : darkMode,
           borderRadius: "0.5rem",
+          backgroundColor: theme.palette.mode === "dark" ? "primary.main" : "white"
         }}
       >
         <Toolbar>
@@ -67,30 +73,44 @@ function Dashboard(props) {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+            sx={{ mr: 2, display: { sm: "none" }, color: theme.palette.mode === "dark" ? "white" : "primary.main" }}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div" sx={mode ? firmNamelightStyle : firmNameDarkStyle}>
-          <img src={logo} alt="" style={{width:"45px", height:"45px",marginRight:".7rem"}}/>
+          <img src={logo} alt="" style={{ width: "45px", height: "45px", marginRight: ".7rem" }} />
+          <Typography variant="h4" noWrap component="div"
+            sx={{ color: theme.palette.mode === "dark" ? "white" : "primary.main" }}
+          >
             Smart Stock
           </Typography>
+          <Box display="flex" sx={{ marginLeft: "auto" }}>
+            <IconButton>
+              {currentUser ? (<img
+                style={avatarStyle}
+                src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${currentUser}`}
+                alt=""
+              />
+              ) : (
+                <img style={avatarStyle} src={avatar} />
+              )}
+            </IconButton>
+            <IconButton
+              sx={{ width: "45px", height: "45px", marginTop: ".4rem" }}
+              onClick={colorMode.toggleColorMode}>
+              {theme.palette.mode === "dark" ? (
+                <DarkModeOutlinedIcon />
+              ) : (
+                <LigtModeOutlinedIcon />
 
-            {currentUser ? (<img
-           style={avatarStyle}
-              src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${currentUser}`}
-              alt=""
-            />
-            ) : (
-              <img style={avatarStyle} src={avatar} />
-            ) }
-    
-          <Button
-          // variant="contained"
-            sx={ mode ? lightMode : logoutStyle}
-            onClick={logout}>
-            Logout <LogoutIcon />
-          </Button>
+              )}
+            </IconButton>
+            <IconButton
+              sx={{ width: "45px", height: "45px", marginTop: ".4rem" }}
+              onClick={logout}>
+              <LogoutIcon />
+            </IconButton>
+          </Box>
+
         </Toolbar>
       </AppBar>
       <Box
@@ -144,7 +164,6 @@ function Dashboard(props) {
         <Outlet />
       </Box>
     </Box>
-    </Container>
 
   );
 }

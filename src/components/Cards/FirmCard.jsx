@@ -6,14 +6,15 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditNoteIcon from '@mui/icons-material/EditNote';
-import { useSelector } from 'react-redux';
 import useStockCall from '../../hooks/useStockCall';
-import { Button } from '@mui/material';
+import { Button, useTheme } from '@mui/material';
 
 
 export default function FirmCard({ _id, name, address, image, phone, handleOpen, setInitialState }) {
-    const { mode } = useSelector(state => state.darkMode)
+    // const { mode } = useSelector(state => state.darkMode)
     const { deleteStockData } = useStockCall()
+    const theme = useTheme()
+
 
     return (
         <Card sx={{
@@ -22,16 +23,15 @@ export default function FirmCard({ _id, name, address, image, phone, handleOpen,
             flexDirection: "column",
             justifyContent: "space-between",
             padding: ".5rem",
-            backgroundColor: mode ? "white" : "primary.main", color: mode ? "primar.main" : "white",
-            boxShadow: mode ? "0 0 10px 0 rgba(0,0,0,0.2)" : "0 0 10px 0 rgba(255,255,255,0.2)",
+            backgroundColor: theme.palette.mode === "dark" ? "primary.main" : "white",
 
         }}>
             <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
+                <Typography gutterBottom variant="h4" component="div">
                     {name}
                 </Typography>
                 <Typography variant="body2"
-                    sx={{ color: mode ? "primary.main" : "white" }}
+                    // sx={{ color: mode ? "primary.main" : "white" }}
                 >
                     {address}
                 </Typography>
@@ -45,7 +45,7 @@ export default function FirmCard({ _id, name, address, image, phone, handleOpen,
             <CardContent>
                 <Typography
                     variant="body2" color="text.secondary"
-                    sx={{ color: mode ? "primary.main" : "white" }}
+                    // sx={{ color: mode ? "primary.main" : "white" }}
                 >
                     Phone: {phone}
                 </Typography>
@@ -61,16 +61,18 @@ export default function FirmCard({ _id, name, address, image, phone, handleOpen,
                         handleOpen();
                         setInitialState({_id,name,phone,image,address})
                         }}
-                    sx={{ backgroundColor: mode ? "white" : "secondary.main", color: mode ? "primary.main" : "white" }}
-                    variant={mode ? "outlined" : "contained"}>
+                    sx={{ backgroundColor: "neutral.dark" }}
+                    variant="contained"
+                    >
                     EDIT
                     <EditNoteIcon
                         sx={{ cursor: "pointer", marginLeft: ".2rem"}} />
                 </Button>
                 <Button
                     onClick={() => deleteStockData("firms", _id)}
-                    sx={{ backgroundColor: mode ? "white" : "secondary.main", color: mode ? "primary.main" : "white" }}
-                    variant={mode ? "outlined" : "contained"}>
+                    sx={{ backgroundColor: "neutral.dark" }}
+                    variant="contained"
+                    >
                     DELETE
                     <DeleteForeverIcon
                         sx={{ cursor: "pointer", marginLeft: ".2rem" }}

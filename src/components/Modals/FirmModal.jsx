@@ -4,9 +4,7 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import { TextField } from '@mui/material';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import useStockCall from '../../hooks/useStockCall';
-import { darkModeBtn, lightMode } from '../../styles/globalStyle';
 
 const style = {
     position: 'absolute',
@@ -21,24 +19,23 @@ const style = {
 };
 
 export default function FirmModal({ open, handleClose, initialState }) {
-    const { mode } = useSelector(state => state.darkMode)
-    const {postStockData,putStockData} = useStockCall()
+    const { postStockData, putStockData } = useStockCall()
 
-const [info,setInfo] = useState(initialState)
+    const [info, setInfo] = useState(initialState)
 
     const handleChange = (e) => {
         // setInfo({...info,[e.target.id]: e.target.value})}
-        setInfo({...info,[e.target.name]: e.target.value})
-       // console.log(info); //* setter asenkron calisir o nedenle güncel veriyi yakalayamayiz *\\
+        setInfo({ ...info, [e.target.name]: e.target.value })
+        // console.log(info); //* setter asenkron calisir o nedenle güncel veriyi yakalayamayiz *\\
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log("submit", info);
         if (info._id) { //* id varsa edit işlemi
-            putStockData("firms",info)
+            putStockData("firms", info)
         } else {//* id yoksa create işlemi
-            postStockData("firms",info)
+            postStockData("firms", info)
         }
         handleClose()
     }
@@ -57,32 +54,33 @@ const [info,setInfo] = useState(initialState)
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description">
                 <Box sx={style}>
-                    <Box 
-                    component="form" 
-                    onSubmit={handleSubmit}
-                    sx={{display:"flex", flexDirection:"column", gap:2}}>
-                    {textFields.map(field=>{
-                        return(
-                            <TextField
-                            key={field.name}
-                            label={field.label}
-                            name={field.name}
-                            id={field.id}
-                            type={field.type}
-                            variant="outlined"
-                            value={info[field.name]}
-                            onChange={handleChange}
-                            >
-                            </TextField>
-                        )
-                    })}
-                      
-                        <Button 
-                            sx={mode ? lightMode : darkModeBtn}
-                            variant={mode ? "outlined" : "contained"}
+                    <Box
+                        component="form"
+                        onSubmit={handleSubmit}
+                        sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                        {textFields.map(field => {
+                            return (
+                                <TextField
+                                    key={field.name}
+                                    label={field.label}
+                                    name={field.name}
+                                    id={field.id}
+                                    type={field.type}
+                                    variant="filled"
+                                    color="secondary"
+                                    value={info[field.name]}
+                                    onChange={handleChange}
+                                >
+                                </TextField>
+                            )
+                        })}
+
+                        <Button
+                            sx={{ backgroundColor: "secondary.main" }}
+                            variant="contained"
                             type="submit">
                             {info._id ? "Update Firm" : "Submit Firm"}
-                            </Button>
+                        </Button>
                     </Box>
                 </Box>
             </Modal>

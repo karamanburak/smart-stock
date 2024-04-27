@@ -4,7 +4,7 @@ const AuthImage = ({ image }) => {
   return (
     <Grid item xs={10} sm={7} md={6}>
       <Container>
-        <img src={image} alt="img" style={{ width: "100%" }} />
+        <img src={image} alt="img" style={{ width: "100%"}}  />
       </Container>
     </Grid>
   );

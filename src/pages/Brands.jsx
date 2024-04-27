@@ -7,13 +7,11 @@ import BrandCard from "../components/Cards/BrandCard";
 import BrandModal from "../components/Modals/BrandModal";
 import loadingGif from "../assets/loading.gif";
 import PageHeader from "../components/Commons/PageHeader";
-import { darkModeBtn, lightMode } from "../styles/globalStyle";
 
 
 const Brands = () => {
 
   const { getStockData } = useStockCall()
-  const { mode } = useSelector(state => state.darkMode)
   const { brands,loading } = useSelector(state => state.stock)
 
   const [open, setOpen] = useState(false);
@@ -40,8 +38,9 @@ const Brands = () => {
 
       <Button
         onClick={handleOpen}
-        sx={  mode ? lightMode : darkModeBtn }
-        variant={mode ? "outlined" : "contained"}> New Brand </Button>
+        sx={  {backgroundColor:"neutral.dark"} }
+        variant= "contained"
+        > New Brand </Button>
       <Grid container spacing={2} mt={3} >
         {loading ? (
           <img src={loadingGif} alt="loading..." height={500} />

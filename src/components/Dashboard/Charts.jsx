@@ -74,8 +74,8 @@ export default function Charts() {
     const salesData = sales.map((item) => ({ date: new Date(item.createdAt).toLocaleDateString(), sale: item.amount }))
     const purchasesData = purchases.map((item) => ({ date: new Date(item.createdAt).toLocaleDateString(), purchase: item.amount }))
     return (
-        <Grid container spacing={3} mt={3}>
-            <Grid item xs={12} md={6}>
+        <Grid container spacing={3} mt={3} >
+            <Grid item xs={12} md={6} >
                 <AreaChart
                     className="h-80"
                     data={salesData}

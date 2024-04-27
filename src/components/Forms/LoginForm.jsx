@@ -26,7 +26,8 @@ const LoginForm = ({ values, handleChange, errors, touched, handleBlur }) => {
             autoComplete: "off"  // Burada "autoComplete" kullanılmalıdır.
           }}
           type="email"
-          variant="outlined"
+          variant="filled"
+          color="secondary"
           value={values.email}
           onChange={handleChange}
           onBlur={handleBlur}
@@ -38,7 +39,8 @@ const LoginForm = ({ values, handleChange, errors, touched, handleBlur }) => {
           name="password"
           id="password"
           type="password"
-          variant="outlined"
+          variant="filled"
+          color="secondary"
           value={values.password}
           onChange={handleChange}
           onBlur={handleBlur}
@@ -54,14 +56,6 @@ const LoginForm = ({ values, handleChange, errors, touched, handleBlur }) => {
             <CircularProgress />
           </Button>
         )}
-
-        {/* <Button
-          variant="contained"
-          type="submit"
-          disabled={loading}
-          startIcon={loading && <CircularProgress />}>
-          Submit
-        </Button> */}
       </Box>
     </Form>
   );

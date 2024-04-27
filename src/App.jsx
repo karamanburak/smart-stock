@@ -1,39 +1,28 @@
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+import { ThemeProvider } from "@mui/material/styles";
 import AppRouter from "./router/AppRouter";
 import { Provider } from "react-redux";
-import store, {persistor} from "./app/store";
+import store, { persistor } from "./app/store";
 import { ToastContainer } from "react-toastify";
 import { PersistGate } from 'redux-persist/integration/react'
 import { CssBaseline } from "@mui/material";
+import { ColorModeContext, useMode } from "./styles/theme";
 
- function App() {
-
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: '#212529',
-      },
-      secondary: {
-        main: '#454F5B',
-        second: '#161C24'
-      },
-    },
-  });
+function App() {
+  const [theme, colorMode] = useMode()
 
   return (
-    <>
+    <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
-           <CssBaseline />
-          <AppRouter />
+            <CssBaseline />
+            <AppRouter />
           </PersistGate>
         </Provider>
         <ToastContainer />
       </ThemeProvider>
-    </>
+    </ColorModeContext.Provider>
   );
 }
 

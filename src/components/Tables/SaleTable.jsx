@@ -5,12 +5,10 @@ import useStockCall from '../../hooks/useStockCall';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import DataTable from '../Commons/DataTable';
-import { editDeleteIconDark, editDeleteIconLight } from '../../styles/globalStyle';
 
 
 
 export default function SaleTable({ setInitialState, handleOpen }) {
-    const { mode } = useSelector(state => state.darkMode)
     const { sales } = useSelector(state => state.stock)
     const { deleteStockData } = useStockCall()
 
@@ -93,7 +91,6 @@ export default function SaleTable({ setInitialState, handleOpen }) {
                             handleOpen();
                             setInitialState({ brandId, price, quantity, productId, _id });
                         }}
-                        sx={mode ? editDeleteIconLight : editDeleteIconDark}
 
                     />,
                     <GridActionsCellItem
@@ -101,7 +98,6 @@ export default function SaleTable({ setInitialState, handleOpen }) {
                         icon={<DeleteForeverIcon />}
                         label="Delete"
                         onClick={() => deleteStockData("sales", _id)}
-                        sx={mode ? editDeleteIconLight : editDeleteIconDark}
 
                     />,
                 ];
