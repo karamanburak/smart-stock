@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 import colors from 'tailwindcss/colors';
-import { darkModeSLice } from './src/features/darkModeSlice';
 
 export default {
   content: [
@@ -10,6 +9,7 @@ export default {
     // Path to Tremor module
     "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: "selector",
   theme: {
     transparent: 'transparent',
     current: 'currentColor',
@@ -133,5 +133,5 @@ export default {
     },
   ],
   plugins: [],
-  darkMode: "selector",
+  
 }

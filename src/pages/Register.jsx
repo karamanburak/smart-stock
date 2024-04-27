@@ -11,14 +11,13 @@ import { Formik } from "formik";
 import useAuthCall from "../hooks/useAuthCall";
 import RegisterForm, { SignupSchema } from "../components/Forms/RegisterForm";
 import Footer from "../components/Start/Footer";
-import { flex } from "../styles/globalStyle";
+import {  registerFlex } from "../styles/globalStyle";
 
 const Register = () => {
   const { register } = useAuthCall()
   return (
-    <>
       <Container maxWidth="lg" 
-      sx={flex}>
+      sx={registerFlex}>
         <Grid
           container
           justifyContent="center"
@@ -66,16 +65,15 @@ const Register = () => {
               }}
               component={(props) => <RegisterForm {...props} />}
             ></Formik>
-            <Box sx={{ textAlign: "center", mt: 2, color: "secondary.main" }}>
+            <Box sx={{ textAlign: "center", mb: 8, mt:2, color: "secondary.main" }}>
               <Link to="/login">Already have an account? Sign in</Link>
             </Box>
           </Grid>
 
           <AuthImage image={image}/>
         </Grid>
-      </Container>
               <Footer/>
-    </>
+      </Container>
   );
 };
 

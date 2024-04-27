@@ -27,6 +27,13 @@ export const flex = {
   alignItems: "center",
   gap: 2,
 };
+export const registerFlex = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: 2,
+  minHeight: "100vh",
+};
 
 export const footerBtnStyle = {
   textDecoration: "none",
