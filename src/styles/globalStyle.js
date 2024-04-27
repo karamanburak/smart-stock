@@ -27,13 +27,6 @@ export const flex = {
   alignItems: "center",
   gap: 2,
 };
-export const registerFlex = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  gap: 2,
-  marginTop: "5rem"
-};
 
 export const footerBtnStyle = {
   textDecoration: "none",
