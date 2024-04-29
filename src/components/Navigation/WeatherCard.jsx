@@ -59,7 +59,8 @@ export default function WeatherCard() {
             <Box fontWeight="bold">
                 {weatherData.name}
             </Box>
-            <Box variant="span" sx={{ display: "flex" }}>
+                
+            <Box variant="span" sx={{ display: "flex",padding:".4rem" }}>
                 {Math.round(weatherData.main.temp)} <b><sup>°C</sup></b>
             </Box>
 
