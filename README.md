@@ -11,12 +11,13 @@
 ```
 - SmartStock Management App (folder)
 |
+|
 SOLUTION
 ├── public
 |    ├── assets
 ├── src
 |    ├── apiCall
-|    │       └── apiCall.js
+|    │   └── apiCall.js
 |    ├── app
 |    │   └── store.jsx
 |    ├── assets
@@ -24,7 +25,7 @@ SOLUTION
 |    ├── app
 |    │   └── store.jsx
 |    ├── assets
-|    │   ├── [images]
+|    │   └── [images]
 |    ├── components
 |    │   ├── Cards
 |    │   │   ├── BrandCard.jsx
@@ -97,7 +98,7 @@ SOLUTION
 |    ├── App.jsx
 |    ├── frontend.env
 |    ├── index.css
-|    ├── main.jsx
+|    └── main.jsx
 ├── .gitignore
 ├── index.html
 ├── LICENSE
@@ -113,7 +114,7 @@ SOLUTION
 
 ## Outcome
 
-![SmartStock]()
+![SmartStock](https://github.com/karamanburak/stock-management-app/assets/150926922/d3e7ce1f-0638-423d-aca6-84c01f621ddd)
 
 ### Installed Packages
 
