@@ -6,6 +6,115 @@
 📦 This comprehensive reacts project aims to create a stock store application. The user can register to the store, log in, add the desired product to their inventory, buy or sell it, and keep track of the most current status of it instantly from the dashboard. The user can choose to use the application in dark mode or light mode. 
 
 
+## Project Skeleton
+
+```
+- SmartStock Management App (folder)
+|
+SOLUTION
+├── public
+|    ├── assets
+├── src
+|    ├── apiCall
+|    │       └── apiCall.js
+|    ├── app
+|    │   └── store.jsx
+|    ├── assets
+|    ├── components
+|    ├── app
+|    │   └── store.jsx
+|    ├── assets
+|    │   ├── [images]
+|    ├── components
+|    │   ├── Cards
+|    │   │   ├── BrandCard.jsx
+|    │   │   └── FirmCard.jsx
+|    │   ├── Commons
+|    │   │   ├── AuthHeader.jsx
+|    │   │   ├── AuthImage.jsx
+|    │   │   ├── DataTable.jsx
+|    │   │   ├── MyButton.jsx
+|    │   │   ├── MyTextfield.jsx
+|    │   │   ├── PageHeader.jsx
+|    │   │   ├── SelectControl.jsx
+|    │   │   └── StockModal.jsx
+|    │   ├── Dashboard
+|    │   │   ├── Charts.jsx
+|    │   │   └── KpiCards.jsx
+|    │   ├── Forms
+|    │   │   ├── BrandForm.jsx
+|    │   │   ├── FirmForm.jsx
+|    │   │   ├── LoginForm.jsx
+|    │   │   ├── ProductForm.jsx
+|    │   │   ├── PurchaseForm.jsx
+|    │   │   ├── RegisterForm.jsx
+|    │   │   └── SaleForm.jsx
+|    │   ├── Modals
+|    │   │   ├── BrandModal.jsx
+|    │   │   ├── FirmModal.jsx
+|    │   │   ├── ProductModal.jsx
+|    │   │   ├── PurchaseModal.jsx
+|    │   │   └── SaleModal.jsx
+|    │   ├── Navigatons
+|    │   │   ├── MenuListItems.jsx
+|    │   │   └── WeatherCard.jsx
+|    │   ├── Start
+|    │   │   ├── Footer.jsx
+|    │   │   └── StartNavbar.jsx
+|    │   ├── Tables
+|    │   │   ├── ProductTable.jsx
+|    │   │   ├── PurchaseTable.jsx
+|    │   │   └── SaleTable.jsx
+|    ├── features
+|    │   ├── authSlice.jsx
+|    │   └── stockSlice.jsx
+|    ├── helper
+|    │   ├── FormFields.js
+|    │   └── ToastNotify.jsj
+|    ├── hooks
+|    │   ├── useAuthCall.jsx
+|    │   ├── useAxios.jsx
+|    │   └── useStockCalls.jsx
+|    ├── pages
+|    │   ├── About.jsx
+|    │   ├── Brands.jsx
+|    │   ├── Dashboard.jsx
+|    │   ├── Firms.jsx
+|    │   ├── Home.jsx
+|    │   ├── Imprint.jsx
+|    │   ├── Login.jsx
+|    │   ├── Products.jsx
+|    │   ├── Purchases.jsx
+|    │   ├── Register.jsx
+|    │   ├── Sales.jsx
+|    │   └── StartPage.jsx
+|    ├── router
+|    |   ├── AppRouter.jsx
+|    |   └── PrivateRouter.jsx
+|    ├── styles
+|    │   ├── globalStyle.js
+|    |   └── theme.js
+|    ├── App.jsx
+|    ├── frontend.env
+|    ├── index.css
+|    ├── main.jsx
+├── .gitignore
+├── index.html
+├── LICENSE
+├── package.json
+├── pnpm-lock-yaml
+├── postcss.config.js
+├── README.md
+├── tailwind.config.js
+├── vercel.json
+└── vite.config.js
+
+```
+
+## Outcome
+
+![SmartStock]()
+
 ### Installed Packages
 
 - MUI and MUI icons
@@ -98,3 +207,7 @@ const instance = axios.create({
 });
 
 ```
+
+## Postman Documentation
+
+[View Postman Documentation](https://documenter.getpostman.com/view/32987022/2sA3BuXVAD)
