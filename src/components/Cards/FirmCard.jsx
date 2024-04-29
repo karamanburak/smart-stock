@@ -11,7 +11,6 @@ import { Button, useTheme } from '@mui/material';
 
 
 export default function FirmCard({ _id, name, address, image, phone, handleOpen, setInitialState }) {
-    // const { mode } = useSelector(state => state.darkMode)
     const { deleteStockData } = useStockCall()
     const theme = useTheme()
 
@@ -31,7 +30,6 @@ export default function FirmCard({ _id, name, address, image, phone, handleOpen,
                     {name}
                 </Typography>
                 <Typography variant="body2"
-                    // sx={{ color: mode ? "primary.main" : "white" }}
                 >
                     {address}
                 </Typography>
@@ -44,9 +42,7 @@ export default function FirmCard({ _id, name, address, image, phone, handleOpen,
             />
             <CardContent>
                 <Typography
-                    variant="body2" color="text.secondary"
-                    // sx={{ color: mode ? "primary.main" : "white" }}
-                >
+                    variant="body2" color="text.secondary">
                     Phone: {phone}
                 </Typography>
             </CardContent>

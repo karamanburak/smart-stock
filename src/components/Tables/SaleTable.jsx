@@ -30,7 +30,7 @@ export default function SaleTable({ setInitialState, handleOpen }) {
             editable: false,
             headerAlign: "center",
             align: "center",
-            flex: 1,
+            flex: 3,
             valueGetter: (value) => {
                 return value?.name ?? 'N/A'
             }
@@ -41,7 +41,7 @@ export default function SaleTable({ setInitialState, handleOpen }) {
             minWidth: 100,
             headerAlign: "center",
             align: "center",
-            flex: 1,
+            flex: 3,
             valueGetter: (value) => {
                 return value?.name ?? 'N/A'
             }
@@ -80,7 +80,6 @@ export default function SaleTable({ setInitialState, handleOpen }) {
             minWidth: 40,
             headerAlign: "center",
             align: "center",
-            flex: 1,
             renderCell: ({ row: { brandId, price, quantity, productId, _id } }) => {
                 return [
                     <GridActionsCellItem

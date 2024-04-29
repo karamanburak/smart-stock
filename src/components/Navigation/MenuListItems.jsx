@@ -3,9 +3,10 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import Toolbar from "@mui/material/Toolbar";
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import WeatherCard from "./WeatherCard";
+import { menuFlex } from "../../styles/globalStyle";
 
 const icon = (name) => `/assets/navbar/${name}.svg`
 
@@ -68,9 +69,8 @@ const MenuListItems = () => {
 
     // console.log(pathname);
     return (
-        <Box backgroundColor={theme.palette.mode === "dark" ? "primary.main" : "white"} sx={{ height: "100vh" }}>
-            <Toolbar />
-            <List>
+        <Box backgroundColor={theme.palette.mode === "dark" ? "primary.main" : "white"} sx={menuFlex}>
+            <List sx={{ marginTop:"5rem"}}>
                 {links.map((item) => (
                     <ListItem key={item.title} disablePadding sx={{ marginTop: ".2rem" }}>
                         <ListItemButton
@@ -88,6 +88,9 @@ const MenuListItems = () => {
                     </ListItem>
                 ))}
             </List>
+            <Box>
+                <WeatherCard/>
+            </Box>
         </Box>
     )
 }

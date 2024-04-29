@@ -47,15 +47,15 @@ const LoginForm = ({ values, handleChange, errors, touched, handleBlur }) => {
           helperText={touched.password && errors.password}
           error={touched.password && Boolean(errors.password)}
         />
-        {!loading ? (
+        {/* {!loading ? ( */}
           <Button variant="contained" type="submit" sx={{ backgroundColor: "secondary.main" }}>
             Sign In
           </Button>
-        ) : (
+        {/* ) : (
           <Button variant="contained" disabled={loading}>
             <CircularProgress />
           </Button>
-        )}
+        )} */}
   
       </Box>
     </Form>

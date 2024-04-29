@@ -1,10 +1,10 @@
 # stock-management-app
 
+ [SmartStock Live](https://smartstock-management.vercel.app/)
+
 ## Description
 📦 This comprehensive reacts project aims to create a stock store application. The user can register to the store, log in, add the desired product to their inventory, buy or sell it, and keep track of the most current status of it instantly from the dashboard. The user can choose to use the application in dark mode or light mode. 
 
-## Demo
-<a href="https://smartstock-management.vercel.app/" target="_blank">SmartStock Demo</a>
 
 ### Installed Packages
 

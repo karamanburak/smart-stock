@@ -35,6 +35,13 @@ export const registerFlex = {
   minHeight: "100vh",
 };
 
+export const menuFlex = {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
+  height: "100vh"
+}
+
 export const footerBtnStyle = {
   textDecoration: "none",
   fontWeight: "bold",
