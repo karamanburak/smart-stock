@@ -29,7 +29,7 @@ export default function WeatherCard() {
         try {
             window.navigator.geolocation.getCurrentPosition(async (position)=> {
                 savePositionToState(position)
-                const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&q=potsdam&units=metric&appid=${import.meta.env.VITE_WEATHER_apiKey}`)
+                const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${import.meta.env.VITE_WEATHER_apiKey}`)
                 setWeatherData(data)
             })
         } catch (error) {
@@ -40,7 +40,7 @@ export default function WeatherCard() {
 
     useEffect(() => {
         getWeatherCall()
-    }, [])
+    }, [latitude,longitude])
     if (!weatherData) {
         return null;
     }
