@@ -41,13 +41,14 @@ const Footer = () => {
             sx={{
                 backgroundColor: theme.palette.mode === "dark" ? "primary.main" : "#fcfcfc",
                 position: "fixed",
-                bottom: 0,
+                bottom:0,
+                width: "100vw",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                width: "100vw"
             }}> 
-            <Box marginRight="2rem">
+           
+            <Box marginRight="2rem" sx={{ display: {xs: "none", sm: 'none', md: 'block' }}}>
                 <WeatherCard/>
             </Box>
             <Button
@@ -57,16 +58,17 @@ const Footer = () => {
             </Button>
             <Button
                 onClick={() => navigate("/imprint")}
-                sx={footerBtnStyle}
-            >
+                sx={footerBtnStyle}>
                 Imprint
             </Button>
-            <Typography sx={{ color: "secondary.main", textAlign: "center", fontWeight: "bold", flexGrow: 1, display: "block" }}>
+                    
+            <Typography sx={{ color: "secondary.main", textAlign: "center", fontWeight: "bold",flexGrow:1,display: {xs: "none", sm: 'block' }}}>
                 Made By Burak Karaman &copy; 2024
             </Typography>
 
             <IconButton
-                sx={{ width: "45px", height: "45px", marginTop: ".4rem" }}
+                    
+            sx={{ width: "45px", height: "45px", marginTop: ".4rem"}}
                 onClick={colorMode.toggleColorMode}>
                 {theme.palette.mode === "dark" ? (
                     <DarkModeOutlinedIcon />
@@ -77,7 +79,6 @@ const Footer = () => {
 
             {links.map((link, index) => (
                 <Typography key={index} sx={{
-                    display: "flex",
                     '&:hover': {
                         transform: "scale( 1.10)"
                     }
@@ -87,7 +88,6 @@ const Footer = () => {
                     </a>
                 </Typography>
             ))}
-
         </Toolbar>
     </>;
 };
