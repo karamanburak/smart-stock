@@ -10,7 +10,6 @@ import { Box } from "@mui/material";
 
 export default function WeatherCard() {
     const [weatherData, setWeatherData] = useState(null)
-    console.log(weatherData);
     const [latitude, setLatitude] = useState('')
     const [longitude, setLongitude] = useState('')
     const dispatch = useDispatch()
@@ -48,7 +47,7 @@ export default function WeatherCard() {
         <Box
             sx={{
                 display: "flex",
-                justifyContent: "space-between",
+                justifyContent: "space-evenly",
                 alignItems: "center",
                 height: 70,
                 color:  "secondary.main" 
