@@ -1,4 +1,4 @@
-import {  Button, IconButton, Toolbar, Typography } from '@mui/material';
+import { Box, Button, IconButton, Toolbar, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import LigtModeOutlinedIcon from '@mui/icons-material/LightModeOutlined'
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
@@ -6,6 +6,7 @@ import { useTheme } from "@mui/material";
 import { useContext } from 'react';
 import { footerBtnStyle } from '../../styles/globalStyle';
 import { ColorModeContext } from './../../styles/theme';
+import WeatherCard from '../Navigation/WeatherCard';
 
 
 const links = [
@@ -35,17 +36,20 @@ const Footer = () => {
     const theme = useTheme()
     const colorMode = useContext(ColorModeContext)
 
-    return < >
+    return <>
         <Toolbar
             sx={{
-                backgroundColor : theme.palette.mode === "dark" ? "primary.main" : "#fcfcfc",
+                backgroundColor: theme.palette.mode === "dark" ? "primary.main" : "#fcfcfc",
                 position: "fixed",
                 bottom: 0,
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
                 width: "100vw"
-}}>
+            }}> 
+            <Box marginRight="2rem">
+                <WeatherCard/>
+            </Box>
             <Button
                 onClick={() => navigate("/about")}
                 sx={footerBtnStyle}>
@@ -54,7 +58,7 @@ const Footer = () => {
             <Button
                 onClick={() => navigate("/imprint")}
                 sx={footerBtnStyle}
-                >
+            >
                 Imprint
             </Button>
             <Typography sx={{ color: "secondary.main", textAlign: "center", fontWeight: "bold", flexGrow: 1, display: "block" }}>
@@ -71,18 +75,19 @@ const Footer = () => {
                 )}
             </IconButton>
 
-            {links.map((link,index)=>(
-            <Typography key={index} sx={{
-                display: "flex",
-                '&:hover': {
-                    transform: "scale( 1.10)" }
-            }}>
-                 <a href={link.address} target={link.target}>
-                    <img width="50" height="50" src={link.src} alt="new-post" />
-                </a> 
-            </Typography>
-                ))}
-               
+            {links.map((link, index) => (
+                <Typography key={index} sx={{
+                    display: "flex",
+                    '&:hover': {
+                        transform: "scale( 1.10)"
+                    }
+                }}>
+                    <a href={link.address} target={link.target}>
+                        <img width="50" height="50" src={link.src} alt="new-post" />
+                    </a>
+                </Typography>
+            ))}
+
         </Toolbar>
     </>;
 };

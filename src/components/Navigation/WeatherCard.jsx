@@ -1,21 +1,18 @@
 
-import { useTheme } from "@emotion/react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchFail, fetchStart } from "../../features/authSlice";
 import axios from "axios";
 import { useState } from "react";
-import { Box, Button, Card, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 
 
 
 export default function WeatherCard() {
     const [weatherData, setWeatherData] = useState(null)
-    const [location, setLocation] = useState(null);
     console.log(weatherData);
-    const [latitude,setLatitude] = useState('')
-    const [longitude,setLongitude] = useState('')
-    const theme = useTheme()
+    const [latitude, setLatitude] = useState('')
+    const [longitude, setLongitude] = useState('')
     const dispatch = useDispatch()
 
 
@@ -27,7 +24,7 @@ export default function WeatherCard() {
     const getWeatherCall = async () => {
         dispatch(fetchStart());
         try {
-            window.navigator.geolocation.getCurrentPosition(async (position)=> {
+            window.navigator.geolocation.getCurrentPosition(async (position) => {
                 savePositionToState(position)
                 const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${import.meta.env.VITE_WEATHER_apiKey}`)
                 setWeatherData(data)
@@ -40,7 +37,7 @@ export default function WeatherCard() {
 
     useEffect(() => {
         getWeatherCall()
-    }, [latitude,longitude])
+    }, [latitude, longitude])
     if (!weatherData) {
         return null;
     }
@@ -48,24 +45,24 @@ export default function WeatherCard() {
 
 
     return (
-        <Card sx={{
-            height: 70,
-            padding: ".5rem",
-            backgroundColor: theme.palette.mode === "dark" ? "primary.main" : "whitesmoke",
-            color: theme.palette.mode === "dark" ? "secondary.main" : "neutral.light"
-        }}>
+        <Box
+            sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                height: 70,
+                color:  "secondary.main" 
+            }}>
+            <Box gap={2}>
+                <img src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`} alt="" width="50px" />
+            </Box>
+            <Box fontWeight="bold">
+                {weatherData.name}
+            </Box>
+            <Box variant="span" sx={{ display: "flex" }}>
+                {Math.round(weatherData.main.temp)} <b><sup>°C</sup></b>
+            </Box>
 
-                <Box display="flex" gap={2} marginTop={"1rem"} >
-                    <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-                        <img src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`} alt="" width="50px" />
-                    </Typography>
-                    <Typography variant="h5" fontWeight={"bold"}>
-                        {weatherData.name}
-                    </Typography>
-                    <Typography variant="span">
-                        {Math.round(weatherData.main.temp)} <sup>°C</sup>
-                    </Typography>
-                </Box>
-        </Card>
+        </Box>
     );
 }
