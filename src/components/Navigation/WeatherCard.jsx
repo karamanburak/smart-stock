@@ -26,11 +26,12 @@ export default function WeatherCard() {
 
     const getWeatherCall = async () => {
         dispatch(fetchStart());
-
         try {
-            window.navigator.geolocation.getCurrentPosition(savePositionToState)
-            const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&q=potsdam&units=metric&appid=${import.meta.env.VITE_WEATHER_apiKey}`)
-            setWeatherData(data)
+            window.navigator.geolocation.getCurrentPosition(async (position)=> {
+                savePositionToState(position)
+                const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&q=potsdam&units=metric&appid=${import.meta.env.VITE_WEATHER_apiKey}`)
+                setWeatherData(data)
+            })
         } catch (error) {
             dispatch(fetchFail())
             console.log(error);
