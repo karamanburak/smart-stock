@@ -5,8 +5,8 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import WeatherCard from "./WeatherCard";
 import { menuFlex } from "../../styles/globalStyle";
+import WeatherCard from "../Commons/WeatherCard";
 
 const icon = (name) => `/assets/navbar/${name}.svg`
 

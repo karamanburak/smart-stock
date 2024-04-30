@@ -64,10 +64,10 @@ export default function ProductTable() {
             minWidth: 40,
             headerAlign: "center",
             align: "center",
-            flex: 1,
             renderCell: (params) => (
                 // console.log(params)
                 <DeleteForeverIcon
+                sx={{opacity:".6",cursor:"pointer"}}
                     onClick={() => deleteStockData("products", params.id)}
                 />
             ),

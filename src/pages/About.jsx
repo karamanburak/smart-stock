@@ -4,8 +4,6 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import Footer from "../components/Start/Footer";
 import { flex, footer } from "../styles/globalStyle";
 import { useTheme } from "@emotion/react";
-import { useContext } from "react";
-import { ColorModeContext } from "../styles/theme";
 
 const avatars = [
     {
@@ -37,7 +35,6 @@ const avatars = [
 
 const About = () => {
     const theme = useTheme()
-    const colorMode = useContext(ColorModeContext)
     return (
         <Container>
             <StartNavbar />

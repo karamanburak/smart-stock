@@ -13,7 +13,7 @@ const Firms = () => {
 
   const { getStockData } = useStockCall()
   const { firms,loading } = useSelector(state => state.stock)
-  console.log("Firms", firms);
+  // console.log("Firms", firms);
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -32,7 +32,6 @@ const Firms = () => {
     "address": "",
     "image": ""
   })
-  console.log("initialState", initialState);
 
   useEffect(() => {
     getStockData("firms")

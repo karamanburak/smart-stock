@@ -30,7 +30,7 @@ const useStockCall = () => {
             //     },
             // });
             const { data } = await axiosWithToken(`${url}`)
-            console.log(data);
+            // console.log(data);
             // dispatch(brandsSuccess(data.data));
             // dispatch(getSuccess({data:data.data,url:url}));//* action creatorlar her zaman tek bir parametre kabul ederler
             dispatch(getSuccess({ data: data.data, url }));//* action creatorlar her zaman tek bir parametre kabul ederler

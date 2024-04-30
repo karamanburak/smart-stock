@@ -20,7 +20,7 @@ export default function WeatherCard() {
         setLongitude(position.coords.longitude)
     }
 
-    const getWeatherCall = async () => {
+    const getWeatherCall = () => {
         dispatch(fetchStart());
         try {
             window.navigator.geolocation.getCurrentPosition(async (position) => {

@@ -6,7 +6,7 @@ import { useTheme } from "@mui/material";
 import { useContext } from 'react';
 import { footerBtnStyle } from '../../styles/globalStyle';
 import { ColorModeContext } from './../../styles/theme';
-import WeatherCard from '../Navigation/WeatherCard';
+import WeatherCard from '../Commons/WeatherCard';
 
 
 const links = [

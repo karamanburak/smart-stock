@@ -13,7 +13,7 @@ const Home = () => {
   const { loading } = useSelector(state => state.stock)
   useEffect(() => {
     getPurcSales()
-    console.log(getPurcSales());
+    // console.log(getPurcSales());
   }, [])
 
 

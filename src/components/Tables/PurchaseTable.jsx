@@ -9,8 +9,7 @@ import DataTable from '../Commons/DataTable';
 
 export default function PurchaseTable({setInitialState,handleOpen}) {
     const { purchases } = useSelector(state => state.stock)
-    console.log(purchases);
-    console.log("table", purchases);
+    // console.log("table", purchases);
     const { deleteStockData } = useStockCall()
 
     const columns = [

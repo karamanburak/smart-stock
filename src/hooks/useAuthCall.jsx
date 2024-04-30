@@ -32,7 +32,7 @@ const useAuthCall = () => {
         dispatch(fetchStart())
         try {
             const { data } = await axios.post(`${BASE_URL}auth/login/`,userInfo)
-            console.log(data);
+            // console.log(data);
             dispatch(loginSuccess(data))
             toastSuccessNotify(`Wellcome to your home ${data.user.email}`);
 

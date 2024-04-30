@@ -16,7 +16,7 @@ const Products = () => {
     setOpen(false);
   };
 
-  console.log("products:", products);
+  // console.log("products:", products);
   useEffect(() => {
     // getStockData("products");
     // getStockData("categories");
